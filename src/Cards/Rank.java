@@ -1,4 +1,4 @@
-package csci205finalproject.Cards;
+package Cards;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

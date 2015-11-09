@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package csci205finalproject.Cards;
+package Cards;
 
 /**
  *
@@ -12,6 +12,11 @@ package csci205finalproject.Cards;
 public class Card {
     private Rank rank;
     private Suits suit;
+
+    public Card(Rank rank, Suits suit) {
+        this.rank = rank;
+        this.suit = suit;
+    }
 
     public Rank getRank() {
         return rank;
