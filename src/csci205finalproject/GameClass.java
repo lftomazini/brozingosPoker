@@ -1,7 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* *****************************************
+ * CSCI205 - Software Engineering and Design
+ *
+ * Fall 2015
+ *
+ * Name: Anmol Singh, Leonardo Viglino Luis Felipe Tomazini,
+ Stephanie Garboski
+ * Date: Nov 9, 2015
+ * Time: 10:05:49 AM
+ *
+ * Project: csci205FinalProject
+ * Package: csci205finalproject
+ * File: GameClass
+ * Description:
+ *
+ * ****************************************
  */
 package csci205finalproject;
 
