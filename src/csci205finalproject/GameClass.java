@@ -27,6 +27,10 @@ public class GameClass {
     private ArrayList<Double> playerList;
     private int numOfRounds;
 
+    public GameClass(ArrayList<Double> playerList) {
+        this.playerList = playerList;
+    }
+
     public void nextRound() {
         numOfRounds++;
     }
