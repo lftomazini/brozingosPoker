@@ -26,18 +26,13 @@ public class Player {
     private boolean smallBlind;
     private Card card1;
     private Card card2;
-    private int[] chips = new int[5];
+    private Chips[] chips = new Chips[5];
 
     public Player() {
         this.bigBlind = false;
         this.smallBlind = false;
         this.card1 = null;
         this.card2 = null;
-        this.chips[0] = 50;
-        this.chips[1] = 50;
-        this.chips[2] = 50;
-        this.chips[3] = 50;
-        this.chips[4] = 50;
     }
 
     public Player(int chips1, int chips2, int chips3, int chips4, int chips5) {
@@ -45,11 +40,6 @@ public class Player {
         this.smallBlind = false;
         this.card1 = null;
         this.card2 = null;
-        this.chips[0] = chips1;
-        this.chips[1] = chips2;
-        this.chips[2] = chips3;
-        this.chips[3] = chips4;
-        this.chips[4] = chips5;
     }
 
     public void setBigBlind(boolean bigBlind) {
@@ -90,15 +80,5 @@ public class Player {
 
     public Chips[] getChips() {
         return chips;
-    }
-
-    public double total() {
-        double total = 0.0;
-        total += chips[0] * Chips.WHITE.getValue();
-        total += chips[1] * Chips.RED.getValue();
-        total += chips[2] * Chips.BLUE.getValue();
-        total += chips[3] * Chips.GREEN.getValue();
-        total += chips[4] * Chips.BLACK.getValue();
-        return total;
     }
 }
