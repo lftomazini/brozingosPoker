@@ -17,6 +17,8 @@
  */
 package csci205finalproject;
 
+import Cards.Card;
+
 /**
  *
  * @author lffct001
