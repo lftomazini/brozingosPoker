@@ -62,7 +62,7 @@ public class GameClass {
         //TODO check if higher is ACE
     }
 
-    private boolean isFlush(Player player, CardDealer cards) {
+    boolean isFlush(Player player, CardDealer cards) {
         int nOfClubs = 0;
         int nOfSpades = 0;
         int nOfHearts = 0;
@@ -70,8 +70,11 @@ public class GameClass {
         ArrayList<Card> cardsPossible = new ArrayList<>();
         cardsPossible.add(player.getCard1());
         cardsPossible.add(player.getCard2());
-        cardsPossible.add(cards.placeCardsOnTable());// TODO if there is an error it might be here; trying to add an arraylist to an arraylist
+        for (int i = 0; i < cards.getCardsOnTable().size(); i++) {
+            cardsPossible.add(cards.getCardsOnTable().get(i));
+        }
         Suits suit;
+        System.out.println(cardsPossible.size());
         for (int i = 0; i < cardsPossible.size(); i++) {
             suit = cardsPossible.get(i).getSuit();
             switch (suit) {

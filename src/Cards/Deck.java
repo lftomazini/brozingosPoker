@@ -39,6 +39,10 @@ public class Deck {
 
     }
 
+    public ArrayList<Card> getDeck() {
+        return deck;
+    }
+
     public void printDeck() {
 
         for (int i = 0; i < DECKSIZE; i++) {

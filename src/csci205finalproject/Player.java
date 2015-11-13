@@ -26,8 +26,8 @@ import Cards.Card;
 public class Player {
     private boolean bigBlind;
     private boolean smallBlind;
-    private Card card1;
-    private Card card2;
+    Card card1;
+    Card card2;
     private Chips[] chips = new Chips[5];
 
     public Player() {

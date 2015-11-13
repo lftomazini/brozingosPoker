@@ -57,7 +57,7 @@ public class CardDealer {
         do {
             rand = rand_int.nextInt(52);
         } while (cardsChosen.contains(rand));
-        cardsChosen.add(cardsChosen.get(rand));
+        cardsChosen.add(deck[rand]);
         return rand;
     }
 
@@ -75,7 +75,7 @@ public class CardDealer {
 
     public Card placeCardsOnTable() {
         int rand = this.getRandom();
-        cardsOnTable.add(cardsChosen.get(rand));
+        cardsOnTable.add(deck[rand]);
         return this.deck[rand];
     }
 
