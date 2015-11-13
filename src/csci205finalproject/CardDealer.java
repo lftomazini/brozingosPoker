@@ -18,8 +18,8 @@ public class CardDealer {
     private Card[] deck;
     private Player[] players;
     private int rounds;
-    private ArrayList<Integer> cards_chosen = new ArrayList<>();
-    private ArrayList<Integer> cardsOnTable = new ArrayList<>();
+    private ArrayList<Card> cardsChosen = new ArrayList<>();
+    private ArrayList<Card> cardsOnTable = new ArrayList<>();
 
     public CardDealer(Card[] deck, Player[] players, int round) {
         this.players = players;
@@ -35,6 +35,18 @@ public class CardDealer {
         return this.rounds;
     }
 
+    public Card[] getDeck() {
+        return deck;
+    }
+
+    public ArrayList<Card> getCardsChosen() {
+        return cardsChosen;
+    }
+
+    public ArrayList<Card> getCardsOnTable() {
+        return cardsOnTable;
+    }
+
     public void completeRound() {
         this.rounds += 1;
     }
@@ -44,8 +56,8 @@ public class CardDealer {
         int rand;
         do {
             rand = rand_int.nextInt(52);
-        } while (cards_chosen.contains(rand));
-        cards_chosen.add(rand);
+        } while (cardsChosen.contains(rand));
+        cardsChosen.add(cardsChosen.get(rand));
         return rand;
     }
 
@@ -63,7 +75,7 @@ public class CardDealer {
 
     public Card placeCardsOnTable() {
         int rand = this.getRandom();
-        cardsOnTable.add(rand);
+        cardsOnTable.add(cardsChosen.get(rand));
         return this.deck[rand];
     }
 

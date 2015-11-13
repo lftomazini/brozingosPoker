@@ -17,6 +17,8 @@
  */
 package csci205finalproject;
 
+import Cards.Card;
+import Cards.Suits;
 import java.util.ArrayList;
 
 /**
@@ -24,10 +26,10 @@ import java.util.ArrayList;
  * @author lbv001
  */
 public class GameClass {
-    private ArrayList<Double> playerList;
+    private ArrayList<Player> playerList;
     private int numOfRounds;
 
-    public GameClass(ArrayList<Double> playerList) {
+    public GameClass(ArrayList<Player> playerList) {
         this.playerList = playerList;
     }
 
@@ -39,12 +41,58 @@ public class GameClass {
         return numOfRounds;
     }
 
-    public ArrayList<Double> getPlayerList() {
+    public ArrayList<Player> getPlayerList() {
         return playerList;
     }
 
-    public void setPlayerList(ArrayList<Double> playerList) {
+    public void setPlayerList(ArrayList<Player> playerList) {
         this.playerList = playerList;
     }
 
+    /**
+     * @see
+     * http://codereview.stackexchange.com/questions/91086/texas-hold-em-poker-hand-recognition-algorithm-and-implementation
+     * @param player
+     * @param cards
+     * @return
+     */
+    public boolean checkHands(Player player, CardDealer cards) {
+        //Royal flush
+        return (isFlush(player, cards) && isStraight(player, cards));
+        //TODO check if higher is ACE
+    }
+
+    private boolean isFlush(Player player, CardDealer cards) {
+        int nOfClubs = 0;
+        int nOfSpades = 0;
+        int nOfHearts = 0;
+        int nOfDiamonds = 0;
+        ArrayList<Card> cardsPossible = new ArrayList<>();
+        cardsPossible.add(player.getCard1());
+        cardsPossible.add(player.getCard2());
+        cardsPossible.add(cards.placeCardsOnTable());// TODO if there is an error it might be here; trying to add an arraylist to an arraylist
+        Suits suit;
+        for (int i = 0; i < cardsPossible.size(); i++) {
+            suit = cardsPossible.get(i).getSuit();
+            switch (suit) {
+                case DIAMONDS:
+                    nOfDiamonds++;
+                    break;
+                case SPADES:
+                    nOfSpades++;
+                    break;
+                case HEARTS:
+                    nOfHearts++;
+                    break;
+                case CLUBS:
+                    nOfClubs++;
+                    break;
+            }
+        }
+        return (nOfClubs == 5 || nOfSpades == 5 || nOfHearts == 5 || nOfDiamonds == 5);
+    }
+
+    private boolean isStraight(Player player, CardDealer cards) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
