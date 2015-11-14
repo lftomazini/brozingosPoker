@@ -43,6 +43,9 @@ public class test {
         cardDealer.placeCardsOnTable();
         cardDealer.placeCardsOnTable();
         cardDealer.placeCardsOnTable();
+        cardDealer.placeCardsOnTable();
+        cardDealer.placeCardsOnTable();
+        cardDealer.placeCardsOnTable();
 
         for (int i = 0; i < cardDealer.getCardsOnTable().size(); i++) {
             System.out.println(

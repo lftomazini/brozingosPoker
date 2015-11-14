@@ -99,7 +99,7 @@ public class GameClass {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    boolean is3OfAKind(Player player, CardDealer cards) {
+    boolean isOfAKind(Player player, CardDealer cards, int quantity) {
         int repeated = 1;
         ArrayList<Card> cardsPossible = new ArrayList<>();
         cardsPossible.add(player.getCard1());
@@ -111,14 +111,23 @@ public class GameClass {
         for (int i = 0; i < cardsPossible.size(); i++) {
             repeated = 1;
             for (int j = 1; j < cardsPossible.size(); j++) {
-                if (cardsPossible.get(i).getRank() == cardsPossible.get(j).getRank()) {
+                if (cardsPossible.get(i).getRank() == cardsPossible.get(j).getRank() && cardsPossible.get(
+                        i).getSuit() != cardsPossible.get(j).getSuit()) {
                     repeated++;
-                    if (repeated == 3) {
+                    if (repeated == quantity) {
                         return true;
                     }
                 }
             }
         }
         return false;
+    }
+
+    boolean is3OfAKind(Player player, CardDealer cards) {
+        return isOfAKind(player, cards, 3);
+    }
+
+    boolean is2OfAKind(Player player, CardDealer cards) {
+        return isOfAKind(player, cards, 2);
     }
 }
