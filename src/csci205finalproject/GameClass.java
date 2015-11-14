@@ -92,10 +92,33 @@ public class GameClass {
                     break;
             }
         }
-        return (nOfClubs == 5 || nOfSpades == 5 || nOfHearts == 5 || nOfDiamonds == 5);
+        return (nOfClubs >= 5 || nOfSpades >= 5 || nOfHearts >= 5 || nOfDiamonds >= 5);
     }
 
     private boolean isStraight(Player player, CardDealer cards) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    boolean is3OfAKind(Player player, CardDealer cards) {
+        int repeated = 1;
+        ArrayList<Card> cardsPossible = new ArrayList<>();
+        cardsPossible.add(player.getCard1());
+        cardsPossible.add(player.getCard2());
+        for (int i = 0; i < cards.getCardsOnTable().size(); i++) {
+            cardsPossible.add(cards.getCardsOnTable().get(i));
+        }
+
+        for (int i = 0; i < cardsPossible.size(); i++) {
+            repeated = 1;
+            for (int j = 1; j < cardsPossible.size(); j++) {
+                if (cardsPossible.get(i).getRank() == cardsPossible.get(j).getRank()) {
+                    repeated++;
+                    if (repeated == 3) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 }

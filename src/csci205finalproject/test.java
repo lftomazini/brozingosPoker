@@ -43,19 +43,20 @@ public class test {
         cardDealer.placeCardsOnTable();
         cardDealer.placeCardsOnTable();
         cardDealer.placeCardsOnTable();
+
         for (int i = 0; i < cardDealer.getCardsOnTable().size(); i++) {
             System.out.println(
-                    cardDealer.getCardsOnTable().get(1).getRank() + "  " + cardDealer.getCardsOnTable().get(
+                    cardDealer.getCardsOnTable().get(i).getRank() + "  " + cardDealer.getCardsOnTable().get(
                             i).getSuit());
         }
         System.out.println(
                 cardDealer.getPlayers()[0].card1.getRank() + "  " + cardDealer.getPlayers()[0].card1.getSuit());
         System.out.println(
-                cardDealer.getPlayers()[0].card1.getRank() + "  " + cardDealer.getPlayers()[0].card2.getSuit());
+                cardDealer.getPlayers()[0].card2.getRank() + "  " + cardDealer.getPlayers()[0].card2.getSuit());
 
         ArrayList<Player> listOfPlayers = new ArrayList<>();
         listOfPlayers.add(player);
         GameClass game = new GameClass(listOfPlayers);
-        System.out.println(game.isFlush(player, cardDealer));
+        System.out.println(game.is3OfAKind(player, cardDealer));
     }
 }
