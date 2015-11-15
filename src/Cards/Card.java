@@ -9,7 +9,7 @@ package Cards;
  *
  * @author lbv001
  */
-public class Card {
+public class Card implements Comparable<Card> {
     private Rank rank;
     private Suits suit;
 
@@ -34,4 +34,16 @@ public class Card {
         this.suit = suit;
     }
 
+    @Override
+    public int compareTo(Card other) {
+        if (this.getRank().getValue() < other.getRank().getValue()) {
+            return -1;
+        } else {
+            if (this.getRank().getValue() < other.getRank().getValue()) {
+                return 0;
+            } else {
+                return 1;
+            }
+        }
+    }
 }
