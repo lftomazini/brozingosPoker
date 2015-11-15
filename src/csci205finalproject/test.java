@@ -7,6 +7,8 @@ package csci205finalproject;
 
 import Cards.Card;
 import Cards.Deck;
+import Cards.Rank;
+import Cards.Suits;
 import java.util.ArrayList;
 
 /**
@@ -33,23 +35,30 @@ public class test {
 //        for (int i = 0; i < cards.length; i++) {
 //            System.out.println(cards[i]);
 //        }
+        Card card1 = new Card(Rank.ACE, Suits.HEARTS);
+        Card card2 = new Card(Rank.ACE, Suits.HEARTS);
+        Card card3 = new Card(Rank.K, Suits.HEARTS);
+        Card card4 = new Card(Rank.K, Suits.HEARTS);
+        Card card5 = new Card(Rank.K, Suits.HEARTS);
+        Card card6 = new Card(Rank.K, Suits.DIAMONDS);
+        Card card7 = new Card(Rank.K, Suits.CLUBS);
         Player player = new Player();
+        player.setCard1(card1);
         Player[] playerArray = new Player[1];
+        player.setCard1(card1);
+        player.setCard2(card2);
         playerArray[0] = player;
         CardDealer cardDealer = new CardDealer(cards, playerArray, 0);
-        cardDealer.giveCardstoPlayers();
-        cardDealer.placeCardsOnTable();
-        cardDealer.placeCardsOnTable();
-        cardDealer.placeCardsOnTable();
-        cardDealer.placeCardsOnTable();
-        cardDealer.placeCardsOnTable();
-        cardDealer.placeCardsOnTable();
-        cardDealer.placeCardsOnTable();
-        cardDealer.placeCardsOnTable();
+        ArrayList<Card> table = new ArrayList<>();
+        table.add(card3);
+        table.add(card4);
+        table.add(card5);
+        table.add(card6);
+        table.add(card7);
 
-        for (int i = 0; i < cardDealer.getCardsOnTable().size(); i++) {
+        for (int i = 0; i < table.size(); i++) {
             System.out.println(
-                    cardDealer.getCardsOnTable().get(i).getRank() + "  " + cardDealer.getCardsOnTable().get(
+                    table.get(i).getRank() + "  " + table.get(
                             i).getSuit());
         }
         System.out.println(
@@ -60,6 +69,6 @@ public class test {
         ArrayList<Player> listOfPlayers = new ArrayList<>();
         listOfPlayers.add(player);
         GameClass game = new GameClass(listOfPlayers);
-        System.out.println(game.is3OfAKind(player, cardDealer));
+        System.out.println(game.isFlush(player, table));
     }
 }
