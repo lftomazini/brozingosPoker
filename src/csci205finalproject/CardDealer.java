@@ -27,6 +27,10 @@ public class CardDealer {
         this.deck = deck;
     }
 
+    public void setCardsOnTable(ArrayList<Card> cardsOnTable) {
+        this.cardsOnTable = cardsOnTable;
+    }
+
     public Player[] getPlayers() {
         return this.players;
     }
