@@ -18,8 +18,10 @@
 package csci205finalproject;
 
 import Cards.Card;
+import Cards.Rank;
 import Cards.Suits;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 /**
  *
@@ -56,13 +58,14 @@ public class GameClass {
      * @param cards
      * @return
      */
-    public boolean checkHands(Player player, CardDealer cards) {
+    public boolean checkHands(Player player, ArrayList<Card> cards) {
         //Royal flush
-        return (isFlush(player, cards) && isStraight(player, cards));
+
         //TODO check if higher is ACE
+        return false;
     }
 
-    boolean isFlush(Player player, CardDealer cards) {
+    public boolean isFlush(Player player, ArrayList<Card> cards) {
         int nOfClubs = 0;
         int nOfSpades = 0;
         int nOfHearts = 0;
@@ -70,11 +73,10 @@ public class GameClass {
         ArrayList<Card> cardsPossible = new ArrayList<>();
         cardsPossible.add(player.getCard1());
         cardsPossible.add(player.getCard2());
-        for (int i = 0; i < cards.getCardsOnTable().size(); i++) {
-            cardsPossible.add(cards.getCardsOnTable().get(i));
+        for (int i = 0; i < cards.size(); i++) {
+            cardsPossible.add(cards.get(i));
         }
         Suits suit;
-        System.out.println(cardsPossible.size());
         for (int i = 0; i < cardsPossible.size(); i++) {
             suit = cardsPossible.get(i).getSuit();
             switch (suit) {
@@ -95,22 +97,18 @@ public class GameClass {
         return (nOfClubs >= 5 || nOfSpades >= 5 || nOfHearts >= 5 || nOfDiamonds >= 5);
     }
 
-    private boolean isStraight(Player player, CardDealer cards) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    boolean isOfAKind(Player player, CardDealer cards, int quantity) {
+    public boolean isOfAKind(Player player, ArrayList<Card> cards, int quantity) {
         int repeated = 1;
         ArrayList<Card> cardsPossible = new ArrayList<>();
         cardsPossible.add(player.getCard1());
         cardsPossible.add(player.getCard2());
-        for (int i = 0; i < cards.getCardsOnTable().size(); i++) {
-            cardsPossible.add(cards.getCardsOnTable().get(i));
+        for (int i = 0; i < cards.size(); i++) {
+            cardsPossible.add(cards.get(i));
         }
 
         for (int i = 0; i < cardsPossible.size(); i++) {
             repeated = 1;
-            for (int j = 1; j < cardsPossible.size(); j++) {
+            for (int j = i + 1; j < cardsPossible.size(); j++) {
                 if (cardsPossible.get(i).getRank() == cardsPossible.get(j).getRank() && cardsPossible.get(
                         i).getSuit() != cardsPossible.get(j).getSuit()) {
                     repeated++;
@@ -123,11 +121,119 @@ public class GameClass {
         return false;
     }
 
-    boolean is3OfAKind(Player player, CardDealer cards) {
+    public boolean isStraight(Player player, ArrayList<Card> cards) {
+        int cardsInARow = 0;
+        int position = 0;
+        ArrayList<Card> hand = new ArrayList<>();
+        ArrayList<Card> cardsPossible = new ArrayList<>();
+        cardsPossible.add(player.getCard1());
+        cardsPossible.add(player.getCard2());
+        for (int i = 0; i < cards.size(); i++) {
+            cardsPossible.add(cards.get(i));
+        }
+//        Arrays.sort(cardsPossible, byRank);
+        for (int i = 0; i < cardsPossible.size() - 1; i++) {
+            if (cardsPossible.get(position + 1).getRank().getValue() - cardsPossible.get(
+                    position).getRank().getValue() == 1) {
+                cardsInARow++;
+                hand.add(cardsPossible.get(position));
+                hand.add(cardsPossible.get(position + 1));
+                if (cardsInARow >= 4) {
+                    player.finalHand = hand;
+                    return true;
+                } else {
+                    position++;
+                }
+            } else {
+                cardsInARow = 0;
+                position++;
+            }
+        }
+        return false;
+    }
+
+    public boolean isFullHouse(Player player, ArrayList<Card> cards) {
+        int repeated = 1;
+        boolean is3OfAKind = false;
+        boolean is2OfAKind = false;
+        ArrayList<Card> cardsPossible = new ArrayList<>();
+        cardsPossible.add(player.getCard1());
+        cardsPossible.add(player.getCard2());
+        for (int i = 0; i < cards.size(); i++) {
+            cardsPossible.add(cards.get(i));
+        }
+
+        if (is3OfAKind(player, cardsPossible)) {
+            is3OfAKind = true;
+
+        }
+        //TODO
+        return true;
+    }
+
+    public boolean is2Pairs(Player player, ArrayList<Card> cards) {
+        int repeated = 1;
+        int noOfPairs = 0;
+        ArrayList<Card> cardsPossible = new ArrayList<>();
+        cardsPossible.add(player.getCard1());
+        cardsPossible.add(player.getCard2());
+        for (int i = 0; i < cards.size(); i++) {
+            cardsPossible.add(cards.get(i));
+        }
+
+        for (int i = 0; i < cardsPossible.size(); i++) {
+            repeated = 1;
+            for (int j = i + 1; j < cardsPossible.size(); j++) {
+                if (cardsPossible.get(i).getRank() == cardsPossible.get(j).getRank() && cardsPossible.get(
+                        i).getSuit() != cardsPossible.get(j).getSuit()) {
+                    repeated++;
+                    if (repeated == 2) {
+                        noOfPairs++;
+                        if (noOfPairs >= 2) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean is4OfAKind(Player player, ArrayList<Card> cards) {
+        return isOfAKind(player, cards, 4);
+    }
+
+    public boolean is3OfAKind(Player player, ArrayList<Card> cards) {
         return isOfAKind(player, cards, 3);
     }
 
-    boolean is2OfAKind(Player player, CardDealer cards) {
+    public boolean is2OfAKind(Player player, ArrayList<Card> cards) {
         return isOfAKind(player, cards, 2);
     }
+
+    public boolean isStraightFlush(Player player, ArrayList<Card> cards) {
+        return (isFlush(player, cards) && isStraight(player, cards));
+    }
+
+    public boolean isRoyalFlush(Player player, ArrayList<Card> cards) {
+        return (isStraightFlush(player, cards) && getHighCard(player).getRank() == Rank.ACE);
+    }
+
+    public Card getHighCard(Player player) {
+        ArrayList<Card> cardsPossible = new ArrayList<>();
+        cardsPossible = player.finalHand;
+//        Arrays.sort(cardsPossible, byRank);
+        return cardsPossible.get(0);
+    }
+    public Comparator<Card> byRank = (Card left, Card right) -> {
+        if (left.getRank().getValue() < right.getRank().getValue()) {
+            return -1;
+        } else {
+            if (left.getRank().getValue() == right.getRank().getValue()) {
+                return 0;
+            } else {
+                return 1;
+            }
+        }
+    };
 }
