@@ -18,6 +18,7 @@
 package csci205finalproject;
 
 import Cards.Card;
+import java.util.ArrayList;
 
 /**
  *
@@ -29,6 +30,7 @@ public class Player {
     Card card1;
     Card card2;
     private Chips[] chips = new Chips[5];
+    ArrayList<Card> finalHand = new ArrayList<>();
 
     public Player() {
         this.bigBlind = false;
