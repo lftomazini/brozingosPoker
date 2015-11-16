@@ -71,7 +71,9 @@ public class Main {
                                                                null, ex);
                 }
 
+                startScreen.setLocationRelativeTo(null);
                 startScreen.setVisible(true);
+
             }
         });
     }
