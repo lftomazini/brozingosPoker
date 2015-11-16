@@ -57,29 +57,36 @@ public class CardDealer {
 
     public int getRandom() {
         Random rand_int = new Random();
-        int rand;
-        do {
+        boolean isRandom = false;
+        int rand = 0;
+        while (isRandom == false) {
             rand = rand_int.nextInt(52);
-        } while (cardsChosen.contains(rand));
-        cardsChosen.add(deck[rand]);
+            if (cardsChosen.contains(rand)) {
+                isRandom = false;
+            } else {
+                isRandom = true;
+            }
+        }
         return rand;
     }
 
     public void giveCardstoPlayers() {
-        Random rand_int = new Random();
         int rand_1;
         int rand_2;
         for (int i = 0; i < this.players.length; i++) {
-            rand_1 = rand_int.nextInt(52);
-            rand_2 = rand_int.nextInt(52);
-            this.players[i].setCard1(this.deck[this.getRandom()]);
-            this.players[i].setCard2(this.deck[this.getRandom()]);
+            rand_1 = this.getRandom();
+            rand_2 = this.getRandom();
+            this.players[i].setCard1(this.deck[rand_1]);
+            this.players[i].setCard2(this.deck[rand_2]);
+            cardsOnTable.add(deck[rand_1]);
+            cardsOnTable.add(deck[rand_2]);
         }
     }
 
     public Card placeCardsOnTable() {
         int rand = this.getRandom();
         cardsOnTable.add(deck[rand]);
+        cardsChosen.add(deck[rand]);
         return this.deck[rand];
     }
 
