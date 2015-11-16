@@ -27,7 +27,7 @@ import java.util.Comparator;
  *
  * @author lbv001
  */
-public class GameClass {
+public class GameClass implements Comparator<Card> {
     private ArrayList<Player> playerList;
     private int numOfRounds;
 
@@ -253,4 +253,17 @@ public class GameClass {
             }
         }
     };
+
+    @Override
+    public int compare(Card o1, Card o2) {
+        if (o1.getRank().getValue() < o2.getRank().getValue()) {
+            return -1;
+        } else {
+            if (o1.getRank().getValue() == o2.getRank().getValue()) {
+                return 0;
+            } else {
+                return 1;
+            }
+        }
+    }
 }
