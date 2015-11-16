@@ -39,6 +39,8 @@ public class Controller implements ActionListener {
     JLabel flop1;
     JLabel flop2;
     Timer timer;
+    boolean onCard1 = false;
+    boolean onCard2 = false;
 
     public Controller(StartScreen startScreen, Model theModel) throws IOException {
         this.startScreen = startScreen;
@@ -47,7 +49,8 @@ public class Controller implements ActionListener {
         this.startScreen.getStart().addActionListener(this);
         this.theGameTable.getjButton1().addActionListener(this);
         this.theGameTable.getjButton2().addActionListener(this);
-
+        this.theGameTable.getCard1b().addActionListener(this);
+        this.theGameTable.getCard2b().addActionListener(this);
     }
     int n = 0;
 
@@ -63,7 +66,7 @@ public class Controller implements ActionListener {
         if (e.getSource() == theGameTable.getjButton1()) {
 
             Icon icon = new ImageIcon(
-                    "/home/accounts/student/l/lbv001/csci205FinalProject/src/cardsimage/3SPADES.jpg");
+                    "/home/accounts/student/s/sag033/csci205FinalProject/src/cardsimage/3SPADES.jpg");
             theGameTable.getFlop().setIcon(icon);
 
         }
@@ -74,6 +77,36 @@ public class Controller implements ActionListener {
             timer.setRepeats(true);
             timer.start();
 
+        }
+
+        //flip card 1 over
+        if (e.getSource() == theGameTable.getCard1b()) {
+            if (onCard1 == false) {
+                Icon icon = new ImageIcon(
+                        "/home/accounts/student/s/sag033/csci205FinalProject/src/cardsimage/3SPADES.jpg");
+                theGameTable.getCard1b().setIcon(icon);
+                onCard1 = true;
+            } else {
+                Icon icon = new ImageIcon(
+                        "/home/accounts/student/s/sag033/csci205FinalProject/src/View/playing-card-back.jpg");
+                theGameTable.getCard1b().setIcon(icon);
+                onCard1 = false;
+            }
+        }
+
+        //flip card 2 over
+        if (e.getSource() == theGameTable.getCard2b()) {
+            if (onCard2 == false) {
+                Icon icon = new ImageIcon(
+                        "/home/accounts/student/s/sag033/csci205FinalProject/src/cardsimage/3SPADES.jpg");
+                theGameTable.getCard2b().setIcon(icon);
+                onCard2 = true;
+            } else {
+                Icon icon = new ImageIcon(
+                        "/home/accounts/student/s/sag033/csci205FinalProject/src/View/playing-card-back.jpg");
+                theGameTable.getCard2b().setIcon(icon);
+                onCard2 = false;
+            }
         }
 
     }
