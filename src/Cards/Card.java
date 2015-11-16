@@ -39,7 +39,7 @@ public class Card implements Comparable<Card> {
         if (this.getRank().getValue() < other.getRank().getValue()) {
             return -1;
         } else {
-            if (this.getRank().getValue() < other.getRank().getValue()) {
+            if (this.getRank().getValue() == other.getRank().getValue()) {
                 return 0;
             } else {
                 return 1;

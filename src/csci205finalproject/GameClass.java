@@ -27,7 +27,7 @@ import java.util.Comparator;
  *
  * @author lbv001
  */
-public class GameClass {
+public class GameClass implements Comparator<Card> {
     private ArrayList<Player> playerList;
     private int numOfRounds;
 
@@ -162,13 +162,30 @@ public class GameClass {
         for (int i = 0; i < cards.size(); i++) {
             cardsPossible.add(cards.get(i));
         }
-
-        if (is3OfAKind(player, cardsPossible)) {
-            is3OfAKind = true;
-
+        //        Arrays.sort(cardsPossible, byRank);
+        for (int j = 0; j < 2; j++) {
+            for (int i = 0; i < cardsPossible.size() - 1; i++) {
+                if (cardsPossible.get(i).getRank().getValue() == cardsPossible.get(
+                        i + 1).getRank().getValue()) {
+                    repeated++;
+                    if (repeated == 3) {
+                        is3OfAKind = true;
+                        repeated = 1;
+                    } else if (repeated == 2 && !is2OfAKind) {
+                        is2OfAKind = true;
+                        repeated = 1;
+                    }
+                } else {
+                    repeated = 1;
+                }
+            }
+            if (is2OfAKind && is3OfAKind) {
+                return true;
+            } else {
+                //Sort reverse order
+            }
         }
-        //TODO
-        return true;
+        return false;
     }
 
     public boolean is2Pairs(Player player, ArrayList<Card> cards) {
@@ -236,4 +253,17 @@ public class GameClass {
             }
         }
     };
+
+    @Override
+    public int compare(Card o1, Card o2) {
+        if (o1.getRank().getValue() < o2.getRank().getValue()) {
+            return -1;
+        } else {
+            if (o1.getRank().getValue() == o2.getRank().getValue()) {
+                return 0;
+            } else {
+                return 1;
+            }
+        }
+    }
 }
