@@ -75,11 +75,11 @@ public class CardDealer {
         int rand_2;
         for (int i = 0; i < this.players.length; i++) {
             rand_1 = this.getRandom();
+            cardsOnTable.add(deck[rand_1]);
             rand_2 = this.getRandom();
+            cardsOnTable.add(deck[rand_2]);
             this.players[i].setCard1(this.deck[rand_1]);
             this.players[i].setCard2(this.deck[rand_2]);
-            cardsOnTable.add(deck[rand_1]);
-            cardsOnTable.add(deck[rand_2]);
         }
     }
 
