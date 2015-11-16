@@ -35,15 +35,14 @@ public class test {
 //        for (int i = 0; i < cards.length; i++) {
 //            System.out.println(cards[i]);
 //        }
-        Card card1 = new Card(Rank.ACE, Suits.HEARTS);
-        Card card2 = new Card(Rank.ACE, Suits.HEARTS);
+        Card card1 = new Card(Rank.K, Suits.HEARTS);
+        Card card2 = new Card(Rank.K, Suits.HEARTS);
         Card card3 = new Card(Rank.K, Suits.HEARTS);
-        Card card4 = new Card(Rank.K, Suits.HEARTS);
-        Card card5 = new Card(Rank.K, Suits.HEARTS);
-        Card card6 = new Card(Rank.K, Suits.DIAMONDS);
-        Card card7 = new Card(Rank.K, Suits.CLUBS);
+        Card card4 = new Card(Rank.ACE, Suits.HEARTS);
+        Card card5 = new Card(Rank.ACE, Suits.HEARTS);
+        Card card6 = new Card(Rank.TWO, Suits.DIAMONDS);
+        Card card7 = new Card(Rank.J, Suits.CLUBS);
         Player player = new Player();
-        player.setCard1(card1);
         Player[] playerArray = new Player[1];
         player.setCard1(card1);
         player.setCard2(card2);
@@ -56,19 +55,18 @@ public class test {
         table.add(card6);
         table.add(card7);
 
+        System.out.println(
+                cardDealer.getPlayers()[0].card1.getRank() + "  " + cardDealer.getPlayers()[0].card1.getSuit());
+        System.out.println(
+                cardDealer.getPlayers()[0].card2.getRank() + "  " + cardDealer.getPlayers()[0].card2.getSuit());
         for (int i = 0; i < table.size(); i++) {
             System.out.println(
                     table.get(i).getRank() + "  " + table.get(
                             i).getSuit());
         }
-        System.out.println(
-                cardDealer.getPlayers()[0].card1.getRank() + "  " + cardDealer.getPlayers()[0].card1.getSuit());
-        System.out.println(
-                cardDealer.getPlayers()[0].card2.getRank() + "  " + cardDealer.getPlayers()[0].card2.getSuit());
-
         ArrayList<Player> listOfPlayers = new ArrayList<>();
         listOfPlayers.add(player);
         GameClass game = new GameClass(listOfPlayers);
-        System.out.println(game.isFlush(player, table));
+        System.out.println(game.isFullHouse(player, table));
     }
 }
