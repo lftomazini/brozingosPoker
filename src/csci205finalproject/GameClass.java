@@ -159,16 +159,24 @@ public class GameClass {
         ArrayList<Card> cardsPossible = new ArrayList<>();
         cardsPossible.add(player.getCard1());
         cardsPossible.add(player.getCard2());
-        for (int i = 0; i < cards.size(); i++) {
-            cardsPossible.add(cards.get(i));
-        }
+        //        Arrays.sort(cardsPossible, byRank);
 
-        if (is3OfAKind(player, cardsPossible)) {
-            is3OfAKind = true;
-
+        for (int i = 0; i < cardsPossible.size() - 1; i++) {
+            if (cardsPossible.get(i).getRank().getValue() == cardsPossible.get(
+                    i + 1).getRank().getValue()) {
+                repeated++;
+                if (repeated == 3) {
+                    is3OfAKind = true;
+                    repeated = 1;
+                } else if (repeated == 2) {
+                    is2OfAKind = true;
+                    repeated = 1;
+                }
+            } else {
+                repeated = 1;
+            }
         }
-        //TODO
-        return true;
+        return (is2OfAKind && is3OfAKind);
     }
 
     public boolean is2Pairs(Player player, ArrayList<Card> cards) {
