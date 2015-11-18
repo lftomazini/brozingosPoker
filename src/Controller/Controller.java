@@ -66,7 +66,7 @@ public class Controller implements ActionListener {
         if (e.getSource() == theGameTable.getjButton1()) {
 
             Icon icon = new ImageIcon(
-                    "/home/accounts/student/s/sag033/csci205FinalProject/src/cardsimage/3SPADES.jpg");
+                    "/home/accounts/student/l/lffct001/csci205FinalProject/src/cardsimage/3SPADES.jpg");
             theGameTable.getFlop().setIcon(icon);
 
         }
@@ -83,12 +83,12 @@ public class Controller implements ActionListener {
         if (e.getSource() == theGameTable.getCard1b()) {
             if (onCard1 == false) {
                 Icon icon = new ImageIcon(
-                        "/home/accounts/student/s/sag033/csci205FinalProject/src/cardsimage/3SPADES.jpg");
+                        "/home/accounts/student/l/lffct001/csci205FinalProject/src/cardsimage/3SPADES.jpg");
                 theGameTable.getCard1b().setIcon(icon);
                 onCard1 = true;
             } else {
                 Icon icon = new ImageIcon(
-                        "/home/accounts/student/s/sag033/csci205FinalProject/src/View/playing-card-back.jpg");
+                        "/home/accounts/student/l/lffct001/csci205FinalProject/src/View/playing-card-back.jpg");
                 theGameTable.getCard1b().setIcon(icon);
                 onCard1 = false;
             }
@@ -98,12 +98,12 @@ public class Controller implements ActionListener {
         if (e.getSource() == theGameTable.getCard2b()) {
             if (onCard2 == false) {
                 Icon icon = new ImageIcon(
-                        "/home/accounts/student/s/sag033/csci205FinalProject/src/cardsimage/3SPADES.jpg");
+                        "/home/accounts/student/l/lffct001/csci205FinalProject/src/cardsimage/3SPADES.jpg");
                 theGameTable.getCard2b().setIcon(icon);
                 onCard2 = true;
             } else {
                 Icon icon = new ImageIcon(
-                        "/home/accounts/student/s/sag033/csci205FinalProject/src/View/playing-card-back.jpg");
+                        "/home/accounts/student/l/lffct001/csci205FinalProject/src/View/playing-card-back.jpg");
                 theGameTable.getCard2b().setIcon(icon);
                 onCard2 = false;
             }

@@ -29,7 +29,7 @@ public class Player {
     private boolean smallBlind;
     Card card1;
     Card card2;
-    private Chips[] chips = new Chips[5];
+    private Chips[] chips = new Chips[Chips.values().length];
     ArrayList<Card> finalHand = new ArrayList<>();
 
     public Player() {
@@ -39,11 +39,12 @@ public class Player {
         this.card2 = null;
     }
 
-    public Player(int chips1, int chips2, int chips3, int chips4, int chips5) {
+    public Player(Chips[] chips1, Card card1, Card card2) {
         this.bigBlind = false;
         this.smallBlind = false;
-        this.card1 = null;
-        this.card2 = null;
+        this.card1 = card1;
+        this.card2 = card2;
+        this.chips = chips;
     }
 
     public void setBigBlind(boolean bigBlind) {

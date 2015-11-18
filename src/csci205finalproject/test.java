@@ -36,7 +36,7 @@ public class test {
 //            System.out.println(cards[i]);
 //        }
         Card card1 = new Card(Rank.K, Suits.HEARTS);
-        Card card2 = new Card(Rank.K, Suits.HEARTS);
+        Card card2 = new Card(Rank.Q, Suits.HEARTS);
         Card card3 = new Card(Rank.K, Suits.HEARTS);
         Card card4 = new Card(Rank.ACE, Suits.HEARTS);
         Card card5 = new Card(Rank.ACE, Suits.HEARTS);
@@ -66,7 +66,7 @@ public class test {
         }
         ArrayList<Player> listOfPlayers = new ArrayList<>();
         listOfPlayers.add(player);
-        GameClass game = new GameClass(listOfPlayers);
-        System.out.println(game.isFullHouse(player, table));
+        CheckHands checkH = new CheckHands();
+        System.out.println(checkH.isFullHouse(player, table));
     }
 }
