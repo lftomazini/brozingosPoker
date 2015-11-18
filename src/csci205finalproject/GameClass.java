@@ -21,13 +21,13 @@ import Cards.Card;
 import Cards.Rank;
 import Cards.Suits;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Collections;
 
 /**
  *
  * @author lbv001
  */
-public class GameClass implements Comparator<Card> {
+public class GameClass {
     private ArrayList<Player> playerList;
     private int numOfRounds;
 
@@ -131,7 +131,7 @@ public class GameClass implements Comparator<Card> {
         for (int i = 0; i < cards.size(); i++) {
             cardsPossible.add(cards.get(i));
         }
-//        Arrays.sort(cardsPossible, byRank);
+        Collections.sort(cardsPossible, Card.byRank);
         for (int i = 0; i < cardsPossible.size() - 1; i++) {
             if (cardsPossible.get(position + 1).getRank().getValue() - cardsPossible.get(
                     position).getRank().getValue() == 1) {
@@ -162,8 +162,12 @@ public class GameClass implements Comparator<Card> {
         for (int i = 0; i < cards.size(); i++) {
             cardsPossible.add(cards.get(i));
         }
-        //        Arrays.sort(cardsPossible, byRank);
+
+        Collections.sort(cardsPossible, Card.byRank);
         for (int j = 0; j < 2; j++) {
+            repeated = 1;
+            is3OfAKind = false;
+            is2OfAKind = false;
             for (int i = 0; i < cardsPossible.size() - 1; i++) {
                 if (cardsPossible.get(i).getRank().getValue() == cardsPossible.get(
                         i + 1).getRank().getValue()) {
@@ -171,7 +175,8 @@ public class GameClass implements Comparator<Card> {
                     if (repeated == 3) {
                         is3OfAKind = true;
                         repeated = 1;
-                    } else if (repeated == 2 && !is2OfAKind) {
+                    } else if (repeated == 2 && is2OfAKind == false) {
+                        System.out.println("2 is true");
                         is2OfAKind = true;
                         repeated = 1;
                     }
@@ -182,9 +187,10 @@ public class GameClass implements Comparator<Card> {
             if (is2OfAKind && is3OfAKind) {
                 return true;
             } else {
-                //Sort reverse order
+                Collections.reverse(cardsPossible);
             }
         }
+
         return false;
     }
 
@@ -239,31 +245,7 @@ public class GameClass implements Comparator<Card> {
     public Card getHighCard(Player player) {
         ArrayList<Card> cardsPossible = new ArrayList<>();
         cardsPossible = player.finalHand;
-//        Arrays.sort(cardsPossible, byRank);
+        Collections.sort(cardsPossible, Card.byRank);
         return cardsPossible.get(0);
-    }
-    public Comparator<Card> byRank = (Card left, Card right) -> {
-        if (left.getRank().getValue() < right.getRank().getValue()) {
-            return -1;
-        } else {
-            if (left.getRank().getValue() == right.getRank().getValue()) {
-                return 0;
-            } else {
-                return 1;
-            }
-        }
-    };
-
-    @Override
-    public int compare(Card o1, Card o2) {
-        if (o1.getRank().getValue() < o2.getRank().getValue()) {
-            return -1;
-        } else {
-            if (o1.getRank().getValue() == o2.getRank().getValue()) {
-                return 0;
-            } else {
-                return 1;
-            }
-        }
     }
 }
