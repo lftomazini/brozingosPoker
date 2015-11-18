@@ -7,8 +7,6 @@ package csci205finalproject;
 
 import Cards.Card;
 import Cards.Deck;
-import Cards.Rank;
-import Cards.Suits;
 import java.util.ArrayList;
 
 /**
@@ -35,38 +33,61 @@ public class test {
 //        for (int i = 0; i < cards.length; i++) {
 //            System.out.println(cards[i]);
 //        }
-        Card card1 = new Card(Rank.K, Suits.HEARTS);
-        Card card2 = new Card(Rank.Q, Suits.HEARTS);
-        Card card3 = new Card(Rank.K, Suits.HEARTS);
-        Card card4 = new Card(Rank.ACE, Suits.HEARTS);
-        Card card5 = new Card(Rank.ACE, Suits.HEARTS);
-        Card card6 = new Card(Rank.TWO, Suits.DIAMONDS);
-        Card card7 = new Card(Rank.J, Suits.CLUBS);
-        Player player = new Player();
-        Player[] playerArray = new Player[1];
-        player.setCard1(card1);
-        player.setCard2(card2);
-        playerArray[0] = player;
-        CardDealer cardDealer = new CardDealer(cards, playerArray, 0);
-        ArrayList<Card> table = new ArrayList<>();
-        table.add(card3);
-        table.add(card4);
-        table.add(card5);
-        table.add(card6);
-        table.add(card7);
+//        Card card1 = new Card(Rank.K, Suits.HEARTS);
+//        Card card2 = new Card(Rank.Q, Suits.HEARTS);
+//        Card card3 = new Card(Rank.K, Suits.HEARTS);
+//        Card card4 = new Card(Rank.ACE, Suits.HEARTS);
+//        Card card5 = new Card(Rank.ACE, Suits.HEARTS);
+//        Card card6 = new Card(Rank.TWO, Suits.DIAMONDS);
+//        Card card7 = new Card(Rank.J, Suits.CLUBS);
 
-        System.out.println(
-                cardDealer.getPlayers()[0].card1.getRank() + "  " + cardDealer.getPlayers()[0].card1.getSuit());
-        System.out.println(
-                cardDealer.getPlayers()[0].card2.getRank() + "  " + cardDealer.getPlayers()[0].card2.getSuit());
-        for (int i = 0; i < table.size(); i++) {
+        ArrayList<Player> playerArray = new ArrayList<>();
+        Player player_1 = new Player();
+        Player player_2 = new Player();
+        Player player_3 = new Player();
+        Player player_4 = new Player();
+        Player player_5 = new Player();
+
+        playerArray.add(player_1);
+        playerArray.add(player_2);
+        playerArray.add(player_3);
+        playerArray.add(player_4);
+        playerArray.add(player_5);
+
+        CardDealer cardDealer = new CardDealer(cards, playerArray, 0);
+        cardDealer.giveCardstoPlayers();
+        ArrayList<Card> table = new ArrayList<>();
+        Card flop_1 = cardDealer.placeCardsOnTable();
+        Card flop_2 = cardDealer.placeCardsOnTable();
+        Card flop_3 = cardDealer.placeCardsOnTable();
+
+        table.add(flop_1);
+        table.add(flop_2);
+        table.add(flop_3);
+
+        GameClass game = new GameClass(playerArray, 25, 50);
+
+//        game.getPlayerList().get(0).paySmallBlind();
+//        game.getPlayerList().get(1).payBligBlind();
+//        game.getPlayerList().get(2).fold();
+//        game.getPlayerList().get(3).call();
+//        game.getPlayerList().get(4).call();
+//        game.getPlayerList().get(0).paySmallBlind();
+        for (int i = 0; i < cardDealer.getPlayers().size(); i++) {
+            System.out.println("\n\nPlayer " + (1 + i));
             System.out.println(
-                    table.get(i).getRank() + "  " + table.get(
+                    cardDealer.getPlayers().get(i).card1.getRank() + "  " + cardDealer.getPlayers().get(
+                            i).card1.getSuit());
+            System.out.println(
+                    cardDealer.getPlayers().get(i).card2.getRank() + "  " + cardDealer.getPlayers().get(
+                            i).card2.getSuit());
+        }
+
+        for (int i = 0; i < cardDealer.getCardsOnTable().size(); i++) {
+            System.out.println("\n"
+                               + cardDealer.getCardsOnTable().get(i).getRank() + "  " + cardDealer.getCardsOnTable().get(
                             i).getSuit());
         }
-        ArrayList<Player> listOfPlayers = new ArrayList<>();
-        listOfPlayers.add(player);
-        CheckHands checkH = new CheckHands();
-        System.out.println(checkH.isFullHouse(player, table));
+
     }
 }
