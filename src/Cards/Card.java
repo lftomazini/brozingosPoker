@@ -5,11 +5,13 @@
  */
 package Cards;
 
+import java.util.Comparator;
+
 /**
  *
  * @author lbv001
  */
-public class Card implements Comparable<Card> {
+public class Card {
     private Rank rank;
     private Suits suit;
 
@@ -34,16 +36,15 @@ public class Card implements Comparable<Card> {
         this.suit = suit;
     }
 
-    @Override
-    public int compareTo(Card other) {
-        if (this.getRank().getValue() < other.getRank().getValue()) {
+    public static Comparator<Card> byRank = (Card o1, Card o2) -> {
+        if (o1.getRank().getValue() < o2.getRank().getValue()) {
             return -1;
         } else {
-            if (this.getRank().getValue() == other.getRank().getValue()) {
+            if (o1.getRank().getValue() == o2.getRank().getValue()) {
                 return 0;
             } else {
                 return 1;
             }
         }
-    }
+    };
 }
