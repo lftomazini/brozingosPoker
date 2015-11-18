@@ -16,12 +16,12 @@ import java.util.Random;
 public class CardDealer {
 
     private Card[] deck;
-    private Player[] players;
+    private ArrayList<Player> players;
     private int rounds;
     private ArrayList<Card> cardsChosen = new ArrayList<>();
     private ArrayList<Card> cardsOnTable = new ArrayList<>();
 
-    public CardDealer(Card[] deck, Player[] players, int round) {
+    public CardDealer(Card[] deck, ArrayList<Player> players, int round) {
         this.players = players;
         this.rounds = round;
         this.deck = deck;
@@ -31,7 +31,7 @@ public class CardDealer {
         this.cardsOnTable = cardsOnTable;
     }
 
-    public Player[] getPlayers() {
+    public ArrayList<Player> getPlayers() {
         return this.players;
     }
 
@@ -73,13 +73,13 @@ public class CardDealer {
     public void giveCardstoPlayers() {
         int rand_1;
         int rand_2;
-        for (int i = 0; i < this.players.length; i++) {
+        for (int i = 0; i < this.players.size(); i++) {
             rand_1 = this.getRandom();
-            cardsOnTable.add(deck[rand_1]);
+            cardsChosen.add(deck[rand_1]);
             rand_2 = this.getRandom();
-            cardsOnTable.add(deck[rand_2]);
-            this.players[i].setCard1(this.deck[rand_1]);
-            this.players[i].setCard2(this.deck[rand_2]);
+            cardsChosen.add(deck[rand_2]);
+            this.players.get(i).setCard1(this.deck[rand_1]);
+            this.players.get(i).setCard2(this.deck[rand_2]);
         }
     }
 
