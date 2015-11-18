@@ -162,6 +162,15 @@ public class Player {
         return betMade;
     }
     
+//    public void colorDown() {
+//        for (int i = 3; i < 1; i--) {
+//            if (this.chips[i] == 0 && this.chips[i+1] > 0) {
+//                this.chips[i] += this.chips[i+1]*(this.chips) 
+//            }
+//            
+//        }
+//    }
+    
     public void setBigBlind(boolean bigBlind) {
         this.bigBlind = bigBlind;
     }

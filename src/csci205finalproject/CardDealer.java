@@ -25,6 +25,8 @@ public class CardDealer {
         this.players = players;
         this.rounds = round;
         this.deck = deck;
+        this.cardsChosen = null;
+        this.cardsOnTable = null;
     }
 
     public void setCardsOnTable(ArrayList<Card> cardsOnTable) {
@@ -40,15 +42,15 @@ public class CardDealer {
     }
 
     public Card[] getDeck() {
-        return deck;
+        return this.deck;
     }
 
     public ArrayList<Card> getCardsChosen() {
-        return cardsChosen;
+        return this.cardsChosen;
     }
 
     public ArrayList<Card> getCardsOnTable() {
-        return cardsOnTable;
+        return this.cardsOnTable;
     }
 
     public void completeRound() {
@@ -61,7 +63,7 @@ public class CardDealer {
         int rand = 0;
         while (isRandom == false) {
             rand = rand_int.nextInt(52);
-            if (cardsChosen.contains(rand)) {
+            if (this.cardsChosen.contains(rand)) {
                 isRandom = false;
             } else {
                 isRandom = true;
@@ -75,9 +77,9 @@ public class CardDealer {
         int rand_2;
         for (int i = 0; i < this.players.size(); i++) {
             rand_1 = this.getRandom();
-            cardsChosen.add(deck[rand_1]);
+            this.cardsChosen.add(deck[rand_1]);
             rand_2 = this.getRandom();
-            cardsChosen.add(deck[rand_2]);
+            this.cardsChosen.add(deck[rand_2]);
             this.players.get(i).setCard1(this.deck[rand_1]);
             this.players.get(i).setCard2(this.deck[rand_2]);
         }
@@ -85,9 +87,19 @@ public class CardDealer {
 
     public Card placeCardsOnTable() {
         int rand = this.getRandom();
-        cardsOnTable.add(deck[rand]);
-        cardsChosen.add(deck[rand]);
+        this.cardsOnTable.add(deck[rand]);
+        this.cardsChosen.add(deck[rand]);
         return this.deck[rand];
+    }
+    
+    public void newRound() {
+        this.cardsOnTable.clear();
+        this.cardsChosen.clear();
+        this.rounds += 1;
+        for (int i = 0; i < this.players.size(); i++) {
+            this.players.get(i).setCard1(null);
+            this.players.get(i).setCard2(null);
+        }
     }
 
 }
