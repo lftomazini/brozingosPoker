@@ -36,6 +36,10 @@ public class Card {
         this.suit = suit;
     }
 
+    public String getName() {
+        return Integer.toString(this.rank.getValue()) + this.suit.toString();
+    }
+
     public static Comparator<Card> byRank = (Card o1, Card o2) -> {
         if (o1.getRank().getValue() < o2.getRank().getValue()) {
             return -1;

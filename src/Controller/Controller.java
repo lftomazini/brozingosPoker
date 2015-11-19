@@ -47,6 +47,9 @@ public class Controller implements ActionListener {
         this.theModel = theModel;
         this.theGameTable = new GameTable();
         this.startScreen.getStart().addActionListener(this);
+        this.startScreen.getPlayers3().addActionListener(this);
+        this.startScreen.getPlayers4().addActionListener(this);
+        this.startScreen.getPlayers5().addActionListener(this);
         this.theGameTable.getjButton1().addActionListener(this);
         this.theGameTable.getjButton2().addActionListener(this);
         this.theGameTable.getCard1b().addActionListener(this);
@@ -61,12 +64,39 @@ public class Controller implements ActionListener {
             startScreen.setVisible(false);
             theGameTable.setLocationRelativeTo(null);
             theGameTable.setVisible(true);
-
+//            ArrayList<Player> players = new ArrayList<Player>();
+//            for(int i=0 ;i < theModel.getNumPlayers() ; i++){
+//                int[] chips = new int[5];
+//                chips[0] = 10;
+//                chips[1] = 8;
+//                chips[2] = 6;
+//                chips[3] = 4;
+//                chips[4] = 2;
+//                Card card1 = theModel.getDeck().
+//                players.add(chips,)
+//            }
         }
+
+        if (e.getSource() == startScreen.getPlayers3()) {
+            theModel.setNumPlayers(3);
+        }
+
+        if (e.getSource() == startScreen.getPlayers4()) {
+            theModel.setNumPlayers(4);
+        }
+
+        if (e.getSource() == startScreen.getPlayers5()) {
+            theModel.setNumPlayers(4);
+        }
+
         if (e.getSource() == theGameTable.getjButton1()) {
 
+            //can place down card w specified name!!
+            //looks v lengthy? maybe there is a way to ~refactor~ eventually
+            String card1 = this.theModel.getDeck().getDeck().get(3).getName();
+
             Icon icon = new ImageIcon(
-                    "/home/accounts/student/l/lffct001/csci205FinalProject/src/cardsimage/3SPADES.jpg");
+                    "src/cardsimage/" + card1 + ".png");
             theGameTable.getFlop().setIcon(icon);
 
         }
@@ -83,12 +113,12 @@ public class Controller implements ActionListener {
         if (e.getSource() == theGameTable.getCard1b()) {
             if (onCard1 == false) {
                 Icon icon = new ImageIcon(
-                        "/home/accounts/student/l/lffct001/csci205FinalProject/src/cardsimage/3SPADES.jpg");
+                        "src/cardsimage/10CLUBS.png");
                 theGameTable.getCard1b().setIcon(icon);
                 onCard1 = true;
             } else {
                 Icon icon = new ImageIcon(
-                        "/home/accounts/student/l/lffct001/csci205FinalProject/src/View/playing-card-back.jpg");
+                        "src/View/playing-card-back.jpg");
                 theGameTable.getCard1b().setIcon(icon);
                 onCard1 = false;
             }
@@ -98,12 +128,12 @@ public class Controller implements ActionListener {
         if (e.getSource() == theGameTable.getCard2b()) {
             if (onCard2 == false) {
                 Icon icon = new ImageIcon(
-                        "/home/accounts/student/l/lffct001/csci205FinalProject/src/cardsimage/3SPADES.jpg");
+                        "src/cardsimage/10CLUBS.png");
                 theGameTable.getCard2b().setIcon(icon);
                 onCard2 = true;
             } else {
                 Icon icon = new ImageIcon(
-                        "/home/accounts/student/l/lffct001/csci205FinalProject/src/View/playing-card-back.jpg");
+                        "src/View/playing-card-back.jpg");
                 theGameTable.getCard2b().setIcon(icon);
                 onCard2 = false;
             }
