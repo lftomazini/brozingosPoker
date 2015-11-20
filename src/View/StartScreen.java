@@ -17,6 +17,7 @@ package View;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 
 /**
  *
@@ -40,13 +41,44 @@ public class StartScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        players5 = new javax.swing.JRadioButton();
         start = new javax.swing.JButton();
+        players4 = new javax.swing.JRadioButton();
+        players3 = new javax.swing.JRadioButton();
+        jLabel1 = new javax.swing.JLabel();
         backgroundImg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        buttonGroup1.add(players5);
+        players5.setSelected(true);
+        players5.setText("5 ");
+        players5.setOpaque(true);
+        players5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                players5ActionPerformed(evt);
+            }
+        });
+
         start.setText("Start Game!");
+
+        buttonGroup1.add(players4);
+        players4.setText("4 ");
+        players4.setOpaque(true);
+        players4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                players4ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(players3);
+        players3.setText("3 ");
+        players3.setOpaque(true);
+
+        jLabel1.setText("How many other players?");
+        jLabel1.setOpaque(true);
 
         backgroundImg.setBackground(new java.awt.Color(9, 95, 25));
         backgroundImg.setFont(new java.awt.Font("DejaVu Sans", 0, 36)); // NOI18N
@@ -59,9 +91,21 @@ public class StartScreen extends javax.swing.JFrame {
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addGap(379, 379, 379)
+                .addGap(218, 218, 218)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(players5)
+                        .addGap(70, 70, 70))
+                    .addComponent(jLabel1)
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(players4)
+                            .addComponent(players3))))
+                .addGap(52, 52, 52)
                 .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(407, Short.MAX_VALUE))
+                .addGap(238, 354, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -70,17 +114,32 @@ public class StartScreen extends javax.swing.JFrame {
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap(312, Short.MAX_VALUE)
-                .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(200, 200, 200))
+            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                .addContainerGap(338, Short.MAX_VALUE)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
+                        .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(124, 124, 124))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(players5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(players4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(players3)
+                        .addGap(100, 100, 100))))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane1Layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(backgroundImg, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
                     .addContainerGap()))
         );
+        jLayeredPane1.setLayer(players5, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(start, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(players4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(players3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(backgroundImg, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         getContentPane().add(jLayeredPane1, java.awt.BorderLayout.CENTER);
@@ -88,9 +147,22 @@ public class StartScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void players5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_players5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_players5ActionPerformed
+
+    private void players4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_players4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_players4ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundImg;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JRadioButton players3;
+    private javax.swing.JRadioButton players4;
+    private javax.swing.JRadioButton players5;
     private javax.swing.JButton start;
     // End of variables declaration//GEN-END:variables
 
@@ -104,6 +176,18 @@ public class StartScreen extends javax.swing.JFrame {
 
     public JButton getStart() {
         return start;
+    }
+
+    public JRadioButton getPlayers3() {
+        return players3;
+    }
+
+    public JRadioButton getPlayers4() {
+        return players4;
+    }
+
+    public JRadioButton getPlayers5() {
+        return players5;
     }
 
 }

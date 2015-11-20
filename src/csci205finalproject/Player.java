@@ -33,13 +33,14 @@ public class Player {
     private int[] chips = new int[Chips.values().length];
     ArrayList<Card> finalHand = new ArrayList<>();
 
-//    public Player() {
-//        this.bigBlind = false;
-//        this.smallBlind = false;
-//        this.card1 = null;
-//        this.card2 = null;
-//        this.hasFolded = false;
-//    }
+    public Player(int[] chips1) {
+        this.bigBlind = false;
+        this.smallBlind = false;
+        this.card1 = null;
+        this.card2 = null;
+        this.hasFolded = false;
+        this.chips = chips;
+    }
 
     public Player(int[] chips1, Card card1, Card card2) {
         this.bigBlind = false;
@@ -54,101 +55,101 @@ public class Player {
         if (this.chips[4] >= numHundred) {
             this.chips[4] -= numHundred;
         } else {
-            if (this.chips[3] > numHundred*(int)(Chips.BLACK.getValue()/Chips.GREEN.getValue())) {
-                this.chips[3] -= numHundred*(int)(Chips.BLACK.getValue()/Chips.GREEN.getValue());
+            if (this.chips[3] > numHundred * (int) (Chips.BLACK.getValue() / Chips.GREEN.getValue())) {
+                this.chips[3] -= numHundred * (int) (Chips.BLACK.getValue() / Chips.GREEN.getValue());
             } else {
-                if (this.chips[2] > numHundred*(int)(Chips.BLACK.getValue()/Chips.BLUE.getValue())) {
-                    this.chips[2] -= numHundred*(int)(Chips.BLACK.getValue()/Chips.BLUE.getValue());
+                if (this.chips[2] > numHundred * (int) (Chips.BLACK.getValue() / Chips.BLUE.getValue())) {
+                    this.chips[2] -= numHundred * (int) (Chips.BLACK.getValue() / Chips.BLUE.getValue());
                 } else {
-                    if (this.chips[1] > numHundred*(int)(Chips.BLACK.getValue()/Chips.RED.getValue())) {
-                        this.chips[1] -= numHundred*(int)(Chips.BLACK.getValue()/Chips.RED.getValue());
+                    if (this.chips[1] > numHundred * (int) (Chips.BLACK.getValue() / Chips.RED.getValue())) {
+                        this.chips[1] -= numHundred * (int) (Chips.BLACK.getValue() / Chips.RED.getValue());
                     } else {
-                        this.chips[0] -= numHundred*(int)(Chips.BLACK.getValue()/Chips.WHITE.getValue());
-                    } 
+                        this.chips[0] -= numHundred * (int) (Chips.BLACK.getValue() / Chips.WHITE.getValue());
+                    }
                 }
 
-            } 
+            }
         }
     }
-    
+
     public void removeGreenChip(int TwentyFive) {
         if (this.chips[3] >= TwentyFive) {
             this.chips[3] -= TwentyFive;
         } else {
-            if (this.chips[2] > TwentyFive*(int)(Chips.GREEN.getValue()/Chips.BLUE.getValue())) {
-                this.chips[2] -= TwentyFive*(int)(Chips.GREEN.getValue()/Chips.BLUE.getValue());
+            if (this.chips[2] > TwentyFive * (int) (Chips.GREEN.getValue() / Chips.BLUE.getValue())) {
+                this.chips[2] -= TwentyFive * (int) (Chips.GREEN.getValue() / Chips.BLUE.getValue());
             } else {
-                if (this.chips[1] > TwentyFive*(int)(Chips.GREEN.getValue()/Chips.RED.getValue())) {
-                    this.chips[1] -= TwentyFive*(int)(Chips.GREEN.getValue()/Chips.RED.getValue());
+                if (this.chips[1] > TwentyFive * (int) (Chips.GREEN.getValue() / Chips.RED.getValue())) {
+                    this.chips[1] -= TwentyFive * (int) (Chips.GREEN.getValue() / Chips.RED.getValue());
                 } else {
-                        this.chips[0] -= TwentyFive*(int)(Chips.GREEN.getValue()/Chips.WHITE.getValue());
-                    } 
+                    this.chips[0] -= TwentyFive * (int) (Chips.GREEN.getValue() / Chips.WHITE.getValue());
                 }
+            }
 
-        } 
+        }
     }
-    
+
     public void removeBlueChip(int Ten) {
         if (this.chips[2] >= Ten) {
             this.chips[2] -= Ten;
         } else {
-            if (this.chips[1] > Ten*(int)(Chips.BLUE.getValue()/Chips.RED.getValue())) {
-                this.chips[1] -= Ten*(int)(Chips.BLUE.getValue()/Chips.RED.getValue());
+            if (this.chips[1] > Ten * (int) (Chips.BLUE.getValue() / Chips.RED.getValue())) {
+                this.chips[1] -= Ten * (int) (Chips.BLUE.getValue() / Chips.RED.getValue());
             } else {
-                    this.chips[0] -= Ten*(int)(Chips.BLUE.getValue()/Chips.WHITE.getValue());
-                } 
+                this.chips[0] -= Ten * (int) (Chips.BLUE.getValue() / Chips.WHITE.getValue());
             }
+        }
     }
-    
+
     public void removeRedChip(int Five) {
         if (this.chips[1] >= Five) {
             this.chips[1] -= Five;
         } else {
-            this.chips[0] -= Five*(int)(Chips.RED.getValue()/Chips.WHITE.getValue());
-        } 
+            this.chips[0] -= Five * (int) (Chips.RED.getValue() / Chips.WHITE.getValue());
+        }
     }
-    
+
     public void removeWhiteChip(int One) {
         this.chips[0] -= One;
     }
-    
+
     public int getTotalChipsValue() {
         int value = 0;
-        value += this.chips[0]*Chips.WHITE.getValue();
-        value += this.chips[1]*Chips.RED.getValue();
-        value += this.chips[2]*Chips.BLUE.getValue();
-        value += this.chips[3]*Chips.GREEN.getValue();
-        value += this.chips[4]*Chips.BLACK.getValue();
+        value += this.chips[0] * Chips.WHITE.getValue();
+        value += this.chips[1] * Chips.RED.getValue();
+        value += this.chips[2] * Chips.BLUE.getValue();
+        value += this.chips[3] * Chips.GREEN.getValue();
+        value += this.chips[4] * Chips.BLACK.getValue();
         return value;
     }
-    
+
     public int makeBet(int bet) {
         int betMade = bet;
 
         if (bet > this.getTotalChipsValue()) {
             return -1;
         } else {
-            int numHundred = bet%(int)(Chips.BLACK.getValue());
-            bet = bet - (int)(Chips.BLACK.getValue()*numHundred);
-            
-            int numTwentyFive = bet%(int)(Chips.GREEN.getValue());
-            bet = bet - (int)(Chips.GREEN.getValue()*numTwentyFive);
+            int numHundred = bet % (int) (Chips.BLACK.getValue());
+            bet = bet - (int) (Chips.BLACK.getValue() * numHundred);
 
-            int numTen = bet%(int)(Chips.BLUE.getValue());
-            bet = bet - (int)(Chips.BLUE.getValue()*numTen);
+            int numTwentyFive = bet % (int) (Chips.GREEN.getValue());
+            bet = bet - (int) (Chips.GREEN.getValue() * numTwentyFive);
 
-            int numFive = bet%(int)(Chips.RED.getValue());
-            bet = bet - (int)(Chips.RED.getValue()*numFive);
+            int numTen = bet % (int) (Chips.BLUE.getValue());
+            bet = bet - (int) (Chips.BLUE.getValue() * numTen);
 
-            int numOne = bet%(int)(Chips.WHITE.getValue());
-            bet = bet - (int)(Chips.WHITE.getValue()*numOne);
-            
+            int numFive = bet % (int) (Chips.RED.getValue());
+            bet = bet - (int) (Chips.RED.getValue() * numFive);
+
+            int numOne = bet % (int) (Chips.WHITE.getValue());
+            bet = bet - (int) (Chips.WHITE.getValue() * numOne);
+
             if (numHundred != 0) {
                 this.removeBlackChip(numHundred);
-            } 
+            }
             if (numTwentyFive != 0) {
                 this.removeGreenChip(numTwentyFive);
-            }        
+            }
             if (numTen != 0) {
                 this.removeBlueChip(numTen);
             }
@@ -157,20 +158,19 @@ public class Player {
             }
             if (numOne != 0) {
                 this.removeWhiteChip(numOne);
-            }       
+            }
         }
         return betMade;
     }
-    
+
 //    public void colorDown() {
 //        for (int i = 3; i < 1; i--) {
 //            if (this.chips[i] == 0 && this.chips[i+1] > 0) {
-//                this.chips[i] += this.chips[i+1]*(this.chips) 
+//                this.chips[i] += this.chips[i+1]*(this.chips)
 //            }
-//            
+//
 //        }
 //    }
-    
     public void setBigBlind(boolean bigBlind) {
         this.bigBlind = bigBlind;
     }

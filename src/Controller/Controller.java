@@ -18,9 +18,13 @@ package Controller;
 import Model.Model;
 import View.GameTable;
 import View.StartScreen;
+import csci205finalproject.CardDealer;
+import csci205finalproject.GameClass;
+import csci205finalproject.Player;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -41,12 +45,17 @@ public class Controller implements ActionListener {
     Timer timer;
     boolean onCard1 = false;
     boolean onCard2 = false;
+    int numPlayers = 5;
+    int[] chips1 = {10, 6, 4, 2, 2};
 
     public Controller(StartScreen startScreen, Model theModel) throws IOException {
         this.startScreen = startScreen;
         this.theModel = theModel;
         this.theGameTable = new GameTable();
         this.startScreen.getStart().addActionListener(this);
+        this.startScreen.getPlayers3().addActionListener(this);
+        this.startScreen.getPlayers4().addActionListener(this);
+        this.startScreen.getPlayers5().addActionListener(this);
         this.theGameTable.getjButton1().addActionListener(this);
         this.theGameTable.getjButton2().addActionListener(this);
         this.theGameTable.getCard1b().addActionListener(this);
@@ -61,12 +70,40 @@ public class Controller implements ActionListener {
             startScreen.setVisible(false);
             theGameTable.setLocationRelativeTo(null);
             theGameTable.setVisible(true);
-
+            theModel.setNumPlayers(numPlayers);
+            ArrayList<Player> players = new ArrayList<Player>();
+            for (int i = 0; i < numPlayers; i++) {
+                players.add(new Player(chips1));
+            }
+            theModel.setPlayers(players);
+            theModel.setTheCardDealer(new CardDealer(theModel.getDeck(),
+                                                     theModel.getPlayers(),
+                                                     theModel.getRound()));
+            theModel.setTheGameClass(new GameClass(theModel.getPlayers(), 10.00,
+                                                   20.00));
+            theModel.getTheCardDealer().giveCardstoPlayers();
         }
+
+        if (e.getSource() == startScreen.getPlayers3()) {
+            numPlayers = 3;
+        }
+
+        if (e.getSource() == startScreen.getPlayers4()) {
+            numPlayers = 4;
+        }
+
+        if (e.getSource() == startScreen.getPlayers5()) {
+            numPlayers = 5;
+        }
+
         if (e.getSource() == theGameTable.getjButton1()) {
 
+            //can place down card w specified name!!
+            //looks v lengthy? maybe there is a way to ~refactor~ eventually
+            String card1 = this.theModel.getDeck().getDeck().get(3).getName();
+
             Icon icon = new ImageIcon(
-                    "/home/accounts/student/l/lffct001/csci205FinalProject/src/cardsimage/3SPADES.jpg");
+                    "src/cardsimage/" + card1 + ".png");
             theGameTable.getFlop().setIcon(icon);
 
         }
@@ -82,13 +119,14 @@ public class Controller implements ActionListener {
         //flip card 1 over
         if (e.getSource() == theGameTable.getCard1b()) {
             if (onCard1 == false) {
+                String card1 = this.theModel.getPlayers().get(0).getCard1().getName();
                 Icon icon = new ImageIcon(
-                        "/home/accounts/student/l/lffct001/csci205FinalProject/src/cardsimage/3SPADES.jpg");
+                        "src/cardsimage/" + card1 + ".png");
                 theGameTable.getCard1b().setIcon(icon);
                 onCard1 = true;
             } else {
                 Icon icon = new ImageIcon(
-                        "/home/accounts/student/l/lffct001/csci205FinalProject/src/View/playing-card-back.jpg");
+                        "src/View/playing-card-back.jpg");
                 theGameTable.getCard1b().setIcon(icon);
                 onCard1 = false;
             }
@@ -97,13 +135,14 @@ public class Controller implements ActionListener {
         //flip card 2 over
         if (e.getSource() == theGameTable.getCard2b()) {
             if (onCard2 == false) {
+                String card2 = this.theModel.getPlayers().get(0).getCard2().getName();
                 Icon icon = new ImageIcon(
-                        "/home/accounts/student/l/lffct001/csci205FinalProject/src/cardsimage/3SPADES.jpg");
+                        "src/cardsimage/" + card2 + ".png");
                 theGameTable.getCard2b().setIcon(icon);
                 onCard2 = true;
             } else {
                 Icon icon = new ImageIcon(
-                        "/home/accounts/student/l/lffct001/csci205FinalProject/src/View/playing-card-back.jpg");
+                        "src/View/playing-card-back.jpg");
                 theGameTable.getCard2b().setIcon(icon);
                 onCard2 = false;
             }
