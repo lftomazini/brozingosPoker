@@ -124,13 +124,13 @@ public class GameTable extends javax.swing.JFrame {
         card1b.setBorderPainted(false);
         card1b.setContentAreaFilled(false);
         jPanel1.add(card1b);
-        card1b.setBounds(560, 480, 83, 112);
+        card1b.setBounds(560, 470, 83, 112);
 
         card2b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
         card2b.setBorderPainted(false);
         card2b.setContentAreaFilled(false);
         jPanel1.add(card2b);
-        card2b.setBounds(640, 480, 83, 112);
+        card2b.setBounds(650, 470, 83, 112);
 
         p2c1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back-2.jpg"))); // NOI18N
         jPanel1.add(p2c1);

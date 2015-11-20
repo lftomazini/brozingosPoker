@@ -19,7 +19,7 @@ public class CardDealer {
     private Deck deck;
     private ArrayList<Player> players;
     private int rounds;
-    private ArrayList<Card> cardsChosen = new ArrayList<>();
+    private ArrayList<Integer> cardsChosen = new ArrayList<>();
     private ArrayList<Card> cardsOnTable = new ArrayList<>();
 
     public CardDealer(Deck deck, ArrayList<Player> players, int round) {
@@ -46,7 +46,7 @@ public class CardDealer {
         return this.deck;
     }
 
-    public ArrayList<Card> getCardsChosen() {
+    public ArrayList<Integer> getCardsChosen() {
         return this.cardsChosen;
     }
 
@@ -61,11 +61,18 @@ public class CardDealer {
     public int getRandom() {
         Random rand_int = new Random();
         boolean isRandom = false;
+        boolean contain = false;
         int rand = 0;
         while (isRandom == false) {
             rand = rand_int.nextInt(52);
 //            if (this.cardsChosen.size() != 0) {
-            if (this.cardsChosen.contains(deck.getDeck().get(rand))) {
+            for (int i = 0; i < cardsChosen.size(); i++) {
+                if (cardsChosen.get(i) == rand) {
+                    contain = true;
+                }
+            }
+
+            if (contain == true) {
                 isRandom = false;
             } else {
                 isRandom = true;
@@ -81,9 +88,9 @@ public class CardDealer {
         int rand_2;
         for (int i = 0; i < this.players.size(); i++) {
             rand_1 = this.getRandom();
-            this.cardsChosen.add(deck.getDeck().get(rand_1));
+            this.cardsChosen.add(rand_1);
             rand_2 = this.getRandom();
-            this.cardsChosen.add(deck.getDeck().get(rand_2));
+            this.cardsChosen.add(rand_2);
             this.players.get(i).setCard1(deck.getDeck().get(rand_1));
             this.players.get(i).setCard2(deck.getDeck().get(rand_2));
         }
@@ -92,7 +99,7 @@ public class CardDealer {
     public Card placeCardsOnTable() {
         int rand = this.getRandom();
         this.cardsOnTable.add(deck.getDeck().get(rand));
-        this.cardsChosen.add(deck.getDeck().get(rand));
+        this.cardsChosen.add(rand);
         return deck.getDeck().get(rand);
     }
 
