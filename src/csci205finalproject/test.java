@@ -7,7 +7,9 @@ package csci205finalproject;
 
 import Cards.Card;
 import Cards.Deck;
+import java.io.IOException;
 import java.util.ArrayList;
+import javax.sound.sampled.LineUnavailableException;
 
 /**
  *
@@ -18,8 +20,7 @@ public class test {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws InterruptedException {
-
+    public static void main(String[] args) throws InterruptedException, LineUnavailableException, IOException {
         Deck deck = new Deck();
         deck.createDeck();
 //        deck.printDeck();

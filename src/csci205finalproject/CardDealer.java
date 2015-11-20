@@ -25,8 +25,8 @@ public class CardDealer {
         this.players = players;
         this.rounds = round;
         this.deck = deck;
-        this.cardsChosen = null;
-        this.cardsOnTable = null;
+        this.cardsChosen = new ArrayList<>();
+        this.cardsOnTable = new ArrayList<>();
     }
 
     public void setCardsOnTable(ArrayList<Card> cardsOnTable) {
@@ -91,7 +91,7 @@ public class CardDealer {
         this.cardsChosen.add(deck[rand]);
         return this.deck[rand];
     }
-    
+
     public void newRound() {
         this.cardsOnTable.clear();
         this.cardsChosen.clear();
