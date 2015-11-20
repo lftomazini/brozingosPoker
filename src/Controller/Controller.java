@@ -62,6 +62,11 @@ public class Controller implements ActionListener {
         this.theGameTable.getjButton2().addActionListener(this);
         this.theGameTable.getCard1b().addActionListener(this);
         this.theGameTable.getCard2b().addActionListener(this);
+        theGameTable.getFlop().setVisible(false);
+        theGameTable.getFlop1().setVisible(false);
+        theGameTable.getFlop2().setVisible(false);
+        theGameTable.getTURN().setVisible(false);
+        theGameTable.getRIVER().setVisible(false);
 
     }
 
@@ -102,6 +107,7 @@ public class Controller implements ActionListener {
 
             //the flop
             if (tableRound == 0) {
+                theGameTable.getFlop().setVisible(true);
                 int card1 = this.theModel.getTheCardDealer().getRandom();
                 String cardName = this.theModel.getDeck().getDeck().get(
                         card1).getName();
@@ -114,6 +120,7 @@ public class Controller implements ActionListener {
                 timer1.start();
 
                 int card2 = this.theModel.getTheCardDealer().getRandom();
+
                 String cardName2 = this.theModel.getDeck().getDeck().get(
                         card2).getName();
                 Icon icon2 = new ImageIcon(
@@ -125,6 +132,7 @@ public class Controller implements ActionListener {
                 timer2.start();
 
                 int card3 = this.theModel.getTheCardDealer().getRandom();
+
                 String cardName3 = this.theModel.getDeck().getDeck().get(
                         card3).getName();
                 Icon icon3 = new ImageIcon(
@@ -139,6 +147,7 @@ public class Controller implements ActionListener {
             } //the turn
             else if (tableRound == 1) {
                 int card4 = this.theModel.getTheCardDealer().getRandom();
+                theGameTable.getTURN().setVisible(true);
                 String cardName4 = this.theModel.getDeck().getDeck().get(
                         card4).getName();
                 Icon icon4 = new ImageIcon(
@@ -152,6 +161,7 @@ public class Controller implements ActionListener {
             } //the river
             else if (tableRound == 2) {
                 int card5 = this.theModel.getTheCardDealer().getRandom();
+                theGameTable.getRIVER().setVisible(true);
                 String cardName5 = this.theModel.getDeck().getDeck().get(
                         card5).getName();
                 Icon icon5 = new ImageIcon(
@@ -216,6 +226,7 @@ public class Controller implements ActionListener {
 
     class Flop1 implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            theGameTable.getFlop1().setVisible(true);
             theGameTable.getFlop1().setLocation(
                     theGameTable.getFlop1().getX() - 1,
                     theGameTable.getFlop1().getY());
@@ -228,6 +239,7 @@ public class Controller implements ActionListener {
 
     class Flop2 implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            theGameTable.getFlop2().setVisible(true);
             theGameTable.getFlop2().setLocation(
                     theGameTable.getFlop2().getX() - 1,
                     theGameTable.getFlop2().getY());
