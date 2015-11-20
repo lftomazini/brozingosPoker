@@ -33,11 +33,36 @@ public class CheckHands {
      * @param cards
      * @return
      */
-    public boolean checkHands(Player player, ArrayList<Card> cards) {
-        //Royal flush
-
-        //TODO check if higher is ACE
-        return false;
+    public void checkHands(ArrayList<Player> playerArray, ArrayList<Card> cards) {
+        for (int i = 0; i < playerArray.size(); i++) {
+            if (is2OfAKind(playerArray.get(i), cards)) {
+                playerArray.get(i).setHand(Hand.ONE_PAIR);
+            }
+            if (is2Pairs(playerArray.get(i), cards)) {
+                playerArray.get(i).setHand(Hand.TWO_PAIR);
+            }
+            if (is3OfAKind(playerArray.get(i), cards)) {
+                playerArray.get(i).setHand(Hand.THREE_OF_A_KIND);
+            }
+            if (isStraight(playerArray.get(i), cards)) {
+                playerArray.get(i).setHand(Hand.STRAIGHT);
+            }
+            if (isFlush(playerArray.get(i), cards)) {
+                playerArray.get(i).setHand(Hand.FLUSH);
+            }
+            if (isFullHouse(playerArray.get(i), cards)) {
+                playerArray.get(i).setHand(Hand.FULL_HOUSE);
+            }
+            if (is4OfAKind(playerArray.get(i), cards)) {
+                playerArray.get(i).setHand(Hand.FOUR_OF_A_KIND);
+            }
+            if (isStraightFlush(playerArray.get(i), cards)) {
+                playerArray.get(i).setHand(Hand.STRAIGHT_FLUSH);
+            }
+            if (isRoyalFlush(playerArray.get(i), cards)) {
+                playerArray.get(i).setHand(Hand.ROYAL_FLUSH);
+            }
+        }
     }
 
     public boolean isFlush(Player player, ArrayList<Card> cards) {
