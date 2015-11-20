@@ -64,14 +64,14 @@ public class CardDealer {
         int rand = 0;
         while (isRandom == false) {
             rand = rand_int.nextInt(52);
-            if (this.cardsChosen.size() != 0) {
-                if (this.cardsChosen.contains(rand)) {
-                    isRandom = false;
-                } else {
-                    isRandom = true;
-                }
+//            if (this.cardsChosen.size() != 0) {
+            if (this.cardsChosen.contains(deck.getDeck().get(rand))) {
+                isRandom = false;
+            } else {
+                isRandom = true;
             }
-            isRandom = true;
+//            }
+//            isRandom = true;
         }
         return rand;
     }

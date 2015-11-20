@@ -23,14 +23,7 @@ public class test {
     public static void main(String[] args) throws InterruptedException, LineUnavailableException, IOException {
         Deck deck = new Deck();
         deck.createDeck();
-//        deck.printDeck();
-//        System.out.println(deck.getDeck().size());
-
-        Card[] cards = new Card[52];
-        for (int i = 0; i < cards.length; i++) {
-            cards[i] = new Card(deck.getDeck().get(i).getRank(),
-                                deck.getDeck().get(i).getSuit());
-        }
+        int[] chips = new int[5];
 //        for (int i = 0; i < cards.length; i++) {
 //            System.out.println(cards[i]);
 //        }
@@ -41,13 +34,12 @@ public class test {
 //        Card card5 = new Card(Rank.ACE, Suits.HEARTS);
 //        Card card6 = new Card(Rank.TWO, Suits.DIAMONDS);
 //        Card card7 = new Card(Rank.J, Suits.CLUBS);
-
         ArrayList<Player> playerArray = new ArrayList<>();
-        Player player_1 = new Player();
-        Player player_2 = new Player();
-        Player player_3 = new Player();
-        Player player_4 = new Player();
-        Player player_5 = new Player();
+        Player player_1 = new Player(chips);
+        Player player_2 = new Player(chips);
+        Player player_3 = new Player(chips);
+        Player player_4 = new Player(chips);
+        Player player_5 = new Player(chips);
 
         playerArray.add(player_1);
         playerArray.add(player_2);
@@ -55,7 +47,7 @@ public class test {
         playerArray.add(player_4);
         playerArray.add(player_5);
 
-        CardDealer cardDealer = new CardDealer(cards, playerArray, 0);
+        CardDealer cardDealer = new CardDealer(deck, playerArray, 0);
         cardDealer.giveCardstoPlayers();
         ArrayList<Card> table = new ArrayList<>();
         Card flop_1 = cardDealer.placeCardsOnTable();
