@@ -65,6 +65,18 @@ public class CheckHands {
         }
     }
 
+    public Player checkWinner(ArrayList<Player> playerArray,
+                              ArrayList<Card> cards) {
+
+        Collections.sort(playerArray, Player.byHand);
+
+        if (playerArray.get(0) != playerArray.get(1)) {
+            return playerArray.get(0);
+        } else {
+            //TODO
+        }
+    }
+
     public boolean isFlush(Player player, ArrayList<Card> cards) {
         int nOfClubs = 0;
         int nOfSpades = 0;
@@ -243,9 +255,6 @@ public class CheckHands {
     }
 
     public Card getHighCard(Player player) {
-        ArrayList<Card> cardsPossible = new ArrayList<>();
-        cardsPossible = player.finalHand;
-        Collections.sort(cardsPossible, Card.byRank);
-        return cardsPossible.get(0);
+        return (player.getCard1().getRank().getValue() > player.getCard2().getRank().getValue()) ? player.getCard1() : player.getCard2();
     }
 }
