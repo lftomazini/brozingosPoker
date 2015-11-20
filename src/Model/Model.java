@@ -16,7 +16,6 @@
 package Model;
 
 import Cards.Deck;
-import csci205finalproject.Chips;
 import csci205finalproject.Player;
 import java.util.ArrayList;
 
@@ -27,8 +26,8 @@ import java.util.ArrayList;
 public class Model {
     Deck deck = new Deck();
     int numPlayers;
-    Chips[] chips1;
     ArrayList<Player> players;
+    int[] chips1;
 
     public Model() {
         this.deck.createDeck();
@@ -43,7 +42,7 @@ public class Model {
         return numPlayers;
     }
 
-    public Chips[] getChips1() {
+    public int[] getChips1() {
         return chips1;
     }
 
@@ -55,7 +54,7 @@ public class Model {
         this.numPlayers = numPlayers;
     }
 
-    public void setChips1(Chips[] chips1) {
+    public void setChips1(int[] chips1) {
         this.chips1 = chips1;
     }
 

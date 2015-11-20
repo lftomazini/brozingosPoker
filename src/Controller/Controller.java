@@ -18,9 +18,11 @@ package Controller;
 import Model.Model;
 import View.GameTable;
 import View.StartScreen;
+import csci205finalproject.Player;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -41,6 +43,8 @@ public class Controller implements ActionListener {
     Timer timer;
     boolean onCard1 = false;
     boolean onCard2 = false;
+    int numPlayers = 5;
+    int[] chips1 = {10, 6, 4, 2, 2};
 
     public Controller(StartScreen startScreen, Model theModel) throws IOException {
         this.startScreen = startScreen;
@@ -64,29 +68,25 @@ public class Controller implements ActionListener {
             startScreen.setVisible(false);
             theGameTable.setLocationRelativeTo(null);
             theGameTable.setVisible(true);
-//            ArrayList<Player> players = new ArrayList<Player>();
-//            for(int i=0 ;i < theModel.getNumPlayers() ; i++){
-//                int[] chips = new int[5];
-//                chips[0] = 10;
-//                chips[1] = 8;
-//                chips[2] = 6;
-//                chips[3] = 4;
-//                chips[4] = 2;
-//                Card card1 = theModel.getDeck().
-//                players.add(chips,)
-//            }
+            theModel.setNumPlayers(numPlayers);
+            ArrayList<Player> players = new ArrayList<Player>();
+            for (int i = 0; i < numPlayers; i++) {
+                players.add(new Player(chips1));
+            }
+            theModel.setPlayers(players);
+
         }
 
         if (e.getSource() == startScreen.getPlayers3()) {
-            theModel.setNumPlayers(3);
+            numPlayers = 3;
         }
 
         if (e.getSource() == startScreen.getPlayers4()) {
-            theModel.setNumPlayers(4);
+            numPlayers = 4;
         }
 
         if (e.getSource() == startScreen.getPlayers5()) {
-            theModel.setNumPlayers(4);
+            numPlayers = 5;
         }
 
         if (e.getSource() == theGameTable.getjButton1()) {
