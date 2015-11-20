@@ -57,21 +57,46 @@ public class GameTable extends javax.swing.JFrame {
         deck = new javax.swing.JLabel();
         card1b = new javax.swing.JButton();
         card2b = new javax.swing.JButton();
+        p2c1 = new javax.swing.JLabel();
+        p2c2 = new javax.swing.JLabel();
+        p3c1 = new javax.swing.JLabel();
+        p3c2 = new javax.swing.JLabel();
+        p4c1 = new javax.swing.JLabel();
+        p4c2 = new javax.swing.JLabel();
+        p5c1 = new javax.swing.JLabel();
+        p5c2 = new javax.swing.JLabel();
+        p6c1 = new javax.swing.JLabel();
+        p6c2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
+        jPanel1.setMaximumSize(new java.awt.Dimension(1300, 818));
         jPanel1.setOpaque(false);
+        jPanel1.setLayout(null);
 
-        flop1.setText("flop1");
+        flop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        jPanel1.add(flop);
+        flop.setBounds(910, 290, 70, 100);
 
-        flop2.setText("flop2");
+        flop1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        jPanel1.add(flop1);
+        flop1.setBounds(910, 290, 70, 100);
+
+        flop2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
         flop2.setToolTipText("");
+        jPanel1.add(flop2);
+        flop2.setBounds(910, 290, 71, 100);
 
-        TURN.setText("Turn");
+        TURN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        jPanel1.add(TURN);
+        TURN.setBounds(910, 290, 70, 100);
 
-        RIVER.setText("River");
+        RIVER.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        jPanel1.add(RIVER);
+        RIVER.setBounds(910, 290, 70, 100);
 
         jButton1.setText("Flip Card");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -79,6 +104,8 @@ public class GameTable extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(800, 497, 100, 30);
 
         jButton2.setText("Slide Cards");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -86,81 +113,64 @@ public class GameTable extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton2);
+        jButton2.setBounds(800, 530, 100, 40);
 
         deck.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        jPanel1.add(deck);
+        deck.setBounds(1000, 290, 71, 100);
 
         card1b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
-        card1b.setText("card 1");
         card1b.setBorderPainted(false);
         card1b.setContentAreaFilled(false);
+        jPanel1.add(card1b);
+        card1b.setBounds(560, 480, 83, 112);
 
         card2b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
-        card2b.setText("card 2");
         card2b.setBorderPainted(false);
         card2b.setContentAreaFilled(false);
+        jPanel1.add(card2b);
+        card2b.setBounds(640, 480, 83, 112);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(flop)
-                                .addGap(74, 74, 74))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(RIVER)
-                                .addGap(18, 18, 18)
-                                .addComponent(TURN, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(flop1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(deck)
-                            .addComponent(flop2)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))))
-                .addGap(188, 188, 188))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(382, 382, 382)
-                .addComponent(card1b)
-                .addGap(41, 41, 41)
-                .addComponent(card2b)
-                .addContainerGap(323, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(167, 167, 167)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(flop1)
-                    .addComponent(flop2)
-                    .addComponent(TURN)
-                    .addComponent(RIVER))
-                .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(deck)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(flop)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(card1b)
-                            .addComponent(card2b)
-                            .addComponent(jButton1)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
-                .addGap(165, 165, 165))
-        );
+        p2c1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back-2.jpg"))); // NOI18N
+        jPanel1.add(p2c1);
+        p2c1.setBounds(130, 240, 100, 71);
+
+        p2c2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back-2.jpg"))); // NOI18N
+        jPanel1.add(p2c2);
+        p2c2.setBounds(130, 320, 100, 71);
+
+        p3c1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        jPanel1.add(p3c1);
+        p3c1.setBounds(280, 470, 71, 100);
+
+        p3c2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        jPanel1.add(p3c2);
+        p3c2.setBounds(360, 470, 71, 100);
+
+        p4c1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        jPanel1.add(p4c1);
+        p4c1.setBounds(280, 140, 71, 100);
+
+        p4c2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        jPanel1.add(p4c2);
+        p4c2.setBounds(370, 140, 71, 100);
+
+        p5c1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        jPanel1.add(p5c1);
+        p5c1.setBounds(580, 130, 71, 100);
+
+        p5c2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        jPanel1.add(p5c2);
+        p5c2.setBounds(660, 130, 71, 100);
+
+        p6c1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        jPanel1.add(p6c1);
+        p6c1.setBounds(870, 130, 71, 100);
+
+        p6c2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        jPanel1.add(p6c2);
+        p6c2.setBounds(950, 130, 70, 100);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -243,6 +253,16 @@ public class GameTable extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel p2c1;
+    private javax.swing.JLabel p2c2;
+    private javax.swing.JLabel p3c1;
+    private javax.swing.JLabel p3c2;
+    private javax.swing.JLabel p4c1;
+    private javax.swing.JLabel p4c2;
+    private javax.swing.JLabel p5c1;
+    private javax.swing.JLabel p5c2;
+    private javax.swing.JLabel p6c1;
+    private javax.swing.JLabel p6c2;
     // End of variables declaration//GEN-END:variables
 
     public JButton getjButton1() {
@@ -283,6 +303,54 @@ public class GameTable extends javax.swing.JFrame {
 
     public JButton getCard2b() {
         return card2b;
+    }
+
+    public JLabel getDeck() {
+        return deck;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public JLabel getP2c1() {
+        return p2c1;
+    }
+
+    public JLabel getP2c2() {
+        return p2c2;
+    }
+
+    public JLabel getP3c1() {
+        return p3c1;
+    }
+
+    public JLabel getP3c2() {
+        return p3c2;
+    }
+
+    public JLabel getP4c1() {
+        return p4c1;
+    }
+
+    public JLabel getP4c2() {
+        return p4c2;
+    }
+
+    public JLabel getP5c1() {
+        return p5c1;
+    }
+
+    public JLabel getP5c2() {
+        return p5c2;
+    }
+
+    public JLabel getP6c1() {
+        return p6c1;
+    }
+
+    public JLabel getP6c2() {
+        return p6c2;
     }
 
 }
