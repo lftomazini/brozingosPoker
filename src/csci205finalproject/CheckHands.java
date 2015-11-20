@@ -33,11 +33,48 @@ public class CheckHands {
      * @param cards
      * @return
      */
-    public boolean checkHands(Player player, ArrayList<Card> cards) {
-        //Royal flush
+    public void checkHands(ArrayList<Player> playerArray, ArrayList<Card> cards) {
+        for (int i = 0; i < playerArray.size(); i++) {
+            if (is2OfAKind(playerArray.get(i), cards)) {
+                playerArray.get(i).setHand(Hand.ONE_PAIR);
+            }
+            if (is2Pairs(playerArray.get(i), cards)) {
+                playerArray.get(i).setHand(Hand.TWO_PAIR);
+            }
+            if (is3OfAKind(playerArray.get(i), cards)) {
+                playerArray.get(i).setHand(Hand.THREE_OF_A_KIND);
+            }
+            if (isStraight(playerArray.get(i), cards)) {
+                playerArray.get(i).setHand(Hand.STRAIGHT);
+            }
+            if (isFlush(playerArray.get(i), cards)) {
+                playerArray.get(i).setHand(Hand.FLUSH);
+            }
+            if (isFullHouse(playerArray.get(i), cards)) {
+                playerArray.get(i).setHand(Hand.FULL_HOUSE);
+            }
+            if (is4OfAKind(playerArray.get(i), cards)) {
+                playerArray.get(i).setHand(Hand.FOUR_OF_A_KIND);
+            }
+            if (isStraightFlush(playerArray.get(i), cards)) {
+                playerArray.get(i).setHand(Hand.STRAIGHT_FLUSH);
+            }
+            if (isRoyalFlush(playerArray.get(i), cards)) {
+                playerArray.get(i).setHand(Hand.ROYAL_FLUSH);
+            }
+        }
+    }
 
-        //TODO check if higher is ACE
-        return false;
+    public Player checkWinner(ArrayList<Player> playerArray,
+                              ArrayList<Card> cards) {
+
+        Collections.sort(playerArray, Player.byHand);
+
+        if (playerArray.get(0) != playerArray.get(1)) {
+            return playerArray.get(0);
+        } else {
+            //TODO
+        }
     }
 
     public boolean isFlush(Player player, ArrayList<Card> cards) {
@@ -218,9 +255,6 @@ public class CheckHands {
     }
 
     public Card getHighCard(Player player) {
-        ArrayList<Card> cardsPossible = new ArrayList<>();
-        cardsPossible = player.finalHand;
-        Collections.sort(cardsPossible, Card.byRank);
-        return cardsPossible.get(0);
+        return (player.getCard1().getRank().getValue() > player.getCard2().getRank().getValue()) ? player.getCard1() : player.getCard2();
     }
 }
