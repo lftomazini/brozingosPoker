@@ -18,6 +18,8 @@ package Controller;
 import Model.Model;
 import View.GameTable;
 import View.StartScreen;
+import csci205finalproject.CardDealer;
+import csci205finalproject.GameClass;
 import csci205finalproject.Player;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -74,7 +76,12 @@ public class Controller implements ActionListener {
                 players.add(new Player(chips1));
             }
             theModel.setPlayers(players);
-
+            theModel.setTheCardDealer(new CardDealer(theModel.getDeck(),
+                                                     theModel.getPlayers(),
+                                                     theModel.getRound()));
+            theModel.setTheGameClass(new GameClass(theModel.getPlayers(), 10.00,
+                                                   20.00));
+            theModel.getTheCardDealer().giveCardstoPlayers();
         }
 
         if (e.getSource() == startScreen.getPlayers3()) {
@@ -112,8 +119,9 @@ public class Controller implements ActionListener {
         //flip card 1 over
         if (e.getSource() == theGameTable.getCard1b()) {
             if (onCard1 == false) {
+                String card1 = this.theModel.getPlayers().get(0).getCard1().getName();
                 Icon icon = new ImageIcon(
-                        "src/cardsimage/10CLUBS.png");
+                        "src/cardsimage/" + card1 + ".png");
                 theGameTable.getCard1b().setIcon(icon);
                 onCard1 = true;
             } else {
@@ -127,8 +135,9 @@ public class Controller implements ActionListener {
         //flip card 2 over
         if (e.getSource() == theGameTable.getCard2b()) {
             if (onCard2 == false) {
+                String card2 = this.theModel.getPlayers().get(0).getCard2().getName();
                 Icon icon = new ImageIcon(
-                        "src/cardsimage/10CLUBS.png");
+                        "src/cardsimage/" + card2 + ".png");
                 theGameTable.getCard2b().setIcon(icon);
                 onCard2 = true;
             } else {

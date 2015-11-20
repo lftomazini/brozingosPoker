@@ -16,6 +16,8 @@
 package Model;
 
 import Cards.Deck;
+import csci205finalproject.CardDealer;
+import csci205finalproject.GameClass;
 import csci205finalproject.Player;
 import java.util.ArrayList;
 
@@ -28,6 +30,9 @@ public class Model {
     int numPlayers;
     ArrayList<Player> players;
     int[] chips1;
+    GameClass theGameClass;
+    CardDealer theCardDealer;
+    int round = 0;
 
     public Model() {
         this.deck.createDeck();
@@ -60,6 +65,34 @@ public class Model {
 
     public void setPlayers(ArrayList<Player> players) {
         this.players = players;
+    }
+
+    public void setTheGameClass(GameClass theGameClass) {
+        this.theGameClass = theGameClass;
+    }
+
+    public void setTheCardDealer(CardDealer theCardDealer) {
+        this.theCardDealer = theCardDealer;
+    }
+
+    public void setRound(int round) {
+        this.round = round;
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public GameClass getTheGameClass() {
+        return theGameClass;
+    }
+
+    public CardDealer getTheCardDealer() {
+        return theCardDealer;
+    }
+
+    public int getRound() {
+        return round;
     }
 
 }
