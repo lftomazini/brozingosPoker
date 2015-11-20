@@ -1,54 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Cards;
-
-import java.util.Comparator;
+/* *****************************************
+ * CSCI205 - Software Engineering and Design
+ * Fall 2015
+ * Instructor: Prof Peck
+ * Section: 8am
+ *
+ * Name: Stephanie Garboski, Leonardo Viglino, Anmol Singh,
+ Luis Felipe Tomazini
+ * Date:
+ *
+ * Brozingos Poker:
+ *
+ * Description:
+ *
+ * *****************************************/
+package csci205finalproject;
 
 /**
  *
- * @author lbv001
+ * @author lffct001
  */
-public class Card {
-    private Rank rank;
-    private Suits suit;
+public enum Hand {
+    HIGH_CARD(1), ONE_PAIR(2), TWO_PAIR(3), THREE_OF_A_KIND(4), STRAIGHT(5), FLUSH(
+            6), FULL_HOUSE(7), FOUR_OF_A_KIND(8), STRAIGHT_FLUSH(
+                    9), ROYAL_FLUSH(10);
+    private int hand;
 
-    public Card(Rank rank, Suits suit) {
-        this.rank = rank;
-        this.suit = suit;
+    private Hand(int hand) {
+        this.hand = hand;
     }
 
-    public Rank getRank() {
-        return rank;
+    public int getValue() {
+        return hand;
     }
-
-    public Suits getSuit() {
-        return suit;
-    }
-
-    public void setRank(Rank rank) {
-        this.rank = rank;
-    }
-
-    public void setSuit(Suits suit) {
-        this.suit = suit;
-    }
-
-    public String getName() {
-        return Integer.toString(this.rank.getValue()) + this.suit.toString();
-    }
-
-    public static Comparator<Card> byRank = (Card o1, Card o2) -> {
-        if (o1.getRank().getValue() < o2.getRank().getValue()) {
-            return -1;
-        } else {
-            if (o1.getRank().getValue() == o2.getRank().getValue()) {
-                return 0;
-            } else {
-                return 1;
-            }
-        }
-    };
 }
