@@ -15,6 +15,7 @@
  * *****************************************/
 package Controller;
 
+import Cards.Card;
 import Model.Model;
 import View.GameTable;
 import View.StartScreen;
@@ -108,9 +109,8 @@ public class Controller implements ActionListener {
             //the flop
             if (tableRound == 0) {
                 theGameTable.getFlop().setVisible(true);
-                int card1 = this.theModel.getTheCardDealer().getRandom();
-                String cardName = this.theModel.getDeck().getDeck().get(
-                        card1).getName();
+                Card card1 = this.theModel.getTheCardDealer().placeCardsOnTable();
+                String cardName = card1.getName();
                 Icon icon = new ImageIcon(
                         "src/cardsimage/" + cardName + ".png");
                 theGameTable.getFlop().setIcon(icon);
@@ -119,10 +119,9 @@ public class Controller implements ActionListener {
                 timer1.setRepeats(true);
                 timer1.start();
 
-                int card2 = this.theModel.getTheCardDealer().getRandom();
+                Card card2 = this.theModel.getTheCardDealer().placeCardsOnTable();
 
-                String cardName2 = this.theModel.getDeck().getDeck().get(
-                        card2).getName();
+                String cardName2 = card2.getName();
                 Icon icon2 = new ImageIcon(
                         "src/cardsimage/" + cardName2 + ".png");
                 theGameTable.getFlop1().setIcon(icon2);
@@ -131,10 +130,9 @@ public class Controller implements ActionListener {
                 timer2.setRepeats(true);
                 timer2.start();
 
-                int card3 = this.theModel.getTheCardDealer().getRandom();
+                Card card3 = this.theModel.getTheCardDealer().placeCardsOnTable();
 
-                String cardName3 = this.theModel.getDeck().getDeck().get(
-                        card3).getName();
+                String cardName3 = card3.getName();
                 Icon icon3 = new ImageIcon(
                         "src/cardsimage/" + cardName3 + ".png");
                 theGameTable.getFlop2().setIcon(icon3);
