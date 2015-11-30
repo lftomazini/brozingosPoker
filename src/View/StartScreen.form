@@ -40,15 +40,11 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="218" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                          <Component id="players5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="70" pref="70" max="-2" attributes="0"/>
-                      </Group>
                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="56" pref="56" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="players5" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="players4" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="players3" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>

@@ -62,6 +62,8 @@ public class Controller implements ActionListener {
         this.theGameTable.getjButton2().addActionListener(this);
         this.theGameTable.getCard1b().addActionListener(this);
         this.theGameTable.getCard2b().addActionListener(this);
+        this.startScreen.getPlayers3().addActionListener(this);
+        this.startScreen.getPlayers4().addActionListener(this);
 
     }
 
@@ -96,6 +98,15 @@ public class Controller implements ActionListener {
                 theGameTable.getP2c2().setVisible(false);
 
             }
+
+        }
+
+        if (e.getSource() == startScreen.getPlayers3()) {
+            numPlayers = 3;
+        }
+
+        if (e.getSource() == startScreen.getPlayers4()) {
+            numPlayers = 4;
         }
 
         if (e.getSource() == theGameTable.getjButton1()) {
@@ -136,6 +147,7 @@ public class Controller implements ActionListener {
                 timer3.start();
 
                 tableRound++;
+
             } //the turn
             else if (tableRound == 1) {
                 int card4 = this.theModel.getTheCardDealer().getRandom();
