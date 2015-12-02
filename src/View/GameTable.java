@@ -66,8 +66,8 @@ public class GameTable extends javax.swing.JFrame {
         p5c2 = new javax.swing.JLabel();
         p6c1 = new javax.swing.JLabel();
         p6c2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        smallBlind = new javax.swing.JLabel();
+        bigBlind = new javax.swing.JLabel();
         buttons = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -165,13 +165,13 @@ public class GameTable extends javax.swing.JFrame {
         jPanel1.add(p6c2);
         p6c2.setBounds(950, 130, 70, 100);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Small-Blind-Button-SY-Q58DONE-.png"))); // NOI18N
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(830, 230, 60, 70);
+        smallBlind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Small-Blind-Button-SY-Q58DONE-.png"))); // NOI18N
+        jPanel1.add(smallBlind);
+        smallBlind.setBounds(830, 230, 60, 70);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bigblinddone.png"))); // NOI18N
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(640, 400, 60, 56);
+        bigBlind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bigblinddone.png"))); // NOI18N
+        jPanel1.add(bigBlind);
+        bigBlind.setBounds(640, 400, 60, 56);
 
         buttons.setText("buttons");
         jPanel1.add(buttons);
@@ -244,6 +244,7 @@ public class GameTable extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel RIVER;
     private javax.swing.JLabel TURN;
+    private javax.swing.JLabel bigBlind;
     private javax.swing.JButton buttons;
     private javax.swing.JButton card1b;
     private javax.swing.JButton card2b;
@@ -253,8 +254,6 @@ public class GameTable extends javax.swing.JFrame {
     private javax.swing.JLabel flop1;
     private javax.swing.JLabel flop2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel p2c1;
     private javax.swing.JLabel p2c2;
@@ -266,6 +265,7 @@ public class GameTable extends javax.swing.JFrame {
     private javax.swing.JLabel p5c2;
     private javax.swing.JLabel p6c1;
     private javax.swing.JLabel p6c2;
+    private javax.swing.JLabel smallBlind;
     // End of variables declaration//GEN-END:variables
 
     public JButton getFlip() {
@@ -354,6 +354,14 @@ public class GameTable extends javax.swing.JFrame {
 
     public JButton getButtons() {
         return buttons;
+    }
+
+    public JLabel getSmallBlind() {
+        return smallBlind;
+    }
+
+    public JLabel getBigBlind() {
+        return bigBlind;
     }
 
 }

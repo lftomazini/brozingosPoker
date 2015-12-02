@@ -48,6 +48,8 @@ public class Controller implements ActionListener {
     Timer timer1;
     Timer timer4;
     Timer timer5;
+    Timer timerX;
+    Timer timerY;
     boolean onCard1 = false;
     boolean onCard2 = false;
     int numPlayers;
@@ -67,11 +69,25 @@ public class Controller implements ActionListener {
         theGameTable.getFlop2().setVisible(false);
         theGameTable.getTURN().setVisible(false);
         theGameTable.getRIVER().setVisible(false);
+        theGameTable.getButtons().addActionListener(this);
+
+    }
+
+    void buttonsNextPosition() {
+        int position = 0;
+        timerX = new Timer(1, new MoveButtonX());
+        timerX.setInitialDelay(0);
+        timerX.start();
+        timerY = new Timer(1, new MoveButtonY());
+        timerY.start();
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == theGameTable.getButtons()) {
+            buttonsNextPosition();
+        }
 
         if (e.getSource() == startScreen.getStart()) {
             startScreen.setVisible(false);
@@ -87,8 +103,7 @@ public class Controller implements ActionListener {
             }
             theModel.setPlayers(players);
             theModel.setTheCardDealer(new CardDealer(theModel.getDeck(),
-                                                     theModel.getPlayers(),
-                                                     theModel.getRound()));
+                                                     theModel.getPlayers()));
             theModel.setTheGameClass(new GameClass(theModel.getPlayers(), 10.00,
                                                    20.00));
             theModel.getTheCardDealer().giveCardstoPlayers();
@@ -301,4 +316,36 @@ public class Controller implements ActionListener {
         }
     }
 
+    class MoveButtonX implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+            theGameTable.getBigBlind().setLocation(
+                    theGameTable.getBigBlind().getX() - 1,
+                    theGameTable.getBigBlind().getY());
+            theGameTable.getSmallBlind().setLocation(
+                    theGameTable.getSmallBlind().getX() - 1,
+                    theGameTable.getSmallBlind().getY());
+            if (theGameTable.getBigBlind().getX() < 300) {
+                timerX.stop();
+            }
+            if (theGameTable.getSmallBlind().getX() < 640) {
+                timerX.stop();
+            }
+
+        }
+
+    }
+
+    class MoveButtonY implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+            theGameTable.getSmallBlind().setLocation(
+                    theGameTable.getSmallBlind().getX(),
+                    theGameTable.getSmallBlind().getY() + 1);
+            if (theGameTable.getSmallBlind().getY() > 400) {
+                timerY.stop();
+            }
+        }
+
+    }
 }

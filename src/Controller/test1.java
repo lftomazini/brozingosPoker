@@ -37,7 +37,7 @@ public class test1 {
 //        for (int i = 0; i < 4; i++) {
 //            players.add(new Player(chips1));
 //        }
-        CardDealer dealer = new CardDealer(deck, players, 0);
+        CardDealer dealer = new CardDealer(deck, players);
 //        dealer.giveCardstoPlayers();
         for (int i = 0; i < 52; i++) {
             System.out.println(dealer.placeCardsOnTable().getName());
