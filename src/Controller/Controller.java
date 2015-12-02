@@ -17,7 +17,7 @@ package Controller;
 
 import Cards.Card;
 import Model.Model;
-import View.GameTable;
+import View.Game;
 import View.WelcomeScreen;
 import csci205finalproject.CardDealer;
 import csci205finalproject.GameClass;
@@ -39,7 +39,7 @@ public class Controller implements ActionListener {
 
     WelcomeScreen startScreen;
     Model theModel;
-    GameTable theGameTable;
+    Game theGameTable;
     JLabel flop;
     JLabel flop1;
     JLabel flop2;
@@ -57,7 +57,7 @@ public class Controller implements ActionListener {
     public Controller(WelcomeScreen startScreen, Model theModel) throws IOException {
         this.startScreen = startScreen;
         this.theModel = theModel;
-        this.theGameTable = new GameTable();
+        this.theGameTable = new Game();
         this.startScreen.getStart().addActionListener(this);
         this.theGameTable.getFlip().addActionListener(this);
         this.theGameTable.getCard1b().addActionListener(this);
