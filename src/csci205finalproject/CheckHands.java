@@ -283,10 +283,15 @@ public class CheckHands {
     }
 
     public boolean isRoyalFlush(Player player, ArrayList<Card> cards) {
-        return (isStraightFlush(player, cards) && getHighCard(player).getRank() == Rank.ACE);
+        return (isStraightFlush(player, cards) && getHighCard(player, cards).getRank() == Rank.ACE);
     }
 
-    public Card getHighCard(Player player) {
-        return (player.getCard1().getRank().getValue() > player.getCard2().getRank().getValue()) ? player.getCard1() : player.getCard2();
+    public Card getHighCard(Player player, ArrayList<Card> cards) {
+        ArrayList<Card> cardsPossible = cards;
+        cardsPossible.add(player.getCard1());
+        cardsPossible.add(player.getCard2());
+        Collections.sort(cardsPossible, Card.byRank);
+        Collections.reverse(cardsPossible);
+        return cardsPossible.get(0);
     }
 }
