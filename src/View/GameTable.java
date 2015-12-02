@@ -66,6 +66,8 @@ public class GameTable extends javax.swing.JFrame {
         p5c2 = new javax.swing.JLabel();
         p6c1 = new javax.swing.JLabel();
         p6c2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -104,7 +106,7 @@ public class GameTable extends javax.swing.JFrame {
             }
         });
         jPanel1.add(flip);
-        flip.setBounds(800, 497, 100, 30);
+        flip.setBounds(480, 630, 100, 30);
 
         deck.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(deck);
@@ -161,6 +163,14 @@ public class GameTable extends javax.swing.JFrame {
         p6c2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(p6c2);
         p6c2.setBounds(950, 130, 70, 100);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Small-Blind-Button-SY-Q58DONE-.png"))); // NOI18N
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(620, 390, 60, 70);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bigblinddone.png"))); // NOI18N
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(340, 400, 60, 56);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -237,6 +247,8 @@ public class GameTable extends javax.swing.JFrame {
     private javax.swing.JLabel flop1;
     private javax.swing.JLabel flop2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel p2c1;
     private javax.swing.JLabel p2c2;
