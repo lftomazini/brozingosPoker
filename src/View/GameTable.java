@@ -265,9 +265,8 @@ public class GameTable extends javax.swing.JFrame {
         smallBlindSl.setBounds(140, 90, 130, 50);
 
         bigBlindSl.setMaximum(50);
-        bigBlindSl.setMinimum(25);
+        bigBlindSl.setMinimum(30);
         bigBlindSl.setMinorTickSpacing(5);
-        bigBlindSl.setValue(25);
         setBlindsPan.add(bigBlindSl);
         bigBlindSl.setBounds(140, 40, 140, 60);
 
