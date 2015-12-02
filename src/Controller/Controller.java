@@ -52,6 +52,8 @@ public class Controller implements ActionListener {
     int numPlayers = 5;
     int[] chips1 = {10, 6, 4, 2, 2};
     int tableRound = 0;
+    int playerBigBlind = 0;
+    int playerSmallBlind = 1;
 
     public Controller(StartScreen startScreen, Model theModel) throws IOException {
         this.startScreen = startScreen;
@@ -97,6 +99,13 @@ public class Controller implements ActionListener {
                 theGameTable.getP2c1().setVisible(false);
                 theGameTable.getP2c2().setVisible(false);
 
+            }
+            if (playerBigBlind == 0) {
+                theGameTable.getSmallBlindSl().setVisible(false);
+                theGameTable.getSmallBlindL().setVisible(false);
+            } else if (playerSmallBlind == 0) {
+                theGameTable.getBigBlindSl().setVisible(false);
+                theGameTable.getBigBlindL().setVisible(false);
             }
 
         }

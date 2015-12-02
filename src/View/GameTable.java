@@ -79,12 +79,13 @@ public class GameTable extends javax.swing.JFrame {
         greenChip1 = new javax.swing.JLabel();
         blueChip1 = new javax.swing.JLabel();
         setBlindsPan = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        smallBlindL = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        bigBlindL = new javax.swing.JLabel();
         smallBlindSl = new javax.swing.JSlider();
         bigBlindSl = new javax.swing.JSlider();
         doneButton = new javax.swing.JButton();
+        dontPay = new javax.swing.JButton();
         turnLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -244,30 +245,31 @@ public class GameTable extends javax.swing.JFrame {
         setBlindsPan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setBlindsPan.setLayout(null);
 
-        jLabel3.setText("Small Blind:");
-        setBlindsPan.add(jLabel3);
-        jLabel3.setBounds(30, 80, 100, 15);
+        smallBlindL.setText("Small Blind:");
+        setBlindsPan.add(smallBlindL);
+        smallBlindL.setBounds(30, 100, 100, 15);
 
-        jLabel2.setText("Set Blinds:");
+        jLabel2.setText("Pay Blind:");
         setBlindsPan.add(jLabel2);
-        jLabel2.setBounds(90, 10, 68, 15);
+        jLabel2.setBounds(120, 10, 62, 15);
 
-        jLabel4.setText("Big Blind:");
-        setBlindsPan.add(jLabel4);
-        jLabel4.setBounds(30, 40, 80, 15);
+        bigBlindL.setText("Big Blind:");
+        setBlindsPan.add(bigBlindL);
+        bigBlindL.setBounds(40, 50, 80, 15);
 
         smallBlindSl.setMaximum(50);
+        smallBlindSl.setMinimum(15);
         smallBlindSl.setMinorTickSpacing(5);
         smallBlindSl.setValue(15);
         setBlindsPan.add(smallBlindSl);
-        smallBlindSl.setBounds(130, 80, 120, 42);
+        smallBlindSl.setBounds(140, 90, 130, 50);
 
         bigBlindSl.setMaximum(50);
-        bigBlindSl.setMinimum(5);
+        bigBlindSl.setMinimum(25);
         bigBlindSl.setMinorTickSpacing(5);
         bigBlindSl.setValue(25);
         setBlindsPan.add(bigBlindSl);
-        bigBlindSl.setBounds(130, 30, 120, 42);
+        bigBlindSl.setBounds(140, 40, 140, 60);
 
         doneButton.setText("Done");
         doneButton.addActionListener(new java.awt.event.ActionListener() {
@@ -276,10 +278,14 @@ public class GameTable extends javax.swing.JFrame {
             }
         });
         setBlindsPan.add(doneButton);
-        doneButton.setBounds(30, 120, 46, 27);
+        doneButton.setBounds(30, 140, 80, 40);
+
+        dontPay.setText("Fold");
+        setBlindsPan.add(dontPay);
+        dontPay.setBounds(216, 140, 90, 40);
 
         jPanel1.add(setBlindsPan);
-        setBlindsPan.setBounds(500, 270, 280, 160);
+        setBlindsPan.setBounds(360, 270, 340, 190);
 
         turnLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         turnLabel.setText("Who's Turn");
@@ -363,6 +369,7 @@ public class GameTable extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel RIVER;
     private javax.swing.JLabel TURN;
+    private javax.swing.JLabel bigBlindL;
     private javax.swing.JSlider bigBlindSl;
     private javax.swing.JLabel blackChip;
     private javax.swing.JLabel blackChip1;
@@ -372,6 +379,7 @@ public class GameTable extends javax.swing.JFrame {
     private javax.swing.JButton card2b;
     private javax.swing.JLabel deck;
     private javax.swing.JButton doneButton;
+    private javax.swing.JButton dontPay;
     private javax.swing.JLabel flop;
     private javax.swing.JLabel flop1;
     private javax.swing.JLabel flop2;
@@ -381,8 +389,6 @@ public class GameTable extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel p2c1;
     private javax.swing.JLabel p2c2;
@@ -397,6 +403,7 @@ public class GameTable extends javax.swing.JFrame {
     private javax.swing.JLabel redChip;
     private javax.swing.JLabel redChip1;
     private javax.swing.JPanel setBlindsPan;
+    private javax.swing.JLabel smallBlindL;
     private javax.swing.JSlider smallBlindSl;
     private javax.swing.JLabel turnLabel;
     private javax.swing.JLabel whiteChip;
@@ -505,6 +512,70 @@ public class GameTable extends javax.swing.JFrame {
 
     public JLabel getTurnLabel() {
         return turnLabel;
+    }
+
+    public JLabel getBlackChip() {
+        return blackChip;
+    }
+
+    public JLabel getBlackChip1() {
+        return blackChip1;
+    }
+
+    public JLabel getBlueChip() {
+        return blueChip;
+    }
+
+    public JLabel getBlueChip1() {
+        return blueChip1;
+    }
+
+    public JButton getDoneButton() {
+        return doneButton;
+    }
+
+    public JLabel getGreenChip() {
+        return greenChip;
+    }
+
+    public JLabel getGreenChip1() {
+        return greenChip1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return smallBlindL;
+    }
+
+    public JLabel getjLabel4() {
+        return bigBlindL;
+    }
+
+    public JLabel getRedChip() {
+        return redChip;
+    }
+
+    public JLabel getRedChip1() {
+        return redChip1;
+    }
+
+    public JLabel getWhiteChip() {
+        return whiteChip;
+    }
+
+    public JLabel getWhiteChip1() {
+        return whiteChip1;
+    }
+
+    public JLabel getBigBlindL() {
+        return bigBlindL;
+    }
+
+    public JLabel getSmallBlindL() {
+        return smallBlindL;
     }
 
 }
