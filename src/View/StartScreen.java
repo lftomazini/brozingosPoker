@@ -16,17 +16,16 @@
 package View;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JRadioButton;
+import javax.swing.JComboBox;
 
 /**
  *
- * @author sag033
+ * @author lbv001
  */
 public class StartScreen extends javax.swing.JFrame {
 
     /**
-     * Creates new form StartScreen
+     * Creates new form StartScreen2
      */
     public StartScreen() {
         initComponents();
@@ -40,156 +39,131 @@ public class StartScreen extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
-        players5 = new javax.swing.JRadioButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        numPlayers = new javax.swing.JComboBox();
         start = new javax.swing.JButton();
-        players4 = new javax.swing.JRadioButton();
-        players3 = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
-        backgroundImg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        buttonGroup1.add(players5);
-        players5.setSelected(true);
-        players5.setText("5 ");
-        players5.setOpaque(true);
-        players5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                players5ActionPerformed(evt);
-            }
-        });
+        jPanel1.setOpaque(false);
 
-        start.setText("Start Game!");
+        jLabel2.setFont(new java.awt.Font("URW Chancery L", 1, 60)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(4, 1, 2));
+        jLabel2.setText("Welcome to Brozingos Poker !");
 
-        buttonGroup1.add(players4);
-        players4.setText("4 ");
-        players4.setOpaque(true);
-        players4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                players4ActionPerformed(evt);
-            }
-        });
+        jLabel3.setFont(new java.awt.Font("WenQuanYi Zen Hei Mono", 0, 18)); // NOI18N
+        jLabel3.setText("How many players do you want?");
 
-        buttonGroup1.add(players3);
-        players3.setText("3 ");
-        players3.setOpaque(true);
+        numPlayers.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "3", "4", "5", "6" }));
 
-        jLabel1.setText("How many other players?");
-        jLabel1.setOpaque(true);
+        start.setText("Play!");
 
-        backgroundImg.setBackground(new java.awt.Color(9, 95, 25));
-        backgroundImg.setFont(new java.awt.Font("DejaVu Sans", 0, 36)); // NOI18N
-        backgroundImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        backgroundImg.setText("Welcome to Brozingos Poker");
-        backgroundImg.setOpaque(true);
-
-        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
-        jLayeredPane1.setLayout(jLayeredPane1Layout);
-        jLayeredPane1Layout.setHorizontalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addGap(218, 218, 218)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(players5)
-                        .addGap(70, 70, 70))
-                    .addComponent(jLabel1)
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(players4)
-                            .addComponent(players3))))
-                .addGap(52, 52, 52)
-                .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(238, 354, Short.MAX_VALUE))
-            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(backgroundImg, javax.swing.GroupLayout.DEFAULT_SIZE, 918, Short.MAX_VALUE)
-                    .addContainerGap()))
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 844, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 180, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(numPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(176, 176, 176)
+                .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jLayeredPane1Layout.setVerticalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap(338, Short.MAX_VALUE)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
-                        .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(124, 124, 124))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(players5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(players4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(players3)
-                        .addGap(100, 100, 100))))
-            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(backgroundImg, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
-                    .addContainerGap()))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(135, 135, 135)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(start)
+                    .addComponent(jLabel3)
+                    .addComponent(numPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
-        jLayeredPane1.setLayer(players5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(start, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(players4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(players3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(backgroundImg, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        getContentPane().add(jLayeredPane1, java.awt.BorderLayout.CENTER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        getContentPane().add(jPanel1, gridBagConstraints);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casinoPromotionsHeader.jpg"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        getContentPane().add(jLabel1, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void players5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_players5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_players5ActionPerformed
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(StartScreen.class.getName()).log(
+                    java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(StartScreen.class.getName()).log(
+                    java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(StartScreen.class.getName()).log(
+                    java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(StartScreen.class.getName()).log(
+                    java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
 
-    private void players4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_players4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_players4ActionPerformed
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel backgroundImg;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JRadioButton players3;
-    private javax.swing.JRadioButton players4;
-    private javax.swing.JRadioButton players5;
-    private javax.swing.JButton start;
-    // End of variables declaration//GEN-END:variables
-
-    public void setBackgroundImg(JLabel background) {
-        this.backgroundImg = background;
-    }
-
-    public JLabel getBackgroundImg() {
-        return backgroundImg;
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new StartScreen().setVisible(true);
+            }
+        });
     }
 
     public JButton getStart() {
         return start;
     }
 
-    public JRadioButton getPlayers3() {
-        return players3;
+    public JComboBox getNumPlayers() {
+        return numPlayers;
     }
 
-    public JRadioButton getPlayers4() {
-        return players4;
-    }
-
-    public JRadioButton getPlayers5() {
-        return players5;
-    }
-
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox numPlayers;
+    private javax.swing.JButton start;
+    // End of variables declaration//GEN-END:variables
 }
