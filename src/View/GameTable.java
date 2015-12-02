@@ -352,4 +352,8 @@ public class GameTable extends javax.swing.JFrame {
         return p6c2;
     }
 
+    public JButton getButtons() {
+        return buttons;
+    }
+
 }
