@@ -18,7 +18,7 @@ package Controller;
 import Cards.Card;
 import Model.Model;
 import View.GameTable;
-import View.StartScreen;
+import View.WelcomeScreen;
 import csci205finalproject.CardDealer;
 import csci205finalproject.GameClass;
 import csci205finalproject.Player;
@@ -37,7 +37,7 @@ import javax.swing.Timer;
  */
 public class Controller implements ActionListener {
 
-    StartScreen startScreen;
+    WelcomeScreen startScreen;
     Model theModel;
     GameTable theGameTable;
     JLabel flop;
@@ -54,7 +54,7 @@ public class Controller implements ActionListener {
     int[] chips1 = {10, 6, 4, 2, 2};
     int tableRound = 0;
 
-    public Controller(StartScreen startScreen, Model theModel) throws IOException {
+    public Controller(WelcomeScreen startScreen, Model theModel) throws IOException {
         this.startScreen = startScreen;
         this.theModel = theModel;
         this.theGameTable = new GameTable();

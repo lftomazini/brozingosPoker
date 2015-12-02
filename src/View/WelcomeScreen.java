@@ -22,12 +22,12 @@ import javax.swing.JComboBox;
  *
  * @author lbv001
  */
-public class StartScreen extends javax.swing.JFrame {
+public class WelcomeScreen extends javax.swing.JFrame {
 
     /**
      * Creates new form StartScreen2
      */
-    public StartScreen() {
+    public WelcomeScreen() {
         initComponents();
     }
 
@@ -127,25 +127,27 @@ public class StartScreen extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StartScreen.class.getName()).log(
+            java.util.logging.Logger.getLogger(WelcomeScreen.class.getName()).log(
                     java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StartScreen.class.getName()).log(
+            java.util.logging.Logger.getLogger(WelcomeScreen.class.getName()).log(
                     java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StartScreen.class.getName()).log(
+            java.util.logging.Logger.getLogger(WelcomeScreen.class.getName()).log(
                     java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StartScreen.class.getName()).log(
+            java.util.logging.Logger.getLogger(WelcomeScreen.class.getName()).log(
                     java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StartScreen().setVisible(true);
+                new WelcomeScreen().setVisible(true);
             }
         });
     }
