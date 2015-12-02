@@ -50,7 +50,7 @@ public class Controller implements ActionListener {
     Timer timer5;
     boolean onCard1 = false;
     boolean onCard2 = false;
-    int numPlayers = 5;
+    int numPlayers;
     int[] chips1 = {10, 6, 4, 2, 2};
     int tableRound = 0;
 
@@ -59,8 +59,7 @@ public class Controller implements ActionListener {
         this.theModel = theModel;
         this.theGameTable = new GameTable();
         this.startScreen.getStart().addActionListener(this);
-        this.theGameTable.getjButton1().addActionListener(this);
-        this.theGameTable.getjButton2().addActionListener(this);
+        this.theGameTable.getFlip().addActionListener(this);
         this.theGameTable.getCard1b().addActionListener(this);
         this.theGameTable.getCard2b().addActionListener(this);
         theGameTable.getFlop().setVisible(false);
@@ -76,6 +75,16 @@ public class Controller implements ActionListener {
 
         if (e.getSource() == startScreen.getStart()) {
             startScreen.setVisible(false);
+            numPlayers = startScreen.getNumPlayers().getSelectedIndex();
+            if (numPlayers == 0) {
+                numPlayers = 2;
+            } else if (numPlayers == 1) {
+                numPlayers = 3;
+            } else if (numPlayers == 2) {
+                numPlayers = 4;
+            } else {
+                numPlayers = 5;
+            }
 
             theGameTable.setLocationRelativeTo(null);
             theGameTable.setVisible(true);
@@ -91,6 +100,14 @@ public class Controller implements ActionListener {
             theModel.setTheGameClass(new GameClass(theModel.getPlayers(), 10.00,
                                                    20.00));
             theModel.getTheCardDealer().giveCardstoPlayers();
+            if (numPlayers == 2) {
+                theGameTable.getP2c1().setVisible(false);
+                theGameTable.getP2c2().setVisible(false);
+                theGameTable.getP3c1().setVisible(false);
+                theGameTable.getP3c2().setVisible(false);
+                theGameTable.getP4c1().setVisible(false);
+                theGameTable.getP4c2().setVisible(false);
+            }
             if (numPlayers == 3) {
                 theGameTable.getP2c1().setVisible(false);
                 theGameTable.getP2c2().setVisible(false);
@@ -104,7 +121,7 @@ public class Controller implements ActionListener {
             }
         }
 
-        if (e.getSource() == theGameTable.getjButton1()) {
+        if (e.getSource() == theGameTable.getFlip()) {
 
             //the flop
             if (tableRound == 0) {
@@ -144,10 +161,9 @@ public class Controller implements ActionListener {
                 tableRound++;
             } //the turn
             else if (tableRound == 1) {
-                int card4 = this.theModel.getTheCardDealer().getRandom();
+                Card card4 = this.theModel.getTheCardDealer().placeCardsOnTable();
                 theGameTable.getTURN().setVisible(true);
-                String cardName4 = this.theModel.getDeck().getDeck().get(
-                        card4).getName();
+                String cardName4 = card4.getName();
                 Icon icon4 = new ImageIcon(
                         "src/cardsimage/" + cardName4 + ".png");
                 theGameTable.getTURN().setIcon(icon4);
@@ -158,10 +174,9 @@ public class Controller implements ActionListener {
                 tableRound++;
             } //the river
             else if (tableRound == 2) {
-                int card5 = this.theModel.getTheCardDealer().getRandom();
+                Card card5 = this.theModel.getTheCardDealer().placeCardsOnTable();
                 theGameTable.getRIVER().setVisible(true);
-                String cardName5 = this.theModel.getDeck().getDeck().get(
-                        card5).getName();
+                String cardName5 = card5.getName();
                 Icon icon5 = new ImageIcon(
                         "src/cardsimage/" + cardName5 + ".png");
                 theGameTable.getRIVER().setIcon(icon5);
@@ -185,7 +200,7 @@ public class Controller implements ActionListener {
                 onCard1 = true;
             } else {
                 Icon icon = new ImageIcon(
-                        "src/View/playing-card-back.jpg");
+                        "src/images/playing-card-back.jpg");
                 theGameTable.getCard1b().setIcon(icon);
                 onCard1 = false;
             }
@@ -202,7 +217,7 @@ public class Controller implements ActionListener {
                 onCard2 = true;
             } else {
                 Icon icon = new ImageIcon(
-                        "src/View/playing-card-back.jpg");
+                        "src/images/playing-card-back.jpg");
                 theGameTable.getCard2b().setIcon(icon);
                 onCard2 = false;
             }

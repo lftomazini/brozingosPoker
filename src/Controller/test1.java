@@ -34,11 +34,11 @@ public class test1 {
         deck.createDeck();
         int[] chips1 = {10, 6, 3, 4, 4};
         ArrayList<Player> players = new ArrayList<Player>();
-        for (int i = 0; i < 4; i++) {
-            players.add(new Player(chips1));
-        }
+//        for (int i = 0; i < 4; i++) {
+//            players.add(new Player(chips1));
+//        }
         CardDealer dealer = new CardDealer(deck, players, 0);
-        dealer.giveCardstoPlayers();
+//        dealer.giveCardstoPlayers();
         for (int i = 0; i < 52; i++) {
             System.out.println(dealer.placeCardsOnTable().getName());
         }
