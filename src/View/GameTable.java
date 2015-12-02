@@ -68,6 +68,7 @@ public class GameTable extends javax.swing.JFrame {
         p6c2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        buttons = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -166,11 +167,15 @@ public class GameTable extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Small-Blind-Button-SY-Q58DONE-.png"))); // NOI18N
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(620, 390, 60, 70);
+        jLabel4.setBounds(830, 230, 60, 70);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bigblinddone.png"))); // NOI18N
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(340, 400, 60, 56);
+        jLabel2.setBounds(640, 400, 60, 56);
+
+        buttons.setText("buttons");
+        jPanel1.add(buttons);
+        buttons.setBounds(490, 590, 66, 27);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -239,6 +244,7 @@ public class GameTable extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel RIVER;
     private javax.swing.JLabel TURN;
+    private javax.swing.JButton buttons;
     private javax.swing.JButton card1b;
     private javax.swing.JButton card2b;
     private javax.swing.JLabel deck;
