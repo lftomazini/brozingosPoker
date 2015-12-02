@@ -64,8 +64,6 @@ public class Controller implements ActionListener {
         this.theGameTable.getjButton2().addActionListener(this);
         this.theGameTable.getCard1b().addActionListener(this);
         this.theGameTable.getCard2b().addActionListener(this);
-        this.startScreen.getPlayers3().addActionListener(this);
-        this.startScreen.getPlayers4().addActionListener(this);
 
     }
 
@@ -77,6 +75,8 @@ public class Controller implements ActionListener {
 
             theGameTable.setLocationRelativeTo(null);
             theGameTable.setVisible(true);
+            numPlayers = startScreen.getNumPlayers().getSelectedIndex();
+            checkNumPlayers();
             theModel.setNumPlayers(numPlayers);
             ArrayList<Player> players = new ArrayList<Player>();
             for (int i = 0; i < numPlayers; i++) {
@@ -89,6 +89,14 @@ public class Controller implements ActionListener {
             theModel.setTheGameClass(new GameClass(theModel.getPlayers(), 10.00,
                                                    20.00));
             theModel.getTheCardDealer().giveCardstoPlayers();
+            if (numPlayers == 2) {
+                theGameTable.getP2c1().setVisible(false);
+                theGameTable.getP2c2().setVisible(false);
+                theGameTable.getP3c1().setVisible(false);
+                theGameTable.getP3c2().setVisible(false);
+                theGameTable.getP4c1().setVisible(false);
+                theGameTable.getP4c2().setVisible(false);
+            }
             if (numPlayers == 3) {
                 theGameTable.getP2c1().setVisible(false);
                 theGameTable.getP2c2().setVisible(false);
@@ -108,14 +116,6 @@ public class Controller implements ActionListener {
                 theGameTable.getBigBlindL().setVisible(false);
             }
 
-        }
-
-        if (e.getSource() == startScreen.getPlayers3()) {
-            numPlayers = 3;
-        }
-
-        if (e.getSource() == startScreen.getPlayers4()) {
-            numPlayers = 4;
         }
 
         if (e.getSource() == theGameTable.getjButton1()) {
@@ -198,7 +198,7 @@ public class Controller implements ActionListener {
                 onCard1 = true;
             } else {
                 Icon icon = new ImageIcon(
-                        "src/View/playing-card-back.jpg");
+                        "src/image/playing-card-back.jpg");
                 theGameTable.getCard1b().setIcon(icon);
                 onCard1 = false;
             }
@@ -215,12 +215,24 @@ public class Controller implements ActionListener {
                 onCard2 = true;
             } else {
                 Icon icon = new ImageIcon(
-                        "src/View/playing-card-back.jpg");
+                        "src/image/playing-card-back.jpg");
                 theGameTable.getCard2b().setIcon(icon);
                 onCard2 = false;
             }
         }
 
+    }
+
+    private void checkNumPlayers() {
+        if (numPlayers == 0) {
+            numPlayers = 2;
+        } else if (numPlayers == 1) {
+            numPlayers = 3;
+        } else if (numPlayers == 2) {
+            numPlayers = 4;
+        } else {
+            numPlayers = 5;
+        }
     }
 
     class Flop implements ActionListener {

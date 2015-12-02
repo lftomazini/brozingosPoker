@@ -44,7 +44,7 @@
         <Component class="javax.swing.JLabel" name="flop">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/playing-card-back.jpg"/>
+              <Image iconType="3" name="/images/playing-card-back.jpg"/>
             </Property>
           </Properties>
           <Constraints>
@@ -56,7 +56,7 @@
         <Component class="javax.swing.JLabel" name="flop1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/playing-card-back.jpg"/>
+              <Image iconType="3" name="/images/playing-card-back.jpg"/>
             </Property>
           </Properties>
           <Constraints>
@@ -68,7 +68,7 @@
         <Component class="javax.swing.JLabel" name="flop2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/playing-card-back.jpg"/>
+              <Image iconType="3" name="/images/playing-card-back.jpg"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
@@ -81,7 +81,7 @@
         <Component class="javax.swing.JLabel" name="TURN">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/playing-card-back.jpg"/>
+              <Image iconType="3" name="/images/playing-card-back.jpg"/>
             </Property>
           </Properties>
           <Constraints>
@@ -93,7 +93,7 @@
         <Component class="javax.swing.JLabel" name="RIVER">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/playing-card-back.jpg"/>
+              <Image iconType="3" name="/images/playing-card-back.jpg"/>
             </Property>
           </Properties>
           <Constraints>
@@ -131,19 +131,19 @@
         <Component class="javax.swing.JLabel" name="deck">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/playing-card-back.jpg"/>
+              <Image iconType="3" name="/images/playing-card-back.jpg"/>
             </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="1000" y="290" width="-1" height="-1"/>
+              <AbsoluteConstraints x="1000" y="290" width="70" height="100"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JButton" name="card1b">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/playing-card-back.jpg"/>
+              <Image iconType="3" name="/images/playing-card-back.jpg"/>
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -157,7 +157,7 @@
         <Component class="javax.swing.JButton" name="card2b">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/playing-card-back.jpg"/>
+              <Image iconType="3" name="/images/playing-card-back.jpg"/>
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -171,7 +171,7 @@
         <Component class="javax.swing.JLabel" name="p2c1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/playing-card-back-2.jpg"/>
+              <Image iconType="3" name="/images/playing-card-back-2.jpg"/>
             </Property>
           </Properties>
           <Constraints>
@@ -183,7 +183,7 @@
         <Component class="javax.swing.JLabel" name="p2c2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/playing-card-back-2.jpg"/>
+              <Image iconType="3" name="/images/playing-card-back-2.jpg"/>
             </Property>
           </Properties>
           <Constraints>
@@ -195,7 +195,7 @@
         <Component class="javax.swing.JLabel" name="p3c1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/playing-card-back.jpg"/>
+              <Image iconType="3" name="/images/playing-card-back.jpg"/>
             </Property>
           </Properties>
           <Constraints>
@@ -207,7 +207,7 @@
         <Component class="javax.swing.JLabel" name="p3c2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/playing-card-back.jpg"/>
+              <Image iconType="3" name="/images/playing-card-back.jpg"/>
             </Property>
           </Properties>
           <Constraints>
@@ -219,7 +219,7 @@
         <Component class="javax.swing.JLabel" name="p4c1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/playing-card-back.jpg"/>
+              <Image iconType="3" name="/images/playing-card-back.jpg"/>
             </Property>
           </Properties>
           <Constraints>
@@ -231,7 +231,7 @@
         <Component class="javax.swing.JLabel" name="p4c2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/playing-card-back.jpg"/>
+              <Image iconType="3" name="/images/playing-card-back.jpg"/>
             </Property>
           </Properties>
           <Constraints>
@@ -243,7 +243,7 @@
         <Component class="javax.swing.JLabel" name="p5c1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/playing-card-back.jpg"/>
+              <Image iconType="3" name="/images/playing-card-back.jpg"/>
             </Property>
           </Properties>
           <Constraints>
@@ -255,7 +255,7 @@
         <Component class="javax.swing.JLabel" name="p5c2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/playing-card-back.jpg"/>
+              <Image iconType="3" name="/images/playing-card-back.jpg"/>
             </Property>
           </Properties>
           <Constraints>
@@ -267,7 +267,7 @@
         <Component class="javax.swing.JLabel" name="p6c1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/playing-card-back.jpg"/>
+              <Image iconType="3" name="/images/playing-card-back.jpg"/>
             </Property>
           </Properties>
           <Constraints>
@@ -279,7 +279,7 @@
         <Component class="javax.swing.JLabel" name="p6c2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/View/playing-card-back.jpg"/>
+              <Image iconType="3" name="/images/playing-card-back.jpg"/>
             </Property>
           </Properties>
           <Constraints>
@@ -518,7 +518,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/View/pokertable.jpg"/>
+          <Image iconType="3" name="/images/pokertable.jpg"/>
         </Property>
       </Properties>
       <Constraints>

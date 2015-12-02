@@ -97,24 +97,24 @@ public class GameTable extends javax.swing.JFrame {
         jPanel1.setOpaque(false);
         jPanel1.setLayout(null);
 
-        flop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        flop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(flop);
         flop.setBounds(910, 290, 70, 100);
 
-        flop1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        flop1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(flop1);
         flop1.setBounds(910, 290, 70, 100);
 
-        flop2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        flop2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         flop2.setToolTipText("");
         jPanel1.add(flop2);
         flop2.setBounds(910, 290, 71, 100);
 
-        TURN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        TURN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(TURN);
         TURN.setBounds(910, 290, 70, 100);
 
-        RIVER.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        RIVER.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(RIVER);
         RIVER.setBounds(910, 290, 70, 100);
 
@@ -136,59 +136,59 @@ public class GameTable extends javax.swing.JFrame {
         jPanel1.add(jButton2);
         jButton2.setBounds(800, 530, 100, 40);
 
-        deck.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        deck.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(deck);
-        deck.setBounds(1000, 290, 71, 100);
+        deck.setBounds(1000, 290, 70, 100);
 
-        card1b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        card1b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         card1b.setBorderPainted(false);
         card1b.setContentAreaFilled(false);
         jPanel1.add(card1b);
         card1b.setBounds(560, 480, 83, 112);
 
-        card2b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        card2b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         card2b.setBorderPainted(false);
         card2b.setContentAreaFilled(false);
         jPanel1.add(card2b);
         card2b.setBounds(640, 480, 83, 112);
 
-        p2c1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back-2.jpg"))); // NOI18N
+        p2c1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back-2.jpg"))); // NOI18N
         jPanel1.add(p2c1);
         p2c1.setBounds(130, 240, 100, 71);
 
-        p2c2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back-2.jpg"))); // NOI18N
+        p2c2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back-2.jpg"))); // NOI18N
         jPanel1.add(p2c2);
         p2c2.setBounds(130, 320, 100, 71);
 
-        p3c1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        p3c1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(p3c1);
         p3c1.setBounds(280, 470, 71, 100);
 
-        p3c2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        p3c2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(p3c2);
         p3c2.setBounds(360, 470, 71, 100);
 
-        p4c1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        p4c1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(p4c1);
         p4c1.setBounds(280, 140, 71, 100);
 
-        p4c2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        p4c2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(p4c2);
         p4c2.setBounds(370, 140, 71, 100);
 
-        p5c1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        p5c1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(p5c1);
         p5c1.setBounds(580, 130, 71, 100);
 
-        p5c2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        p5c2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(p5c2);
         p5c2.setBounds(660, 130, 71, 100);
 
-        p6c1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        p6c1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(p6c1);
         p6c1.setBounds(870, 130, 71, 100);
 
-        p6c2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/playing-card-back.jpg"))); // NOI18N
+        p6c2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(p6c2);
         p6c2.setBounds(950, 130, 70, 100);
 
@@ -299,7 +299,7 @@ public class GameTable extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         getContentPane().add(jPanel1, gridBagConstraints);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/pokertable.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pokertable.jpg"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
