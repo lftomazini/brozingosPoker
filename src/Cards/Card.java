@@ -68,7 +68,7 @@ public class Card {
      * @return: String
      */
     public String getName() {
-        return Integer.toString(this.rank.getValue()) + this.suit.toString();
+        return Integer.toString(this.rank.getValue()) + " " + this.suit.toString();
     }
 
     /**
