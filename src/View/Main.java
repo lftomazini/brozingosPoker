@@ -63,6 +63,7 @@ public class Main {
                 Model theModel = new Model();
                 StartScreen startScreen = null;
                 startScreen = new StartScreen();
+
                 try {
                     Controller controller = new Controller(startScreen,
                                                            theModel);

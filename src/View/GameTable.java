@@ -57,8 +57,7 @@ public class GameTable extends javax.swing.JFrame {
         flop2 = new javax.swing.JLabel();
         TURN = new javax.swing.JLabel();
         RIVER = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        flip = new javax.swing.JButton();
         deck = new javax.swing.JLabel();
         card1b = new javax.swing.JButton();
         card2b = new javax.swing.JButton();
@@ -129,14 +128,14 @@ public class GameTable extends javax.swing.JFrame {
         jPanel1.add(RIVER);
         RIVER.setBounds(910, 290, 70, 100);
 
-        jButton1.setText("Flip Card");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        flip.setText("Flip Card");
+        flip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                flipActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(800, 497, 100, 30);
+        jPanel1.add(flip);
+        flip.setBounds(480, 630, 100, 30);
 
         jButton2.setText("Slide Cards");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -155,13 +154,13 @@ public class GameTable extends javax.swing.JFrame {
         card1b.setBorderPainted(false);
         card1b.setContentAreaFilled(false);
         jPanel1.add(card1b);
-        card1b.setBounds(560, 480, 83, 112);
+        card1b.setBounds(570, 460, 83, 112);
 
         card2b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         card2b.setBorderPainted(false);
         card2b.setContentAreaFilled(false);
         jPanel1.add(card2b);
-        card2b.setBounds(640, 480, 83, 112);
+        card2b.setBounds(650, 460, 83, 112);
 
         p2c1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back-2.jpg"))); // NOI18N
         jPanel1.add(p2c1);
@@ -373,7 +372,7 @@ public class GameTable extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void flipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flipActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -493,8 +492,8 @@ public class GameTable extends javax.swing.JFrame {
     private javax.swing.JLabel whiteChip1;
     // End of variables declaration//GEN-END:variables
 
-    public JButton getjButton1() {
-        return jButton1;
+    public JButton getFlip() {
+        return flip;
     }
 
     public JLabel getFlop() {
@@ -519,10 +518,6 @@ public class GameTable extends javax.swing.JFrame {
 
     public JPanel getjPanel1() {
         return jPanel1;
-    }
-
-    public JButton getjButton2() {
-        return jButton2;
     }
 
     public JButton getCard1b() {

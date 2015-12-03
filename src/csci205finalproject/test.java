@@ -47,16 +47,20 @@ public class test {
         playerArray.add(player_4);
         playerArray.add(player_5);
 
-        CardDealer cardDealer = new CardDealer(deck, playerArray, 0);
+        CardDealer cardDealer = new CardDealer(deck, playerArray);
         cardDealer.giveCardstoPlayers();
         ArrayList<Card> table = new ArrayList<>();
         Card flop_1 = cardDealer.placeCardsOnTable();
         Card flop_2 = cardDealer.placeCardsOnTable();
         Card flop_3 = cardDealer.placeCardsOnTable();
+        Card flop_4 = cardDealer.placeCardsOnTable();
+        Card flop_5 = cardDealer.placeCardsOnTable();
 
         table.add(flop_1);
         table.add(flop_2);
         table.add(flop_3);
+        table.add(flop_4);
+        table.add(flop_5);
 
         GameClass game = new GameClass(playerArray, 25, 50);
 
@@ -81,6 +85,18 @@ public class test {
                                + cardDealer.getCardsOnTable().get(i).getRank() + "  " + cardDealer.getCardsOnTable().get(
                             i).getSuit());
         }
+        CheckHands check = new CheckHands();
+        check.checkHands(playerArray, table);
+        System.out.println("\n");
+        for (int i = 0; i < playerArray.size(); i++) {
+            System.out.println(playerArray.get(i).getHand());
+        }
 
+        System.out.println("-----------");
+        ArrayList<Player> toPrint = check.checkWinner(playerArray, table);
+        for (int i = 0; i < toPrint.size(); i++) {
+            System.out.println(
+                    toPrint.get(i).card1.getName());
+        }
     }
 }

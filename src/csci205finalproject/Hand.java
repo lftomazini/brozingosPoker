@@ -32,4 +32,8 @@ public enum Hand {
     public int getValue() {
         return hand;
     }
+
+    public static boolean equals(Hand hand1, Hand hand2) {
+        return hand1.getValue() == hand2.getValue();
+    }
 }

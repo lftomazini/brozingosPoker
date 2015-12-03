@@ -35,6 +35,7 @@ public class CheckHands {
      */
     public void checkHands(ArrayList<Player> playerArray, ArrayList<Card> cards) {
         for (int i = 0; i < playerArray.size(); i++) {
+            playerArray.get(i).setHand(Hand.HIGH_CARD);
             if (is2OfAKind(playerArray.get(i), cards)) {
                 playerArray.get(i).setHand(Hand.ONE_PAIR);
             }
@@ -61,6 +62,50 @@ public class CheckHands {
             }
             if (isRoyalFlush(playerArray.get(i), cards)) {
                 playerArray.get(i).setHand(Hand.ROYAL_FLUSH);
+            }
+        }
+    }
+
+    public ArrayList<Player> checkWinner(ArrayList<Player> playerArray,
+                                         ArrayList<Card> cards) {
+
+        Collections.sort(playerArray, Player.byHand);
+
+        ArrayList<Player> possibleWinners = new ArrayList<>();
+        if (!Hand.equals(playerArray.get(0).getHand(),
+                         playerArray.get(1).getHand())) {
+            possibleWinners.add(playerArray.get(0));
+            return possibleWinners;
+        } else {
+            int equalHands = 2;
+            int current = 1;
+            while (current < playerArray.size() - 1 && Hand.equals(
+                    playerArray.get(current).getHand(),
+                    playerArray.get(current + 1).getHand())) {
+                current++;
+                equalHands++;
+            }
+
+            for (int i = 0; i < equalHands; i++) {
+                possibleWinners.add(playerArray.get(i));
+            }
+            Collections.sort(possibleWinners, Player.byHighCard);
+            if (!Card.equals(possibleWinners.get(0).card1,
+                             possibleWinners.get(1).getCard1())) {
+                ArrayList<Player> theWinner = new ArrayList<>();
+                theWinner.add(possibleWinners.get(0));
+                return theWinner;
+            } else {
+                current = 0;
+                ArrayList<Player> theWinner = new ArrayList<>();
+                theWinner.add(possibleWinners.get(current));
+                while (current < possibleWinners.size() && Hand.equals(
+                        possibleWinners.get(current).getHand(),
+                        possibleWinners.get(current + 1).getHand())) {
+                    theWinner.add(possibleWinners.get(current + 1));
+                    current++;
+                }
+                return theWinner;
             }
         }
     }
@@ -176,7 +221,6 @@ public class CheckHands {
                         is3OfAKind = true;
                         repeated = 1;
                     } else if (repeated == 2 && is2OfAKind == false) {
-                        System.out.println("2 is true");
                         is2OfAKind = true;
                         repeated = 1;
                     }
@@ -239,13 +283,15 @@ public class CheckHands {
     }
 
     public boolean isRoyalFlush(Player player, ArrayList<Card> cards) {
-        return (isStraightFlush(player, cards) && getHighCard(player).getRank() == Rank.ACE);
+        return (isStraightFlush(player, cards) && getHighCard(player, cards).getRank() == Rank.ACE);
     }
 
-    public Card getHighCard(Player player) {
-        ArrayList<Card> cardsPossible = new ArrayList<>();
-        cardsPossible = player.finalHand;
+    public Card getHighCard(Player player, ArrayList<Card> cards) {
+        ArrayList<Card> cardsPossible = cards;
+        cardsPossible.add(player.getCard1());
+        cardsPossible.add(player.getCard2());
         Collections.sort(cardsPossible, Card.byRank);
+        Collections.reverse(cardsPossible);
         return cardsPossible.get(0);
     }
 }
