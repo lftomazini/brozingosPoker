@@ -57,7 +57,7 @@ public class Player {
         this.smallBlind = false;
         this.card1 = null;
         this.card2 = null;
-        this.chips = chips;
+        this.chips = chips1;
         this.hasFolded = false;
         this.hand = null;
         this.money = this.getTotalChipsValue();
@@ -139,8 +139,10 @@ public class Player {
      * Sets both the cards to be null
      */
     public void fold() {
-        this.setCard1(null);
-        this.setCard2(null);
+        //this.setCard1(null);
+        //this.setCard2(null);
+        hasFolded = true;
+
     }
 
     /**
@@ -215,6 +217,10 @@ public class Player {
      */
     public boolean isBigBlind() {
         return this.bigBlind;
+    }
+
+    public boolean isHasFolded() {
+        return hasFolded;
     }
 
     /**

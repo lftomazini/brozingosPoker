@@ -57,11 +57,10 @@ public class Controller implements ActionListener {
     int tableRound = 0;
     int playerBigBlind = 1;
     int playerSmallBlind = 0;
-    int buttonValue = 0; //tells what round game is up to
-    ArrayList<Integer> folded = new ArrayList<>(); //Will hold list of who is folded
-    int bigBlind = 0;
-    int smallBlind = 0;
-    int makeBetValue = 0; //holds value of what the bet is up to
+    int bigBlind = 50;
+    int smallBlind = 25;
+    int betValue = 0; //holds value of what the bet is up to
+    String[] flipNames = {"The Flop", "The Turn", "The River", "The Showdown"};
 
     public Controller(StartScreen startScreen, Model theModel) throws IOException {
         this.startScreen = startScreen;
@@ -71,12 +70,20 @@ public class Controller implements ActionListener {
         this.theGameTable.getFlip().addActionListener(this);
         this.theGameTable.getCard1b().addActionListener(this);
         this.theGameTable.getCard2b().addActionListener(this);
-        theGameTable.getFlop().setVisible(false);
-        theGameTable.getFlop1().setVisible(false);
-        theGameTable.getFlop2().setVisible(false);
-        theGameTable.getTURN().setVisible(false);
-        theGameTable.getRIVER().setVisible(false);
-        theGameTable.getButtons().addActionListener(this);
+        this.theGameTable.getFlop().setVisible(false);
+        this.theGameTable.getFlop1().setVisible(false);
+        this.theGameTable.getFlop2().setVisible(false);
+        this.theGameTable.getTURN().setVisible(false);
+        this.theGameTable.getRIVER().setVisible(false);
+        this.theGameTable.getFlip().setVisible(false);
+        this.theGameTable.getFoldCheckBet().setVisible(false);
+        this.theGameTable.getButtons().addActionListener(this);
+        this.theGameTable.getBetRB().addActionListener(this);
+        this.theGameTable.getFoldRB().addActionListener(this);
+        this.theGameTable.getCheckRB().addActionListener(this);
+        this.theGameTable.getDoneButton().addActionListener(this);
+        this.theGameTable.getDoneFCB().addActionListener(this);
+        this.theGameTable.getDontPay().addActionListener(this);
 
     }
 
@@ -110,7 +117,9 @@ public class Controller implements ActionListener {
             for (int i = 0; i < numPlayers; i++) {
                 players.add(new Player(chips1));
             }
+
             theModel.setPlayers(players);
+
             theModel.setTheCardDealer(new CardDealer(theModel.getDeck(),
                                                      theModel.getPlayers()));
             theModel.setTheGameClass(new GameClass(theModel.getPlayers(), 10.00,
@@ -135,19 +144,90 @@ public class Controller implements ActionListener {
                 theGameTable.getP2c2().setVisible(false);
 
             }
-            if (playerBigBlind == 0) {
-                theGameTable.getSmallBlindSl().setVisible(false);
-                theGameTable.getSmallBlindL().setVisible(false);
-            } else if (playerSmallBlind == 0) {
-                theGameTable.getBigBlindSl().setVisible(false);
-                theGameTable.getBigBlindL().setVisible(false);
+            theModel.getPlayers().get(0).setSmallBlind(true);
+            theModel.getPlayers().get(0).setBigBlind(true);
+
+        }
+
+        if (e.getSource() == theGameTable.getDoneButton()) {
+            theGameTable.getSetBlindsPan().setVisible(false);
+            for (int i = 1; i < theModel.getNumPlayers(); i++) {
+                theModel.getPlayers().get(i).call(bigBlind);
+                theModel.getPlayers().get(i).getChipsFromMoney();
+            }
+
+            //ASK USER IF THEY WANT TO FOLD OR PAY
+            theModel.getPlayers().get(0).call(smallBlind);
+            theModel.getPlayers().get(0).getChipsFromMoney();
+            updateCoins();
+            this.theGameTable.getFlip().setText(flipNames[tableRound]);
+            this.theGameTable.getFlip().setVisible(true);
+
+        }
+
+        if (e.getSource() == theGameTable.getDontPay()) {
+            theGameTable.getSetBlindsPan().setVisible(false);
+            for (int i = 1; i < theModel.getNumPlayers(); i++) {
+                theModel.getPlayers().get(i).call(bigBlind);
+                theModel.getPlayers().get(i).getChipsFromMoney();
+            }
+            theModel.getPlayers().get(0).fold();
+            this.theGameTable.getFlip().setText(flipNames[tableRound]);
+            this.theGameTable.getFlip().setVisible(true);
+        }
+
+        /**
+         * Flips cards over
+         */
+        if (e.getSource() == theGameTable.getFlip()) {
+
+            flip();
+            theGameTable.getFlip().setVisible(false);
+            this.theGameTable.getFlip().setText(flipNames[tableRound]);
+
+            if (tableRound == 3) {
+                //showdown
+
+            } //don't let them flip again yet!!! Go through round first
+            else if (theModel.getPlayers().get(0).isHasFolded() == false) {
+                theGameTable.getFoldCheckBet().setVisible(true);
+
+            } else {
+                //A function that moves through computer players
+                runPlayers();
+                theGameTable.getFlip().setVisible(true);
             }
 
         }
 
-        if (e.getSource() == theGameTable.getFlip()) {
+        /**
+         * Finishes each round based on choices!
+         */
+        if (e.getSource() == theGameTable.getDoneFCB()) {
 
-            flip();
+            //Player folds
+            if (theGameTable.getFoldRB().isSelected() == true) {
+                int i = 0;
+                fold(i);
+                runPlayers();
+                theGameTable.getFoldCheckBet().setVisible(false);
+                theGameTable.getFlip().setVisible(true);
+
+            } //Player checks
+            else if (theGameTable.getCheckRB().isSelected() == true) {
+                runPlayers();
+                theGameTable.getFoldCheckBet().setVisible(false);
+                theGameTable.getFlip().setVisible(true);
+
+            } //Player bets!
+            else if (theGameTable.getBetRB().isSelected() == true) {
+                theModel.getPlayers().get(0).call(betValue);
+                theModel.getPlayers().get(0).getChipsFromMoney();
+                runPlayers();
+                theGameTable.getFoldCheckBet().setVisible(false);
+                theGameTable.getFlip().setVisible(true);
+
+            }
 
         }
 
@@ -163,6 +243,47 @@ public class Controller implements ActionListener {
             showCard2();
         }
 
+    }
+
+    /**
+     * Updates the coin values based on what the player now has
+     */
+    private void updateCoins() {
+        theGameTable.getWhiteChip1().setText(String.valueOf(
+                theModel.getPlayers().get(
+                        0).getChips()[0]));
+        theGameTable.getRedChip1().setText(String.valueOf(
+                theModel.getPlayers().get(
+                        0).getChips()[1]));
+        theGameTable.getBlueChip1().setText(String.valueOf(
+                theModel.getPlayers().get(
+                        0).getChips()[2]));
+        theGameTable.getGreenChip1().setText(String.valueOf(
+                theModel.getPlayers().get(
+                        0).getChips()[3]));
+        theGameTable.getBlackChip1().setText(String.valueOf(
+                theModel.getPlayers().get(
+                        0).getChips()[4]));
+    }
+
+    /**
+     * Finishes the round, moving through each computer player
+     */
+    private void runPlayers() {
+        for (int i = 1; i < theModel.getNumPlayers(); i++) {
+            if (theModel.getPlayers().get(0).isHasFolded() == true) {
+                //TO DO: randomize: check, bet, fold
+            }
+        }
+    }
+
+    /**
+     * used to fold for player
+     *
+     * @param i - which player in array
+     */
+    private void fold(int i) {
+        theModel.getPlayers().get(i).fold();
     }
 
     private void checkNumPlayers() {
@@ -271,18 +392,6 @@ public class Controller implements ActionListener {
                     "src/images/playing-card-back.jpg");
             theGameTable.getCard2b().setIcon(icon);
             onCard2 = false;
-        }
-    }
-
-    private void checkNumPlayers() {
-        if (numPlayers == 0) {
-            numPlayers = 2;
-        } else if (numPlayers == 1) {
-            numPlayers = 3;
-        } else if (numPlayers == 2) {
-            numPlayers = 4;
-        } else {
-            numPlayers = 5;
         }
     }
 

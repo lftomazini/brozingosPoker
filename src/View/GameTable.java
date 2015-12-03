@@ -23,7 +23,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JSlider;
 import javax.swing.JTextField;
 
 /**
@@ -57,7 +56,6 @@ public class GameTable extends javax.swing.JFrame {
         flop2 = new javax.swing.JLabel();
         TURN = new javax.swing.JLabel();
         RIVER = new javax.swing.JLabel();
-        flip = new javax.swing.JButton();
         deck = new javax.swing.JLabel();
         card1b = new javax.swing.JButton();
         card2b = new javax.swing.JButton();
@@ -82,21 +80,20 @@ public class GameTable extends javax.swing.JFrame {
         greenChip1 = new javax.swing.JLabel();
         blueChip1 = new javax.swing.JLabel();
         setBlindsPan = new javax.swing.JPanel();
-        smallBlindL = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        bigBlindL = new javax.swing.JLabel();
-        smallBlindSl = new javax.swing.JSlider();
-        bigBlindSl = new javax.swing.JSlider();
         doneButton = new javax.swing.JButton();
         dontPay = new javax.swing.JButton();
-        turnLabel = new javax.swing.JLabel();
         foldCheckBet = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        doneButton1 = new javax.swing.JButton();
+        doneFCB = new javax.swing.JButton();
         foldRB = new javax.swing.JRadioButton();
         checkRB = new javax.swing.JRadioButton();
         betRB = new javax.swing.JRadioButton();
         betTF = new javax.swing.JTextField();
+        flip = new javax.swing.JButton();
+        bigBlind = new javax.swing.JButton();
+        smallBlind = new javax.swing.JButton();
+        buttons = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -127,24 +124,6 @@ public class GameTable extends javax.swing.JFrame {
         RIVER.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(RIVER);
         RIVER.setBounds(910, 290, 70, 100);
-
-        flip.setText("Flip Card");
-        flip.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                flipActionPerformed(evt);
-            }
-        });
-        jPanel1.add(flip);
-        flip.setBounds(480, 630, 100, 30);
-
-        jButton2.setText("Slide Cards");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(800, 530, 100, 40);
 
         deck.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(deck);
@@ -260,53 +239,25 @@ public class GameTable extends javax.swing.JFrame {
         setBlindsPan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setBlindsPan.setLayout(null);
 
-        smallBlindL.setText("Small Blind:");
-        setBlindsPan.add(smallBlindL);
-        smallBlindL.setBounds(30, 100, 100, 15);
-
-        jLabel2.setText("Pay Blind:");
+        jLabel2.setText("Pay Small Blind ($25)?:");
         setBlindsPan.add(jLabel2);
-        jLabel2.setBounds(120, 10, 62, 15);
+        jLabel2.setBounds(30, 30, 170, 15);
 
-        bigBlindL.setText("Big Blind:");
-        setBlindsPan.add(bigBlindL);
-        bigBlindL.setBounds(20, 30, 80, 15);
-
-        smallBlindSl.setMaximum(50);
-        smallBlindSl.setMinimum(15);
-        smallBlindSl.setMinorTickSpacing(5);
-        smallBlindSl.setValue(15);
-        setBlindsPan.add(smallBlindSl);
-        smallBlindSl.setBounds(20, 120, 130, 50);
-
-        bigBlindSl.setMaximum(50);
-        bigBlindSl.setMinimum(30);
-        bigBlindSl.setMinorTickSpacing(5);
-        setBlindsPan.add(bigBlindSl);
-        bigBlindSl.setBounds(20, 40, 140, 60);
-
-        doneButton.setText("Done");
+        doneButton.setText("Yes!");
         doneButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 doneButtonActionPerformed(evt);
             }
         });
         setBlindsPan.add(doneButton);
-        doneButton.setBounds(180, 70, 80, 40);
+        doneButton.setBounds(60, 60, 80, 40);
 
         dontPay.setText("Fold");
         setBlindsPan.add(dontPay);
-        dontPay.setBounds(180, 120, 80, 40);
+        dontPay.setBounds(60, 110, 80, 40);
 
         jPanel1.add(setBlindsPan);
-        setBlindsPan.setBounds(510, 280, 290, 190);
-
-        turnLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        turnLabel.setText("Who's Turn");
-        turnLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        turnLabel.setOpaque(true);
-        jPanel1.add(turnLabel);
-        turnLabel.setBounds(570, 600, 150, 60);
+        setBlindsPan.setBounds(60, 600, 210, 200);
 
         foldCheckBet.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         foldCheckBet.setLayout(null);
@@ -315,14 +266,14 @@ public class GameTable extends javax.swing.JFrame {
         foldCheckBet.add(jLabel3);
         jLabel3.setBounds(20, 10, 130, 20);
 
-        doneButton1.setText("Done");
-        doneButton1.addActionListener(new java.awt.event.ActionListener() {
+        doneFCB.setText("Done");
+        doneFCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doneButton1ActionPerformed(evt);
+                doneFCBActionPerformed(evt);
             }
         });
-        foldCheckBet.add(doneButton1);
-        doneButton1.setBounds(20, 140, 170, 40);
+        foldCheckBet.add(doneFCB);
+        doneFCB.setBounds(20, 140, 170, 40);
 
         foldCheckBetGroup.add(foldRB);
         foldRB.setText("Fold?");
@@ -335,6 +286,7 @@ public class GameTable extends javax.swing.JFrame {
         foldRB.setBounds(20, 40, 57, 22);
 
         foldCheckBetGroup.add(checkRB);
+        checkRB.setSelected(true);
         checkRB.setText("Check?");
         foldCheckBet.add(checkRB);
         checkRB.setBounds(20, 70, 70, 22);
@@ -354,7 +306,25 @@ public class GameTable extends javax.swing.JFrame {
         betTF.setBounds(90, 100, 100, 25);
 
         jPanel1.add(foldCheckBet);
-        foldCheckBet.setBounds(250, 270, 220, 200);
+        foldCheckBet.setBounds(310, 600, 220, 200);
+
+        flip.setText("Flip Card");
+        jPanel1.add(flip);
+        flip.setBounds(780, 550, 100, 30);
+
+        bigBlind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bigblinddone.png"))); // NOI18N
+        bigBlind.setContentAreaFilled(false);
+        jPanel1.add(bigBlind);
+        bigBlind.setBounds(800, 210, 70, 70);
+
+        smallBlind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Small-Blind-Button-SY-Q58DONE-.png"))); // NOI18N
+        smallBlind.setContentAreaFilled(false);
+        jPanel1.add(smallBlind);
+        smallBlind.setBounds(810, 450, 70, 60);
+
+        buttons.setText("buttons?");
+        jPanel1.add(buttons);
+        buttons.setBounds(780, 700, 110, 50);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -372,9 +342,9 @@ public class GameTable extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void flipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flipActionPerformed
+    private void flipActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -384,9 +354,9 @@ public class GameTable extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_doneButtonActionPerformed
 
-    private void doneButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButton1ActionPerformed
+    private void doneFCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneFCBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_doneButton1ActionPerformed
+    }//GEN-LAST:event_doneFCBActionPerformed
 
     private void foldRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foldRBActionPerformed
         // TODO add your handling code here:
@@ -445,19 +415,20 @@ public class GameTable extends javax.swing.JFrame {
     private javax.swing.JLabel TURN;
     private javax.swing.JRadioButton betRB;
     private javax.swing.JTextField betTF;
-    private javax.swing.JLabel bigBlindL;
-    private javax.swing.JSlider bigBlindSl;
+    private javax.swing.JButton bigBlind;
     private javax.swing.JLabel blackChip;
     private javax.swing.JLabel blackChip1;
     private javax.swing.JLabel blueChip;
     private javax.swing.JLabel blueChip1;
+    private javax.swing.JButton buttons;
     private javax.swing.JButton card1b;
     private javax.swing.JButton card2b;
     private javax.swing.JRadioButton checkRB;
     private javax.swing.JLabel deck;
     private javax.swing.JButton doneButton;
-    private javax.swing.JButton doneButton1;
+    private javax.swing.JButton doneFCB;
     private javax.swing.JButton dontPay;
+    private javax.swing.JButton flip;
     private javax.swing.JLabel flop;
     private javax.swing.JLabel flop1;
     private javax.swing.JLabel flop2;
@@ -466,8 +437,6 @@ public class GameTable extends javax.swing.JFrame {
     private javax.swing.JRadioButton foldRB;
     private javax.swing.JLabel greenChip;
     private javax.swing.JLabel greenChip1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -485,9 +454,7 @@ public class GameTable extends javax.swing.JFrame {
     private javax.swing.JLabel redChip;
     private javax.swing.JLabel redChip1;
     private javax.swing.JPanel setBlindsPan;
-    private javax.swing.JLabel smallBlindL;
-    private javax.swing.JSlider smallBlindSl;
-    private javax.swing.JLabel turnLabel;
+    private javax.swing.JButton smallBlind;
     private javax.swing.JLabel whiteChip;
     private javax.swing.JLabel whiteChip1;
     // End of variables declaration//GEN-END:variables
@@ -576,20 +543,8 @@ public class GameTable extends javax.swing.JFrame {
         return p6c2;
     }
 
-    public JSlider getBigBlindSl() {
-        return bigBlindSl;
-    }
-
-    public JSlider getSmallBlindSl() {
-        return smallBlindSl;
-    }
-
     public JPanel getSetBlindsPan() {
         return setBlindsPan;
-    }
-
-    public JLabel getTurnLabel() {
-        return turnLabel;
     }
 
     public JLabel getBlackChip() {
@@ -624,14 +579,6 @@ public class GameTable extends javax.swing.JFrame {
         return jLabel2;
     }
 
-    public JLabel getjLabel3() {
-        return smallBlindL;
-    }
-
-    public JLabel getjLabel4() {
-        return bigBlindL;
-    }
-
     public JLabel getRedChip() {
         return redChip;
     }
@@ -646,14 +593,6 @@ public class GameTable extends javax.swing.JFrame {
 
     public JLabel getWhiteChip1() {
         return whiteChip1;
-    }
-
-    public JLabel getBigBlindL() {
-        return bigBlindL;
-    }
-
-    public JLabel getSmallBlindL() {
-        return smallBlindL;
     }
 
     public JButton getDontPay() {
@@ -673,7 +612,7 @@ public class GameTable extends javax.swing.JFrame {
     }
 
     public JButton getDoneButton1() {
-        return doneButton1;
+        return doneFCB;
     }
 
     public JPanel getFoldCheckBet() {
@@ -686,6 +625,22 @@ public class GameTable extends javax.swing.JFrame {
 
     public JRadioButton getFoldRB() {
         return foldRB;
+    }
+
+    public JButton getBigBlind() {
+        return bigBlind;
+    }
+
+    public JButton getButtons() {
+        return buttons;
+    }
+
+    public JButton getSmallBlind() {
+        return smallBlind;
+    }
+
+    public JButton getDoneFCB() {
+        return doneFCB;
     }
 
 }
