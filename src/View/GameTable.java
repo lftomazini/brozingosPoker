@@ -18,10 +18,13 @@ package View;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JSlider;
+import javax.swing.JTextField;
 
 /**
  *
@@ -47,6 +50,7 @@ public class GameTable extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        foldCheckBetGroup = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         flop = new javax.swing.JLabel();
         flop1 = new javax.swing.JLabel();
@@ -87,6 +91,13 @@ public class GameTable extends javax.swing.JFrame {
         doneButton = new javax.swing.JButton();
         dontPay = new javax.swing.JButton();
         turnLabel = new javax.swing.JLabel();
+        foldCheckBet = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        doneButton1 = new javax.swing.JButton();
+        foldRB = new javax.swing.JRadioButton();
+        checkRB = new javax.swing.JRadioButton();
+        betRB = new javax.swing.JRadioButton();
+        betTF = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -195,52 +206,57 @@ public class GameTable extends javax.swing.JFrame {
         whiteChip.setText("White Chip ");
         whiteChip.setOpaque(true);
         jPanel1.add(whiteChip);
-        whiteChip.setBounds(1030, 480, 80, 30);
+        whiteChip.setBounds(930, 500, 80, 30);
 
         blackChip.setText("Black Chip");
         blackChip.setOpaque(true);
         jPanel1.add(blackChip);
-        blackChip.setBounds(1030, 520, 80, 20);
+        blackChip.setBounds(930, 540, 80, 20);
 
         redChip.setText("Red Chip");
         redChip.setOpaque(true);
         jPanel1.add(redChip);
-        redChip.setBounds(1030, 550, 80, 30);
+        redChip.setBounds(930, 570, 80, 30);
 
         blueChip.setText("Blue Chip");
         blueChip.setOpaque(true);
         jPanel1.add(blueChip);
-        blueChip.setBounds(1030, 630, 80, 30);
+        blueChip.setBounds(930, 650, 80, 30);
 
         greenChip.setText("Green Chip");
         greenChip.setOpaque(true);
         jPanel1.add(greenChip);
-        greenChip.setBounds(1030, 590, 80, 20);
+        greenChip.setBounds(930, 610, 80, 20);
 
+        whiteChip1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         whiteChip1.setText("10");
         whiteChip1.setOpaque(true);
         jPanel1.add(whiteChip1);
-        whiteChip1.setBounds(1150, 480, 80, 30);
+        whiteChip1.setBounds(1050, 500, 80, 30);
 
+        blackChip1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         blackChip1.setText("6 ");
         blackChip1.setOpaque(true);
         jPanel1.add(blackChip1);
-        blackChip1.setBounds(1150, 520, 80, 20);
+        blackChip1.setBounds(1050, 540, 80, 20);
 
+        redChip1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         redChip1.setText("4");
         redChip1.setOpaque(true);
         jPanel1.add(redChip1);
-        redChip1.setBounds(1150, 550, 80, 30);
+        redChip1.setBounds(1050, 570, 80, 30);
 
+        greenChip1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         greenChip1.setText("2");
         greenChip1.setOpaque(true);
         jPanel1.add(greenChip1);
-        greenChip1.setBounds(1150, 590, 80, 20);
+        greenChip1.setBounds(1050, 610, 80, 20);
 
+        blueChip1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         blueChip1.setText("2");
         blueChip1.setOpaque(true);
         jPanel1.add(blueChip1);
-        blueChip1.setBounds(1150, 630, 80, 30);
+        blueChip1.setBounds(1050, 650, 80, 30);
 
         setBlindsPan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setBlindsPan.setLayout(null);
@@ -255,20 +271,20 @@ public class GameTable extends javax.swing.JFrame {
 
         bigBlindL.setText("Big Blind:");
         setBlindsPan.add(bigBlindL);
-        bigBlindL.setBounds(40, 50, 80, 15);
+        bigBlindL.setBounds(20, 30, 80, 15);
 
         smallBlindSl.setMaximum(50);
         smallBlindSl.setMinimum(15);
         smallBlindSl.setMinorTickSpacing(5);
         smallBlindSl.setValue(15);
         setBlindsPan.add(smallBlindSl);
-        smallBlindSl.setBounds(140, 90, 130, 50);
+        smallBlindSl.setBounds(20, 120, 130, 50);
 
         bigBlindSl.setMaximum(50);
         bigBlindSl.setMinimum(30);
         bigBlindSl.setMinorTickSpacing(5);
         setBlindsPan.add(bigBlindSl);
-        bigBlindSl.setBounds(140, 40, 140, 60);
+        bigBlindSl.setBounds(20, 40, 140, 60);
 
         doneButton.setText("Done");
         doneButton.addActionListener(new java.awt.event.ActionListener() {
@@ -277,14 +293,14 @@ public class GameTable extends javax.swing.JFrame {
             }
         });
         setBlindsPan.add(doneButton);
-        doneButton.setBounds(30, 140, 80, 40);
+        doneButton.setBounds(180, 70, 80, 40);
 
         dontPay.setText("Fold");
         setBlindsPan.add(dontPay);
-        dontPay.setBounds(216, 140, 90, 40);
+        dontPay.setBounds(180, 120, 80, 40);
 
         jPanel1.add(setBlindsPan);
-        setBlindsPan.setBounds(360, 270, 340, 190);
+        setBlindsPan.setBounds(510, 280, 290, 190);
 
         turnLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         turnLabel.setText("Who's Turn");
@@ -292,6 +308,54 @@ public class GameTable extends javax.swing.JFrame {
         turnLabel.setOpaque(true);
         jPanel1.add(turnLabel);
         turnLabel.setBounds(570, 600, 150, 60);
+
+        foldCheckBet.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        foldCheckBet.setLayout(null);
+
+        jLabel3.setText("Would you like to:");
+        foldCheckBet.add(jLabel3);
+        jLabel3.setBounds(20, 10, 130, 20);
+
+        doneButton1.setText("Done");
+        doneButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doneButton1ActionPerformed(evt);
+            }
+        });
+        foldCheckBet.add(doneButton1);
+        doneButton1.setBounds(20, 140, 170, 40);
+
+        foldCheckBetGroup.add(foldRB);
+        foldRB.setText("Fold?");
+        foldRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                foldRBActionPerformed(evt);
+            }
+        });
+        foldCheckBet.add(foldRB);
+        foldRB.setBounds(20, 40, 57, 22);
+
+        foldCheckBetGroup.add(checkRB);
+        checkRB.setText("Check?");
+        foldCheckBet.add(checkRB);
+        checkRB.setBounds(20, 70, 70, 22);
+
+        foldCheckBetGroup.add(betRB);
+        betRB.setText("Bet?");
+        foldCheckBet.add(betRB);
+        betRB.setBounds(20, 100, 53, 22);
+
+        betTF.setText("How Much?");
+        betTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                betTFActionPerformed(evt);
+            }
+        });
+        foldCheckBet.add(betTF);
+        betTF.setBounds(90, 100, 100, 25);
+
+        jPanel1.add(foldCheckBet);
+        foldCheckBet.setBounds(250, 270, 220, 200);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -320,6 +384,18 @@ public class GameTable extends javax.swing.JFrame {
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_doneButtonActionPerformed
+
+    private void doneButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_doneButton1ActionPerformed
+
+    private void foldRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foldRBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_foldRBActionPerformed
+
+    private void betTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_betTFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -368,6 +444,8 @@ public class GameTable extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel RIVER;
     private javax.swing.JLabel TURN;
+    private javax.swing.JRadioButton betRB;
+    private javax.swing.JTextField betTF;
     private javax.swing.JLabel bigBlindL;
     private javax.swing.JSlider bigBlindSl;
     private javax.swing.JLabel blackChip;
@@ -376,18 +454,24 @@ public class GameTable extends javax.swing.JFrame {
     private javax.swing.JLabel blueChip1;
     private javax.swing.JButton card1b;
     private javax.swing.JButton card2b;
+    private javax.swing.JRadioButton checkRB;
     private javax.swing.JLabel deck;
     private javax.swing.JButton doneButton;
+    private javax.swing.JButton doneButton1;
     private javax.swing.JButton dontPay;
     private javax.swing.JLabel flop;
     private javax.swing.JLabel flop1;
     private javax.swing.JLabel flop2;
+    private javax.swing.JPanel foldCheckBet;
+    private javax.swing.ButtonGroup foldCheckBetGroup;
+    private javax.swing.JRadioButton foldRB;
     private javax.swing.JLabel greenChip;
     private javax.swing.JLabel greenChip1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel p2c1;
     private javax.swing.JLabel p2c2;
@@ -575,6 +659,38 @@ public class GameTable extends javax.swing.JFrame {
 
     public JLabel getSmallBlindL() {
         return smallBlindL;
+    }
+
+    public JButton getDontPay() {
+        return dontPay;
+    }
+
+    public JRadioButton getBetRB() {
+        return betRB;
+    }
+
+    public JTextField getBetTF() {
+        return betTF;
+    }
+
+    public JRadioButton getCheckRB() {
+        return checkRB;
+    }
+
+    public JButton getDoneButton1() {
+        return doneButton1;
+    }
+
+    public JPanel getFoldCheckBet() {
+        return foldCheckBet;
+    }
+
+    public ButtonGroup getFoldCheckBetGroup() {
+        return foldCheckBetGroup;
+    }
+
+    public JRadioButton getFoldRB() {
+        return foldRB;
     }
 
 }

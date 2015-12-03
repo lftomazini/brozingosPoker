@@ -54,6 +54,11 @@ public class Controller implements ActionListener {
     int tableRound = 0;
     int playerBigBlind = 1;
     int playerSmallBlind = 0;
+    int buttonValue = 0; //tells what round game is up to
+    ArrayList<Integer> folded = new ArrayList<>(); //Will hold list of who is folded
+    int bigBlind = 0;
+    int smallBlind = 0;
+    int makeBetValue = 0; //holds value of what the bet is up to
 
     public Controller(StartScreen startScreen, Model theModel) throws IOException {
         this.startScreen = startScreen;
@@ -64,6 +69,9 @@ public class Controller implements ActionListener {
         this.theGameTable.getjButton2().addActionListener(this);
         this.theGameTable.getCard1b().addActionListener(this);
         this.theGameTable.getCard2b().addActionListener(this);
+        this.theGameTable.getBetRB().addActionListener(this);
+        this.theGameTable.getFoldRB().addActionListener(this);
+        this.theGameTable.getCheckRB().addActionListener(this);
 
     }
 
