@@ -459,6 +459,77 @@ public class Controller implements ActionListener {
                     }
                 }
             }
+            if (numPlayers == 6) {
+                if (qX == 0) {
+                    theGameTable.getBigBlind().setLocation(
+                            theGameTable.getBigBlind().getX() - 1,
+                            theGameTable.getBigBlind().getY());
+                    theGameTable.getSmallBlind().setLocation(
+                            theGameTable.getSmallBlind().getX() - 1,
+                            theGameTable.getSmallBlind().getY());
+                    if (theGameTable.getSmallBlind().getX() < 640 && theGameTable.getBigBlind().getX() < 360) {
+                        qX++;
+                        timerX.stop();
+                    }
+                } else if (qX == 1) {
+                    theGameTable.getBigBlind().setLocation(
+                            theGameTable.getBigBlind().getX() - 1,
+                            theGameTable.getBigBlind().getY());
+                    theGameTable.getSmallBlind().setLocation(
+                            theGameTable.getSmallBlind().getX() - 1,
+                            theGameTable.getSmallBlind().getY());
+                    if (theGameTable.getSmallBlind().getX() < 360 && theGameTable.getBigBlind().getX() < 250) {
+                        qX++;
+                        timerX.stop();
+                    }
+                } else if (qX == 2) {
+                    theGameTable.getBigBlind().setLocation(
+                            theGameTable.getBigBlind().getX() + 1,
+                            theGameTable.getBigBlind().getY());
+                    theGameTable.getSmallBlind().setLocation(
+                            theGameTable.getSmallBlind().getX() - 1,
+                            theGameTable.getSmallBlind().getY());
+                    if (theGameTable.getSmallBlind().getX() < 250 && theGameTable.getBigBlind().getX() > 360) {
+                        qX++;
+                        timerX.stop();
+                    }
+
+                } else if (qX == 3) {
+                    theGameTable.getBigBlind().setLocation(
+                            theGameTable.getBigBlind().getX() + 1,
+                            theGameTable.getBigBlind().getY());
+                    theGameTable.getSmallBlind().setLocation(
+                            theGameTable.getSmallBlind().getX() + 1,
+                            theGameTable.getSmallBlind().getY());
+                    if (theGameTable.getSmallBlind().getX() > 360 && theGameTable.getBigBlind().getX() > 580) {
+                        qX++;
+                        timerX.stop();
+                    }
+                } else if (qX == 4) {
+                    theGameTable.getBigBlind().setLocation(
+                            theGameTable.getBigBlind().getX() + 1,
+                            theGameTable.getBigBlind().getY());
+                    theGameTable.getSmallBlind().setLocation(
+                            theGameTable.getSmallBlind().getX() + 1,
+                            theGameTable.getSmallBlind().getY());
+                    if (theGameTable.getSmallBlind().getX() > 580 && theGameTable.getBigBlind().getX() > 830) {
+                        qX++;
+                        timerX.stop();
+                    }
+                } else if (qX == 5) {
+                    theGameTable.getBigBlind().setLocation(
+                            theGameTable.getBigBlind().getX() - 1,
+                            theGameTable.getBigBlind().getY());
+                    theGameTable.getSmallBlind().setLocation(
+                            theGameTable.getSmallBlind().getX() + 1,
+                            theGameTable.getSmallBlind().getY());
+                    if (theGameTable.getSmallBlind().getX() > 830 && theGameTable.getBigBlind().getX() < 640) {
+                        qX = 0;
+                        timerX.stop();
+                    }
+
+                }
+            }
         }
 
     }
@@ -499,8 +570,7 @@ public class Controller implements ActionListener {
                     }
 
                 }
-            } else if (numPlayers
-                       == 4) {
+            } else if (numPlayers == 4) {
                 if (qY == 0) {
                     theGameTable.getSmallBlind().setLocation(
                             theGameTable.getSmallBlind().getX(),
@@ -577,9 +647,67 @@ public class Controller implements ActionListener {
 
                     }
                 }
+            } else if (numPlayers == 6) {
+                if (qY == 0) {
+                    theGameTable.getSmallBlind().setLocation(
+                            theGameTable.getSmallBlind().getX(),
+                            theGameTable.getSmallBlind().getY() + 1);
+                    if (theGameTable.getSmallBlind().getY() > 400) {
+
+                        qY++;
+                        timerY.stop();
+                    }
+
+                } else if (qY == 1) {
+                    theGameTable.getBigBlind().setLocation(
+                            theGameTable.getBigBlind().getX(),
+                            theGameTable.getBigBlind().getY() - 1);
+                    if (theGameTable.getBigBlind().getY() < 320) {
+                        qY++;
+                        timerY.stop();
+
+                    }
+                } else if (qY == 2) {
+                    theGameTable.getBigBlind().setLocation(
+                            theGameTable.getBigBlind().getX(),
+                            theGameTable.getBigBlind().getY() - 1);
+                    theGameTable.getSmallBlind().setLocation(
+                            theGameTable.getSmallBlind().getX(),
+                            theGameTable.getSmallBlind().getY() - 1);
+                    if (theGameTable.getBigBlind().getY() < 230 && theGameTable.getSmallBlind().getY() < 310) {
+                        qY++;
+                        timerY.stop();
+
+                    }
+                } else if (qY == 3) {
+                    theGameTable.getSmallBlind().setLocation(
+                            theGameTable.getSmallBlind().getX(),
+                            theGameTable.getSmallBlind().getY() - 1);
+
+                    if (theGameTable.getSmallBlind().getY() < 230) {
+                        qY++;
+                        timerY.stop();
+                    }
+                } else if (qY == 4) {
+
+                    qY++;
+                    timerY.stop();
+
+                } else if (qY == 5) {
+
+                    theGameTable.getBigBlind().setLocation(
+                            theGameTable.getBigBlind().getX(),
+                            theGameTable.getBigBlind().getY() + 1);
+                    if (theGameTable.getBigBlind().getY() > 400) {
+                        qY = 0;
+                        timerY.stop();
+
+                    }
+                }
             }
 
         }
 
     }
+
 }

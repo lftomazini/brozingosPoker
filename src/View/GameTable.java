@@ -171,7 +171,7 @@ public class GameTable extends javax.swing.JFrame {
 
         bigBlind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bigblinddone.png"))); // NOI18N
         jPanel1.add(bigBlind);
-        bigBlind.setBounds(640, 400, 60, 56);
+        bigBlind.setBounds(650, 400, 60, 56);
 
         buttons.setText("buttons");
         jPanel1.add(buttons);
