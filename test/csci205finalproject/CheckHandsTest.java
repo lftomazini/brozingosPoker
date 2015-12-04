@@ -80,11 +80,11 @@ public class CheckHandsTest {
         Card card15 = new Card(Rank.THREE, Suits.SPADES);
 
         ArrayList<Player> playerArray = new ArrayList<>();
-        Player player_1 = new Player(chips);
-        Player player_2 = new Player(chips);
-        Player player_3 = new Player(chips);
-        Player player_4 = new Player(chips);
-        Player player_5 = new Player(chips);
+        Player player_1 = new Player(chips, "Todd");
+        Player player_2 = new Player(chips, "Jeff");
+        Player player_3 = new Player(chips, "Sasha");
+        Player player_4 = new Player(chips, "Alisha");
+        Player player_5 = new Player(chips, "Raymond");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         player_2.setCard1(card3);
@@ -137,7 +137,7 @@ public class CheckHandsTest {
         Card card7 = new Card(Rank.J, Suits.CLUBS);
 
         ArrayList<Player> playerArray = new ArrayList<>();
-        Player player_1 = new Player(chips);
+        Player player_1 = new Player(chips, "Raquel");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
@@ -175,7 +175,7 @@ public class CheckHandsTest {
         Card card7 = new Card(Rank.J, Suits.CLUBS);
 
         ArrayList<Player> playerArray = new ArrayList<>();
-        Player player_1 = new Player(chips);
+        Player player_1 = new Player(chips, "Tanya");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
@@ -213,7 +213,7 @@ public class CheckHandsTest {
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
         ArrayList<Player> playerArray = new ArrayList<>();
-        Player player_1 = new Player(chips);
+        Player player_1 = new Player(chips, "Alexander");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
@@ -251,7 +251,7 @@ public class CheckHandsTest {
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
         ArrayList<Player> playerArray = new ArrayList<>();
-        Player player_1 = new Player(chips);
+        Player player_1 = new Player(chips, "Aram");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
@@ -289,7 +289,7 @@ public class CheckHandsTest {
         Card card7 = new Card(Rank.TWO, Suits.CLUBS);
 
         ArrayList<Player> playerArray = new ArrayList<>();
-        Player player_1 = new Player(chips);
+        Player player_1 = new Player(chips, "Greg");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
@@ -327,7 +327,7 @@ public class CheckHandsTest {
         Card card7 = new Card(Rank.TWO, Suits.CLUBS);
 
         ArrayList<Player> playerArray = new ArrayList<>();
-        Player player_1 = new Player(chips);
+        Player player_1 = new Player(chips, "Frances");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
@@ -365,7 +365,7 @@ public class CheckHandsTest {
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
         ArrayList<Player> playerArray = new ArrayList<>();
-        Player player_1 = new Player(chips);
+        Player player_1 = new Player(chips, "Layla");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
@@ -403,7 +403,7 @@ public class CheckHandsTest {
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
         ArrayList<Player> playerArray = new ArrayList<>();
-        Player player_1 = new Player(chips);
+        Player player_1 = new Player(chips, "Kayla");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
@@ -441,7 +441,7 @@ public class CheckHandsTest {
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
         ArrayList<Player> playerArray = new ArrayList<>();
-        Player player_1 = new Player(chips);
+        Player player_1 = new Player(chips, "Archibald");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
@@ -479,7 +479,7 @@ public class CheckHandsTest {
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
         ArrayList<Player> playerArray = new ArrayList<>();
-        Player player_1 = new Player(chips);
+        Player player_1 = new Player(chips, "Arshjit");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
@@ -517,7 +517,7 @@ public class CheckHandsTest {
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
         ArrayList<Player> playerArray = new ArrayList<>();
-        Player player_1 = new Player(chips);
+        Player player_1 = new Player(chips, "Manuel");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
@@ -555,7 +555,7 @@ public class CheckHandsTest {
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
         ArrayList<Player> playerArray = new ArrayList<>();
-        Player player_1 = new Player(chips);
+        Player player_1 = new Player(chips, "Amanda");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
@@ -593,7 +593,7 @@ public class CheckHandsTest {
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
         ArrayList<Player> playerArray = new ArrayList<>();
-        Player player_1 = new Player(chips);
+        Player player_1 = new Player(chips, "Courtney");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
@@ -631,7 +631,7 @@ public class CheckHandsTest {
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
         ArrayList<Player> playerArray = new ArrayList<>();
-        Player player_1 = new Player(chips);
+        Player player_1 = new Player(chips, "John");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
@@ -669,7 +669,7 @@ public class CheckHandsTest {
         Card card7 = new Card(Rank.Q, Suits.CLUBS);
 
         ArrayList<Player> playerArray = new ArrayList<>();
-        Player player_1 = new Player(chips);
+        Player player_1 = new Player(chips, "Karl");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
@@ -707,7 +707,7 @@ public class CheckHandsTest {
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
         ArrayList<Player> playerArray = new ArrayList<>();
-        Player player_1 = new Player(chips);
+        Player player_1 = new Player(chips, "Nigel");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
@@ -745,7 +745,7 @@ public class CheckHandsTest {
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
         ArrayList<Player> playerArray = new ArrayList<>();
-        Player player_1 = new Player(chips);
+        Player player_1 = new Player(chips, "Thomas");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
@@ -783,7 +783,7 @@ public class CheckHandsTest {
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
         ArrayList<Player> playerArray = new ArrayList<>();
-        Player player_1 = new Player(chips);
+        Player player_1 = new Player(chips, "Greg");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
@@ -821,7 +821,7 @@ public class CheckHandsTest {
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
         ArrayList<Player> playerArray = new ArrayList<>();
-        Player player_1 = new Player(chips);
+        Player player_1 = new Player(chips, "Harry Potter");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);

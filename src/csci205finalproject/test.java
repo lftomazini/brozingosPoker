@@ -35,11 +35,11 @@ public class test {
 //        Card card6 = new Card(Rank.TWO, Suits.DIAMONDS);
 //        Card card7 = new Card(Rank.J, Suits.CLUBS);
         ArrayList<Player> playerArray = new ArrayList<>();
-        Player player_1 = new Player(chips);
-        Player player_2 = new Player(chips);
-        Player player_3 = new Player(chips);
-        Player player_4 = new Player(chips);
-        Player player_5 = new Player(chips);
+        Player player_1 = new Player(chips, "Bob");
+        Player player_2 = new Player(chips, "Sally");
+        Player player_3 = new Player(chips, "Joe");
+        Player player_4 = new Player(chips, "Obama");
+        Player player_5 = new Player(chips, "Todd");
 
         playerArray.add(player_1);
         playerArray.add(player_2);
