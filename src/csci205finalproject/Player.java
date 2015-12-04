@@ -31,6 +31,7 @@ public class Player {
     private boolean hasFolded;
     private int money;
     private Hand hand;
+    private String name;
     Card card1;
     Card card2;
     private int[] chips = new int[Chips.values().length];
@@ -47,12 +48,20 @@ public class Player {
         this.hasFolded = false;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     /**
      * Constructs a player object
      *
      * @param chips1: An array of chips
      */
-    public Player(int[] chips1) {
+    public Player(int[] chips1, String name) {
         this.bigBlind = false;
         this.smallBlind = false;
         this.card1 = null;
@@ -61,6 +70,7 @@ public class Player {
         this.hasFolded = false;
         this.hand = null;
         this.money = this.getTotalChipsValue();
+        this.name = name;
     }
 
     /**
@@ -133,6 +143,10 @@ public class Player {
         if (money == -1) {
             money = this.makeBet(this.getMoney());
         }
+    }
+
+    public void setHasFolded(boolean hasFolded) {
+        this.hasFolded = hasFolded;
     }
 
     /**
