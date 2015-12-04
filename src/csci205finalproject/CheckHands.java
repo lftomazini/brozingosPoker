@@ -70,24 +70,30 @@ public class CheckHands {
                                          ArrayList<Card> cards) {
 
         Collections.sort(playerArray, Player.byHand);
+        ArrayList<Player> notFolded = new ArrayList<>();
+        for (int i = 0; i < playerArray.size(); i++) {
+            if (!playerArray.get(i).isHasFolded()) {
+                notFolded.add(playerArray.get(i));
+            }
+        }
 
         ArrayList<Player> possibleWinners = new ArrayList<>();
-        if (!Hand.equals(playerArray.get(0).getHand(),
-                         playerArray.get(1).getHand())) {
-            possibleWinners.add(playerArray.get(0));
+        if (!Hand.equals(notFolded.get(0).getHand(),
+                         notFolded.get(1).getHand())) {
+            possibleWinners.add(notFolded.get(0));
             return possibleWinners;
         } else {
             int equalHands = 2;
             int current = 1;
-            while (current < playerArray.size() - 1 && Hand.equals(
-                    playerArray.get(current).getHand(),
-                    playerArray.get(current + 1).getHand())) {
+            while (current < notFolded.size() - 1 && Hand.equals(
+                    notFolded.get(current).getHand(),
+                    notFolded.get(current + 1).getHand())) {
                 current++;
                 equalHands++;
             }
 
             for (int i = 0; i < equalHands; i++) {
-                possibleWinners.add(playerArray.get(i));
+                possibleWinners.add(notFolded.get(i));
             }
             Collections.sort(possibleWinners, Player.byHighCard);
             if (!Card.equals(possibleWinners.get(0).card1,
