@@ -53,19 +53,33 @@ public class gameFlow {
         cardDealer.giveCardstoPlayers();
         ArrayList<Card> table = new ArrayList<>();
 
+        //cretaes the game
         GameClass game = new GameClass(playerArray, 25, 50);
+        //set the minimum bet to the big blind
         game.setBet(game.getBigBlind());
+
+        //for flop turn river and final bets
         for (int i = 0; i < 4; i++) {
+
+            //for each player
             for (int j = 0; j < playerArray.size(); j++) {
                 System.out.println("Player " + (j + 1));
+
+                //let the player to something if still on the game
                 if (!playerArray.get(j).isHasFolded()) {
+
+                    //pays big blind if player is big blind
                     if (playerArray.get(j).isBigBlind() && i == 0) {
                         playerArray.get(j).makeBet(game.getBigBlind());
                         System.out.println("Payed big");
                     } else {
+
+                        //pays small blind if player is small blind
                         if (playerArray.get(j).isSmallBlind() && i == 0) {
                             playerArray.get(j).makeBet(game.getSmallBlind());
                             System.out.println("Payed small");
+
+                            //let the player the player choose an action
                         } else {
                             System.out.println("0: Pay minimum");
                             System.out.println("1: Fold");
@@ -73,6 +87,7 @@ public class gameFlow {
                             Scanner sc = new Scanner(System.in);
                             int option = sc.nextInt();
 
+                            //do an action depending on what the player chose
                             switch (option) {
                                 case 0:
                                     playerArray.get(j).makeBet(
@@ -94,6 +109,8 @@ public class gameFlow {
                     }
                 }
             }
+
+            //do an action depending if it is flop turn river
             switch (i) {
                 case 0:
                     System.out.println("Flop");
@@ -119,6 +136,8 @@ public class gameFlow {
                     System.out.println("Final bets");
                     break;
             }
+
+            //prints the players cards after flop turn river
             for (int k = 0; k < playerArray.size(); k++) {
                 System.out.println(playerArray.get(k).getName());
                 System.out.println(
@@ -129,13 +148,19 @@ public class gameFlow {
                                 k).card2.getSuit());
                 System.out.println("");
             }
+
+            //prints the cards that are on the table
             for (int m = 0; m < cardDealer.getCardsOnTable().size(); m++) {
                 System.out.println("\n"
                                    + cardDealer.getCardsOnTable().get(m).getRank() + "  " + cardDealer.getCardsOnTable().get(
                                 m).getSuit());
             }
+
+            //sets the minimum bet back to 0 after each river flop turn
             game.setBet(0);
         }
+
+        //tells the winner
         CheckHands check = new CheckHands();
         check.checkHands(playerArray, table);
         System.out.println("-----------");
