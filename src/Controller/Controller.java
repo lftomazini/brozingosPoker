@@ -15,12 +15,12 @@
  * *****************************************/
 package Controller;
 
+import Animations.ButtonsMovement;
 import Cards.Card;
 import Cards.Deck;
 import Model.Model;
 import View.GameTable;
 import View.StartScreen;
-import Animations.ButtonsMovement;
 import csci205finalproject.CardDealer;
 import csci205finalproject.CheckHands;
 import csci205finalproject.GameClass;
@@ -176,7 +176,7 @@ public class Controller implements ActionListener {
                 theGameTable.getPlayer6().setText(theModel.getPlayers().get(
                         4).getName());
 
-            } else if (numPlayers == 5) {
+            } else if (numPlayers == 6) {
                 theGameTable.getPlayer1().setText(theModel.getPlayers().get(
                         0).getName());
                 theGameTable.getPlayer2().setText(theModel.getPlayers().get(
