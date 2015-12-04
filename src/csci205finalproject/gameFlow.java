@@ -58,12 +58,18 @@ public class gameFlow {
         //set the minimum bet to the big blind
         game.setBet(game.getBigBlind());
 
+        int ending;
+        int j;
         //for flop turn river and final bets
         for (int i = 0; i < 4; i++) {
 
+            // rounds equal number of players
+            ending = playerArray.size();
+            j = 0;
             //for each player
-            for (int j = 0; j < playerArray.size(); j++) {
+            while (j != ending) {
                 System.out.println("Player " + (j + 1));
+                System.out.println("Will end in " + ending);
 
                 //let the player to something if still on the game
                 if (!playerArray.get(j).isHasFolded()) {
@@ -71,15 +77,17 @@ public class gameFlow {
                     //pays big blind if player is big blind
                     if (playerArray.get(j).isBigBlind() && i == 0) {
                         playerArray.get(j).makeBet(game.getBigBlind());
+                        ending = 1;
                         System.out.println("Payed big");
                     } else {
 
                         //pays small blind if player is small blind
                         if (playerArray.get(j).isSmallBlind() && i == 0) {
                             playerArray.get(j).makeBet(game.getSmallBlind());
+                            playerArray.get(j).setSmallBlind(false);
                             System.out.println("Payed small");
 
-                            //let the player the player choose an action
+                            //let the player choose an action
                         } else {
                             System.out.println("0: Pay minimum");
                             System.out.println("1: Fold");
@@ -103,10 +111,16 @@ public class gameFlow {
                                     playerArray.get(j).makeBet(amount);
                                     game.setBet(amount);
                                     //TODO remove money from player
+                                    ending = j;
                                     break;
                             }
                         }
                     }
+                }
+                if (!(ending == playerArray.size() && j + 1 == ending)) {
+                    j = (j == playerArray.size() - 1) ? 0 : j + 1;
+                } else {
+                    j++;
                 }
             }
 
