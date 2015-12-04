@@ -70,24 +70,30 @@ public class CheckHands {
                                          ArrayList<Card> cards) {
 
         Collections.sort(playerArray, Player.byHand);
+        ArrayList<Player> notFolded = new ArrayList<>();
+        for (int i = 0; i < playerArray.size(); i++) {
+            if (!playerArray.get(i).isHasFolded()) {
+                notFolded.add(playerArray.get(i));
+            }
+        }
 
         ArrayList<Player> possibleWinners = new ArrayList<>();
-        if (!Hand.equals(playerArray.get(0).getHand(),
-                         playerArray.get(1).getHand())) {
-            possibleWinners.add(playerArray.get(0));
+        if (!Hand.equals(notFolded.get(0).getHand(),
+                         notFolded.get(1).getHand())) {
+            possibleWinners.add(notFolded.get(0));
             return possibleWinners;
         } else {
             int equalHands = 2;
             int current = 1;
-            while (current < playerArray.size() - 1 && Hand.equals(
-                    playerArray.get(current).getHand(),
-                    playerArray.get(current + 1).getHand())) {
+            while (current < notFolded.size() - 1 && Hand.equals(
+                    notFolded.get(current).getHand(),
+                    notFolded.get(current + 1).getHand())) {
                 current++;
                 equalHands++;
             }
 
             for (int i = 0; i < equalHands; i++) {
-                possibleWinners.add(playerArray.get(i));
+                possibleWinners.add(notFolded.get(i));
             }
             Collections.sort(possibleWinners, Player.byHighCard);
             if (!Card.equals(possibleWinners.get(0).card1,
@@ -283,10 +289,15 @@ public class CheckHands {
     }
 
     public boolean isRoyalFlush(Player player, ArrayList<Card> cards) {
-        return (isStraightFlush(player, cards) && getHighCard(player).getRank() == Rank.ACE);
+        return (isStraightFlush(player, cards) && getHighCard(player, cards).getRank() == Rank.ACE);
     }
 
-    public Card getHighCard(Player player) {
-        return (player.getCard1().getRank().getValue() > player.getCard2().getRank().getValue()) ? player.getCard1() : player.getCard2();
+    public Card getHighCard(Player player, ArrayList<Card> cards) {
+        ArrayList<Card> cardsPossible = cards;
+        cardsPossible.add(player.getCard1());
+        cardsPossible.add(player.getCard2());
+        Collections.sort(cardsPossible, Card.byRank);
+        Collections.reverse(cardsPossible);
+        return cardsPossible.get(0);
     }
 }

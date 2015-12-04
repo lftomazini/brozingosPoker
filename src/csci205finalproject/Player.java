@@ -31,6 +31,7 @@ public class Player {
     private boolean hasFolded;
     private int money;
     private Hand hand;
+    private String name;
     Card card1;
     Card card2;
     private int[] chips = new int[Chips.values().length];
@@ -47,20 +48,29 @@ public class Player {
         this.hasFolded = false;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     /**
      * Constructs a player object
      *
      * @param chips1: An array of chips
      */
-    public Player(int[] chips1) {
+    public Player(int[] chips1, String name) {
         this.bigBlind = false;
         this.smallBlind = false;
         this.card1 = null;
         this.card2 = null;
-        this.chips = chips;
+        this.chips = chips1;
         this.hasFolded = false;
         this.hand = null;
         this.money = this.getTotalChipsValue();
+        this.name = name;
     }
 
     /**
@@ -135,12 +145,18 @@ public class Player {
         }
     }
 
+    public void setHasFolded(boolean hasFolded) {
+        this.hasFolded = hasFolded;
+    }
+
     /**
      * Sets both the cards to be null
      */
     public void fold() {
-        this.setCard1(null);
-        this.setCard2(null);
+        //this.setCard1(null);
+        //this.setCard2(null);
+        hasFolded = true;
+
     }
 
     /**
@@ -215,6 +231,10 @@ public class Player {
      */
     public boolean isBigBlind() {
         return this.bigBlind;
+    }
+
+    public boolean isHasFolded() {
+        return hasFolded;
     }
 
     /**
