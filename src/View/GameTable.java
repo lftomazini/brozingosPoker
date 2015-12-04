@@ -98,7 +98,7 @@ public class GameTable extends javax.swing.JFrame {
         flip = new javax.swing.JButton();
         bigBlind = new javax.swing.JButton();
         smallBlind = new javax.swing.JButton();
-        buttons = new javax.swing.JButton();
+        Buttons = new javax.swing.JButton();
         player1 = new javax.swing.JLabel();
         player2 = new javax.swing.JLabel();
         player3 = new javax.swing.JLabel();
@@ -209,7 +209,7 @@ public class GameTable extends javax.swing.JFrame {
         dontPay.setBounds(60, 110, 80, 40);
 
         jPanel1.add(setBlindsPan);
-        setBlindsPan.setBounds(550, 490, 210, 200);
+        setBlindsPan.setBounds(570, 480, 210, 200);
 
         flop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(flop);
@@ -350,16 +350,16 @@ public class GameTable extends javax.swing.JFrame {
         bigBlind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bigblinddone.png"))); // NOI18N
         bigBlind.setContentAreaFilled(false);
         jPanel1.add(bigBlind);
-        bigBlind.setBounds(820, 290, 70, 70);
+        bigBlind.setBounds(620, 390, 70, 70);
 
         smallBlind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Small-Blind-Button-SY-Q58DONE-.png"))); // NOI18N
         smallBlind.setContentAreaFilled(false);
         jPanel1.add(smallBlind);
-        smallBlind.setBounds(640, 390, 70, 60);
+        smallBlind.setBounds(820, 230, 70, 60);
 
-        buttons.setText("buttons?");
-        jPanel1.add(buttons);
-        buttons.setBounds(780, 700, 110, 50);
+        Buttons.setText("buttons?");
+        jPanel1.add(Buttons);
+        Buttons.setBounds(780, 700, 110, 50);
 
         player1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         player1.setText("Player 1");
@@ -482,6 +482,7 @@ public class GameTable extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Buttons;
     private javax.swing.JLabel RIVER;
     private javax.swing.JLabel TURN;
     private javax.swing.JRadioButton betRB;
@@ -491,7 +492,6 @@ public class GameTable extends javax.swing.JFrame {
     private javax.swing.JLabel blackChip1;
     private javax.swing.JLabel blueChip;
     private javax.swing.JLabel blueChip1;
-    private javax.swing.JButton buttons;
     private javax.swing.JButton card1b;
     private javax.swing.JButton card2b;
     private javax.swing.JRadioButton checkRB;
@@ -714,7 +714,7 @@ public class GameTable extends javax.swing.JFrame {
     }
 
     public JButton getButtons() {
-        return buttons;
+        return Buttons;
     }
 
     public JButton getSmallBlind() {
