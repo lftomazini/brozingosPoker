@@ -16,6 +16,7 @@
 package Controller;
 
 import Animations.ButtonsMovement;
+import Animations.RoundEnd;
 import Cards.Card;
 import Cards.Deck;
 import Model.Model;
@@ -62,6 +63,7 @@ public class Controller implements ActionListener {
     int bigBlind = 20;
     int smallBlind = 10;
     ButtonsMovement Move;
+    RoundEnd MoveEnd;
     int betValue = 0; //holds value of what the bet is up to
     String[] flipNames = {"The Flop", "The Turn", "The River", "The Showdown"};
     String[] computerNames = {"Stephanie", "Luis", "Leo", "Anmol", "Professor Peck", "Professor King"};
@@ -81,8 +83,8 @@ public class Controller implements ActionListener {
         this.theGameTable.getFlop().setVisible(false);
         this.theGameTable.getFlop1().setVisible(false);
         this.theGameTable.getFlop2().setVisible(false);
-        this.theGameTable.getTURN().setVisible(false);
-        this.theGameTable.getRIVER().setVisible(false);
+        this.theGameTable.getTurn().setVisible(false);
+        this.theGameTable.getRiver().setVisible(false);
         this.theGameTable.getFlip().setVisible(false);
         this.theGameTable.getWinnerPanel().setVisible(false);
         this.theGameTable.getFoldCheckBet().setVisible(false);
@@ -101,7 +103,9 @@ public class Controller implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == theGameTable.getButtons()) {
-            Move.buttonsNextPosition();
+            MoveEnd = new RoundEnd(theGameTable, theModel
+            );
+            MoveEnd.endRound();
         }
 
         if (e.getSource() == startScreen.getStart()) {
@@ -455,11 +459,11 @@ public class Controller implements ActionListener {
         } //the turn
         else if (tableRound == 1) {
             Card card4 = this.theModel.getTheCardDealer().placeCardsOnTable();
-            theGameTable.getTURN().setVisible(true);
+            theGameTable.getTurn().setVisible(true);
             String cardName4 = card4.getName();
             Icon icon4 = new ImageIcon(
                     "src/cardsimage/" + cardName4 + ".png");
-            theGameTable.getTURN().setIcon(icon4);
+            theGameTable.getTurn().setIcon(icon4);
             timer4 = new Timer(1, new Turn());
             timer4.setInitialDelay(0);
             timer4.setRepeats(true);
@@ -470,11 +474,11 @@ public class Controller implements ActionListener {
         } //the river
         else if (tableRound == 2) {
             Card card5 = this.theModel.getTheCardDealer().placeCardsOnTable();
-            theGameTable.getRIVER().setVisible(true);
+            theGameTable.getRiver().setVisible(true);
             String cardName5 = card5.getName();
             Icon icon5 = new ImageIcon(
                     "src/cardsimage/" + cardName5 + ".png");
-            theGameTable.getRIVER().setIcon(icon5);
+            theGameTable.getRiver().setIcon(icon5);
             timer5 = new Timer(1, new River());
             timer5.setInitialDelay(0);
             timer5.setRepeats(true);
@@ -576,10 +580,10 @@ public class Controller implements ActionListener {
      */
     class Turn implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            theGameTable.getTURN().setLocation(
-                    theGameTable.getTURN().getX() - 1,
-                    theGameTable.getTURN().getY());
-            if (theGameTable.getTURN().getX() < 600) {
+            theGameTable.getTurn().setLocation(
+                    theGameTable.getTurn().getX() - 1,
+                    theGameTable.getTurn().getY());
+            if (theGameTable.getTurn().getX() < 600) {
                 timer4.stop();
             }
         }
@@ -590,10 +594,10 @@ public class Controller implements ActionListener {
      */
     class River implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            theGameTable.getRIVER().setLocation(
-                    theGameTable.getRIVER().getX() - 1,
-                    theGameTable.getRIVER().getY());
-            if (theGameTable.getRIVER().getX() < 700) {
+            theGameTable.getRiver().setLocation(
+                    theGameTable.getRiver().getX() - 1,
+                    theGameTable.getRiver().getY());
+            if (theGameTable.getRiver().getX() < 700) {
                 timer5.stop();
             }
         }

@@ -68,10 +68,8 @@ public class GameTable extends javax.swing.JFrame {
         doneButton = new javax.swing.JButton();
         dontPay = new javax.swing.JButton();
         flop = new javax.swing.JLabel();
-        flop1 = new javax.swing.JLabel();
-        flop2 = new javax.swing.JLabel();
-        TURN = new javax.swing.JLabel();
-        RIVER = new javax.swing.JLabel();
+        turn = new javax.swing.JLabel();
+        river = new javax.swing.JLabel();
         deck = new javax.swing.JLabel();
         card1b = new javax.swing.JButton();
         card2b = new javax.swing.JButton();
@@ -105,6 +103,8 @@ public class GameTable extends javax.swing.JFrame {
         player4 = new javax.swing.JLabel();
         player5 = new javax.swing.JLabel();
         player6 = new javax.swing.JLabel();
+        flop2 = new javax.swing.JLabel();
+        flop1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -215,22 +215,13 @@ public class GameTable extends javax.swing.JFrame {
         jPanel1.add(flop);
         flop.setBounds(910, 290, 70, 100);
 
-        flop1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
-        jPanel1.add(flop1);
-        flop1.setBounds(910, 290, 70, 100);
+        turn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
+        jPanel1.add(turn);
+        turn.setBounds(910, 290, 70, 100);
 
-        flop2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
-        flop2.setToolTipText("");
-        jPanel1.add(flop2);
-        flop2.setBounds(910, 290, 71, 100);
-
-        TURN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
-        jPanel1.add(TURN);
-        TURN.setBounds(910, 290, 70, 100);
-
-        RIVER.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
-        jPanel1.add(RIVER);
-        RIVER.setBounds(910, 290, 70, 100);
+        river.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
+        jPanel1.add(river);
+        river.setBounds(910, 290, 70, 100);
 
         deck.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(deck);
@@ -397,6 +388,14 @@ public class GameTable extends javax.swing.JFrame {
         jPanel1.add(player6);
         player6.setBounds(900, 80, 90, 30);
 
+        flop2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
+        jPanel1.add(flop2);
+        flop2.setBounds(910, 290, 70, 100);
+
+        flop1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
+        jPanel1.add(flop1);
+        flop1.setBounds(910, 290, 70, 100);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -483,8 +482,6 @@ public class GameTable extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buttons;
-    private javax.swing.JLabel RIVER;
-    private javax.swing.JLabel TURN;
     private javax.swing.JRadioButton betRB;
     private javax.swing.JTextField betTF;
     private javax.swing.JButton bigBlind;
@@ -532,9 +529,11 @@ public class GameTable extends javax.swing.JFrame {
     private javax.swing.JLabel player6;
     private javax.swing.JLabel redChip;
     private javax.swing.JLabel redChip1;
+    private javax.swing.JLabel river;
     private javax.swing.JPanel setBlindsPan;
     private javax.swing.JButton smallBlind;
     private javax.swing.JLabel stateWinnerL;
+    private javax.swing.JLabel turn;
     private javax.swing.JLabel whiteChip;
     private javax.swing.JLabel whiteChip1;
     private javax.swing.JPanel winnerPanel;
@@ -557,12 +556,12 @@ public class GameTable extends javax.swing.JFrame {
         return flop2;
     }
 
-    public JLabel getRIVER() {
-        return RIVER;
+    public JLabel getRiver() {
+        return river;
     }
 
-    public JLabel getTURN() {
-        return TURN;
+    public JLabel getTurn() {
+        return turn;
     }
 
     public JPanel getjPanel1() {
