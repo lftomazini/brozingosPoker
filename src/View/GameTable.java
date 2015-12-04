@@ -94,6 +94,10 @@ public class GameTable extends javax.swing.JFrame {
         bigBlind = new javax.swing.JButton();
         smallBlind = new javax.swing.JButton();
         buttons = new javax.swing.JButton();
+        winnerPanel = new javax.swing.JPanel();
+        stateWinnerL = new javax.swing.JLabel();
+        playAgainB = new javax.swing.JButton();
+        exitB = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -326,6 +330,25 @@ public class GameTable extends javax.swing.JFrame {
         jPanel1.add(buttons);
         buttons.setBounds(780, 700, 110, 50);
 
+        winnerPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        winnerPanel.setLayout(null);
+
+        stateWinnerL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        stateWinnerL.setText("State Winner");
+        winnerPanel.add(stateWinnerL);
+        stateWinnerL.setBounds(60, 20, 130, 30);
+
+        playAgainB.setText("Play Again?");
+        winnerPanel.add(playAgainB);
+        playAgainB.setBounds(60, 60, 130, 50);
+
+        exitB.setText("Exit");
+        winnerPanel.add(exitB);
+        exitB.setBounds(60, 130, 130, 50);
+
+        jPanel1.add(winnerPanel);
+        winnerPanel.setBounds(450, 240, 250, 210);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -428,6 +451,7 @@ public class GameTable extends javax.swing.JFrame {
     private javax.swing.JButton doneButton;
     private javax.swing.JButton doneFCB;
     private javax.swing.JButton dontPay;
+    private javax.swing.JButton exitB;
     private javax.swing.JButton flip;
     private javax.swing.JLabel flop;
     private javax.swing.JLabel flop1;
@@ -451,12 +475,15 @@ public class GameTable extends javax.swing.JFrame {
     private javax.swing.JLabel p5c2;
     private javax.swing.JLabel p6c1;
     private javax.swing.JLabel p6c2;
+    private javax.swing.JButton playAgainB;
     private javax.swing.JLabel redChip;
     private javax.swing.JLabel redChip1;
     private javax.swing.JPanel setBlindsPan;
     private javax.swing.JButton smallBlind;
+    private javax.swing.JLabel stateWinnerL;
     private javax.swing.JLabel whiteChip;
     private javax.swing.JLabel whiteChip1;
+    private javax.swing.JPanel winnerPanel;
     // End of variables declaration//GEN-END:variables
 
     public JButton getFlip() {
@@ -641,6 +668,22 @@ public class GameTable extends javax.swing.JFrame {
 
     public JButton getDoneFCB() {
         return doneFCB;
+    }
+
+    public JButton getExitB() {
+        return exitB;
+    }
+
+    public JButton getPlayAgainB() {
+        return playAgainB;
+    }
+
+    public JPanel getWinnerPanel() {
+        return winnerPanel;
+    }
+
+    public JLabel getStateWinnerL() {
+        return stateWinnerL;
     }
 
 }

@@ -20,6 +20,7 @@ import Model.Model;
 import View.GameTable;
 import View.StartScreen;
 import csci205finalproject.CardDealer;
+import csci205finalproject.CheckHands;
 import csci205finalproject.GameClass;
 import csci205finalproject.Player;
 import java.awt.event.ActionEvent;
@@ -61,6 +62,7 @@ public class Controller implements ActionListener {
     int smallBlind = 25;
     int betValue = 0; //holds value of what the bet is up to
     String[] flipNames = {"The Flop", "The Turn", "The River", "The Showdown"};
+    ArrayList<Card> cardsOnTable = new ArrayList<>();
 
     public Controller(StartScreen startScreen, Model theModel) throws IOException {
         this.startScreen = startScreen;
@@ -76,6 +78,7 @@ public class Controller implements ActionListener {
         this.theGameTable.getTURN().setVisible(false);
         this.theGameTable.getRIVER().setVisible(false);
         this.theGameTable.getFlip().setVisible(false);
+        this.theGameTable.getWinnerPanel().setVisible(false);
         this.theGameTable.getFoldCheckBet().setVisible(false);
         this.theGameTable.getButtons().addActionListener(this);
         this.theGameTable.getBetRB().addActionListener(this);
@@ -84,6 +87,8 @@ public class Controller implements ActionListener {
         this.theGameTable.getDoneButton().addActionListener(this);
         this.theGameTable.getDoneFCB().addActionListener(this);
         this.theGameTable.getDontPay().addActionListener(this);
+        this.theGameTable.getPlayAgainB().addActionListener(this);
+        this.theGameTable.getExitB().addActionListener(this);
 
     }
 
@@ -186,18 +191,15 @@ public class Controller implements ActionListener {
             this.theGameTable.getFlip().setText(flipNames[tableRound]);
 
             if (tableRound == 3) {
-                //showdown
-
+                showdown();
             } //don't let them flip again yet!!! Go through round first
             else if (theModel.getPlayers().get(0).isHasFolded() == false) {
                 theGameTable.getFoldCheckBet().setVisible(true);
-
             } else {
                 //A function that moves through computer players
                 runPlayers();
                 theGameTable.getFlip().setVisible(true);
             }
-
         }
 
         /**
@@ -209,26 +211,17 @@ public class Controller implements ActionListener {
             if (theGameTable.getFoldRB().isSelected() == true) {
                 int i = 0;
                 fold(i);
-                runPlayers();
-                theGameTable.getFoldCheckBet().setVisible(false);
-                theGameTable.getFlip().setVisible(true);
-
+                finishRound();
             } //Player checks
             else if (theGameTable.getCheckRB().isSelected() == true) {
-                runPlayers();
-                theGameTable.getFoldCheckBet().setVisible(false);
-                theGameTable.getFlip().setVisible(true);
-
+                finishRound();
             } //Player bets!
             else if (theGameTable.getBetRB().isSelected() == true) {
                 theModel.getPlayers().get(0).call(betValue);
                 theModel.getPlayers().get(0).getChipsFromMoney();
-                runPlayers();
-                theGameTable.getFoldCheckBet().setVisible(false);
-                theGameTable.getFlip().setVisible(true);
-
+                updateCoins();
+                finishRound();
             }
-
         }
 
         //flip card 1 over
@@ -243,6 +236,23 @@ public class Controller implements ActionListener {
             showCard2();
         }
 
+    }
+
+    private void finishRound() {
+        runPlayers();
+        theGameTable.getFoldCheckBet().setVisible(false);
+        theGameTable.getFlip().setVisible(true);
+    }
+
+    private void showdown() {
+        //showdown
+        CheckHands showdown = new CheckHands();
+        showdown.checkHands(theModel.getPlayers(), cardsOnTable);
+        ArrayList<Player> winner = new ArrayList();
+        winner = showdown.checkWinner(theModel.getPlayers(),
+                                      cardsOnTable);
+        //theGameTable.getStateWinnerL().setText(winner.get(0).);
+        theGameTable.getWinnerPanel().setVisible(true);
     }
 
     /**
@@ -334,6 +344,9 @@ public class Controller implements ActionListener {
             timer3.setRepeats(true);
             timer3.start();
 
+            cardsOnTable.add(card1);
+            cardsOnTable.add(card2);
+            cardsOnTable.add(card3);
             tableRound++;
         } //the turn
         else if (tableRound == 1) {
@@ -347,6 +360,8 @@ public class Controller implements ActionListener {
             timer4.setInitialDelay(0);
             timer4.setRepeats(true);
             timer4.start();
+
+            cardsOnTable.add(card4);
             tableRound++;
         } //the river
         else if (tableRound == 2) {
@@ -360,6 +375,8 @@ public class Controller implements ActionListener {
             timer5.setInitialDelay(0);
             timer5.setRepeats(true);
             timer5.start();
+
+            cardsOnTable.add(card5);
             tableRound++;
         }
 
