@@ -130,8 +130,8 @@ public class Controller implements ActionListener {
 
             theModel.setTheCardDealer(new CardDealer(theModel.getDeck(),
                                                      theModel.getPlayers()));
-            theModel.setTheGameClass(new GameClass(theModel.getPlayers(), 10.00,
-                                                   20.00));
+            theModel.setTheGameClass(new GameClass(theModel.getPlayers(), 10,
+                                                   20));
             theModel.getTheCardDealer().giveCardstoPlayers();
             if (numPlayers == 2) {
                 theGameTable.getP2c1().setVisible(false);
