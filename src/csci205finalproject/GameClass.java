@@ -26,39 +26,41 @@ import java.util.ArrayList;
 public class GameClass {
     private ArrayList<Player> playerList;
     private int numOfRounds;
-    private double bet;
-    private double smallBlind;
-    private double bigBlind;
+    private int bet;
+    private int smallBlind;
+    private int bigBlind;
 
-    public GameClass(ArrayList<Player> playerList, double smallBlind,
-                     double bigBlind) {
+    public GameClass(ArrayList<Player> playerList, int smallBlind,
+                     int bigBlind) {
         this.playerList = playerList;
         this.smallBlind = smallBlind;
         this.bigBlind = bigBlind;
         this.bet = bigBlind;
+        playerList.get(0).setSmallBlind(true);
+        playerList.get(1).setBigBlind(true);
     }
 
-    public void setBet(double bet) {
+    public void setBet(int bet) {
         this.bet = bet;
     }
 
-    public void setSmallBlind(double smallBlind) {
+    public void setSmallBlind(int smallBlind) {
         this.smallBlind = smallBlind;
     }
 
-    public void setBigBlind(double bigBlind) {
+    public void setBigBlind(int bigBlind) {
         this.bigBlind = bigBlind;
     }
 
-    public double getBet() {
+    public int getBet() {
         return bet;
     }
 
-    public double getSmallBlind() {
+    public int getSmallBlind() {
         return smallBlind;
     }
 
-    public double getBigBlind() {
+    public int getBigBlind() {
         return bigBlind;
     }
 
