@@ -24,6 +24,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSlider;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -106,6 +107,8 @@ public class GameTable extends javax.swing.JFrame {
         player6 = new javax.swing.JLabel();
         flop2 = new javax.swing.JLabel();
         flop1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        gameInfoTA = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -400,6 +403,15 @@ public class GameTable extends javax.swing.JFrame {
         jPanel1.add(flop1);
         flop1.setBounds(910, 290, 70, 100);
 
+        gameInfoTA.setEditable(false);
+        gameInfoTA.setColumns(20);
+        gameInfoTA.setRows(5);
+        gameInfoTA.setText("Welcome to Brozingo's Texas Hold Em!");
+        jScrollPane1.setViewportView(gameInfoTA);
+
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(910, 430, 262, 77);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -505,12 +517,14 @@ public class GameTable extends javax.swing.JFrame {
     private javax.swing.JPanel foldCheckBet;
     private javax.swing.ButtonGroup foldCheckBetGroup;
     private javax.swing.JRadioButton foldRB;
+    private javax.swing.JTextArea gameInfoTA;
     private javax.swing.JLabel greenChip;
     private javax.swing.JLabel greenChip1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel p2c1;
     private javax.swing.JLabel p2c2;
     private javax.swing.JLabel p3c1;
@@ -771,6 +785,10 @@ public class GameTable extends javax.swing.JFrame {
 
     public JLabel getBetValue() {
         return betValue;
+    }
+
+    public JTextArea getGameInfoTA() {
+        return gameInfoTA;
     }
 
 }
