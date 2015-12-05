@@ -187,15 +187,20 @@ public class Controller implements ActionListener, ChangeListener {
             flip();
             theGameTable.getFlip().setVisible(false);
             this.theGameTable.getFlip().setText(flipNames[tableRound]);
+            if (tableRound < 3) {
+                for (int i = 0; i < theModel.getPlayers().size(); i++) {
+                    int playerTurn = (bigBlind + i) % theModel.getPlayers().size();
+                    if (playerTurn == 0) {
+                        if ((theModel.getPlayers().get(0).isHasFolded() == false) & (tableRound < 3)) {
+                            adjustBetSlider(0);
+                            theGameTable.getFoldCheckBet().setVisible(true);
+                        }
 
-            //don't let them flip again yet!!! Go through round first
-            if ((theModel.getPlayers().get(0).isHasFolded() == false) & (tableRound < 3)) {
-                adjustBetSlider(0);
-                theGameTable.getFoldCheckBet().setVisible(true);
-            } else if (tableRound < 3) {
-                //A function that moves through computer players
-                runPlayers();
-                theGameTable.getFlip().setVisible(true);
+                    } else {
+                        //TO DO
+
+                    }
+                }
             } else if (tableRound == 3) {
                 try {
                     showdown();
@@ -207,6 +212,24 @@ public class Controller implements ActionListener, ChangeListener {
             }
         }
 
+//            //don't let them flip again yet!!! Go through round first
+//            if ((theModel.getPlayers().get(0).isHasFolded() == false) & (tableRound < 3)) {
+//                adjustBetSlider(0);
+//                theGameTable.getFoldCheckBet().setVisible(true);
+//            } else if (tableRound < 3) {
+//                //A function that moves through computer players
+//                runPlayers();
+//                theGameTable.getFlip().setVisible(true);
+//            } else if (tableRound == 3) {
+//                try {
+//                    showdown();
+//                } catch (InterruptedException ex) {
+//                    Logger.getLogger(Controller.class.getName()).log(
+//                            Level.SEVERE,
+//                            null, ex);
+//                }
+//            }
+//        }
         /**
          * Finishes each round based on choices!
          */
