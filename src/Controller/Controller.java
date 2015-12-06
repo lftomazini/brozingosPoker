@@ -23,7 +23,6 @@ import Cards.Deck;
 import Model.Model;
 import TableElements.CardDealer;
 import TableElements.CheckHands;
-import TableElements.ComputerPlayer;
 import TableElements.GameClass;
 import TableElements.Player;
 import View.GameTable;
@@ -149,7 +148,7 @@ public class Controller implements ActionListener, ChangeListener {
             ArrayList<Player> players = new ArrayList<Player>();
             players.add(new Player(chips1, startScreen.getNameField().getText()));
             for (int i = 0; i < numPlayers - 1; i++) {
-                players.add(new ComputerPlayer(chips1, computerNames[i]));
+                players.add(new Player(chips1, computerNames[i]));
             }
 
             for (int i = 0; i < numPlayers; i++) {
@@ -198,34 +197,64 @@ public class Controller implements ActionListener, ChangeListener {
             flip();
             theGameTable.getFlip().setVisible(false);
             this.theGameTable.getFlip().setText(flipNames[tableRound]);
+
             if (tableRound < 3) {
-                for (int i = 0; i < theModel.getPlayers().size(); i++) {
-                    int betLoc = smallBlind + 1;
-                    int currentLoc = smallBlind + 1;
-                    while (currentLoc <= betLoc) {
-                        if (currentLoc != 0) {
-                            int[] betChoices = {betValue, theModel.getPlayers().get(
-                                                currentLoc).getMoney()};
-                            //theModel.getPlayers().get(currentLoc).makeBet(betInt)
+                int betLoc = (smallBlind + 1) % theModel.getPlayers().size();
+                int currentLoc = (smallBlind + 1) % theModel.getPlayers().size();
+                int betOnTable = 0;
+                while (currentLoc <= betLoc) {
+                    if (currentLoc != 0) {
+                        if (betLoc == currentLoc) {
+                            int choice = theModel.getPlayers().get(currentLoc).playNoBet();
+                            if (choice != 0) {
+                                betOnTable = choice;
+                                betValue = choice;
+                                betLoc = currentLoc;
+                                theGameTable.getGameInfoTA().append("\n"
+                                                                    + theModel.getPlayers().get(
+                                                currentLoc).getName() + " has bet $ " + Integer.toString(
+                                                betOnTable));
+                            } else {
+                                theGameTable.getGameInfoTA().append("\n"
+                                                                    + theModel.getPlayers().get(
+                                                currentLoc).getName() + " has folded.");
+                            }
+
+                        } else {
+                            int choice = theModel.getPlayers().get(currentLoc).playBet(
+                                    betOnTable);
+                            if (choice != 0) {
+                                betOnTable = choice;
+                                betValue = choice;
+                                betLoc = currentLoc;
+                                theGameTable.getGameInfoTA().append("\n"
+                                                                    + theModel.getPlayers().get(
+                                                currentLoc).getName() + " has bet $ " + Integer.toString(
+                                                betOnTable));
+                            } else {
+                                theGameTable.getGameInfoTA().append("\n"
+                                                                    + theModel.getPlayers().get(
+                                                currentLoc).getName() + " has folded.");
+
+                            }
                         }
-                    }
-                    int playerTurn = (bigBlind + i) % theModel.getPlayers().size();
-                    if (playerTurn == 0) {
+
+                        //Not a computer player
+                    } else {
                         if ((theModel.getPlayers().get(0).isHasFolded() == false) & (tableRound < 3)) {
                             adjustBetSlider(0);
                             theGameTable.getFoldCheckBet().setVisible(true);
+                            if (betValue != betOnTable) {
+                                betOnTable = betValue;
+                                betLoc = currentLoc;
+                            }
                         }
-
-                    } else {
-                        //TO DO
-//                        theGameTable.getGameInfoTA().append("\n"
-//                                                            + theModel.getPlayers().get(
-//                                        i).getName() + " has folded/checked/bet.");
-
                     }
-                }
-                theGameTable.getFlip().setVisible(true);
+                    currentLoc = (currentLoc + 1) % theModel.getPlayers().size();
 
+                }
+
+                theGameTable.getFlip().setVisible(true);
             } else if (tableRound == 3) {
                 try {
                     showdown();
