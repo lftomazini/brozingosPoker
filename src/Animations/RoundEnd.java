@@ -19,6 +19,7 @@ import Model.Model;
 import View.GameTable;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
@@ -47,14 +48,103 @@ public class RoundEnd {
     Timer p5c2;
     Timer p6c1;
     Timer p6c2;
+    int numPlayers;
 
-    int initialDelay = 3000;
     Model c;
     Icon icon1 = new ImageIcon("src/images/playing-card-back.jpg");
 
     public RoundEnd(GameTable theGameTable, Model c) {
         this.theGameTable = theGameTable;
         Move = new ButtonsMovement(theGameTable, c);
+        this.numPlayers = c.getNumPlayers();
+        flop = new Timer(1, new Flop());
+        flop1 = new Timer(1, new Flop1());
+
+        flop2 = new Timer(1, new Flop2());
+
+        turn = new Timer(1, new Turn());
+        river = new Timer(1, new River());
+        card1b = new Timer(1, new Card1b());
+        card2b = new Timer(1, new Card2b());
+        p6c1 = new Timer(1, new P6c1());
+        p6c2 = new Timer(1, new P6c2());
+        p5c1 = new Timer(1, new P5c1());
+        p5c2 = new Timer(1, new P5c2());
+        p4c1 = new Timer(1, new P4c1());
+        p4c2 = new Timer(1, new P4c2());
+        p3c1 = new Timer(1, new P3c1());
+        p3c2 = new Timer(1, new P3c2());
+        p2c1 = new Timer(1, new P2c1());
+        p2c2 = new Timer(1, new P2c2());
+
+    }
+
+    public void playerFold(ArrayList players, int i) {
+        if (players.size() == 3) {
+            if (i == 0) {
+                card1b.setInitialDelay(0);
+                card1b.start();
+                card2b.setInitialDelay(0);
+                card2b.start();
+
+            } else if (i == 1) {
+
+            } else if (i == 2) {
+
+            }
+        } else if (players.size() == 4) {
+            if (i == 0) {
+                card1b.setInitialDelay(0);
+                card1b.start();
+                card2b.setInitialDelay(0);
+                card2b.start();
+
+            } else if (i == 1) {
+
+            } else if (i == 2) {
+
+            } else if (i == 3) {
+
+            }
+
+        } else if (players.size() == 5) {
+            if (i == 0) {
+                card1b.setInitialDelay(0);
+                card1b.start();
+                card2b.setInitialDelay(0);
+                card2b.start();
+
+            } else if (i == 1) {
+
+            } else if (i == 2) {
+
+            } else if (i == 3) {
+
+            } else if (i == 4) {
+
+            }
+
+        } else if (players.size() == 6) {
+            if (i == 0) {
+                card1b.setInitialDelay(0);
+                card1b.start();
+                card2b.setInitialDelay(0);
+                card2b.start();
+
+            } else if (i == 1) {
+
+            } else if (i == 2) {
+
+            } else if (i == 3) {
+
+            } else if (i == 4) {
+
+            } else if (i == 5) {
+
+            }
+
+        }
+
     }
 
     public void endRound() {
@@ -65,66 +155,72 @@ public class RoundEnd {
         theGameTable.getTurn().setIcon(icon1);
         theGameTable.getRiver().setIcon(icon1);
         Move.buttonsNextPosition();
-        flop = new Timer(1, new Flop());
-        flop1 = new Timer(1, new Flop1());
 
-        flop2 = new Timer(1, new Flop2());
-
-        turn = new Timer(1, new Turn());
-        river = new Timer(1, new River());
         flop.start();
         flop1.start();
         flop2.start();
         turn.start();
         river.start();
-        card1b = new Timer(1, new Card1b());
+
         card1b.setInitialDelay(500);
-        card2b = new Timer(1, new Card2b());
         card2b.setInitialDelay(800);
-        p6c1 = new Timer(1, new P6c1());
         p6c1.setInitialDelay(1100);
-        p6c2 = new Timer(1, new P6c2());
         p6c2.setInitialDelay(1400);
-        p5c1 = new Timer(1, new P5c1());
         p5c1.setInitialDelay(1700);
-        p5c2 = new Timer(1, new P5c2());
         p5c2.setInitialDelay(2000);
-        p4c1 = new Timer(1, new P4c1());
         p4c1.setInitialDelay(2300);
-        p4c2 = new Timer(1, new P4c2());
         p4c2.setInitialDelay(2700);
 
-        p3c1 = new Timer(1, new P3c1());
         p3c1.setInitialDelay(3000);
-        p3c2 = new Timer(1, new P3c2());
         p3c2.setInitialDelay(3300);
 
-        p2c1 = new Timer(1, new P2c1());
         p2c1.setInitialDelay(3700);
-        p2c2 = new Timer(1, new P2c2());
         p2c2.setInitialDelay(4000);
-        card1b.start();
-        card2b.start();
+        if (numPlayers == 3) {
+            card1b.start();
+            card2b.start();
+            p5c1.start();
+            p5c2.start();
+            p6c1.start();
+            p6c2.start();
 
-        p2c1.start();
+        } else if (numPlayers == 4) {
+            p5c1.start();
+            card1b.start();
+            card2b.start();
+            p5c2.start();
+            p6c1.start();
+            p6c2.start();
+            p4c1.start();
+            p4c2.start();
 
-        p2c2.start();
+        } else if (numPlayers == 5) {
+            p5c1.start();
+            card1b.start();
+            card2b.start();
+            p5c2.start();
+            p6c1.start();
+            p6c2.start();
+            p4c1.start();
+            p4c2.start();
+            p3c1.start();
+            p3c2.start();
 
-        p3c1.start();
+        } else if (numPlayers == 6) {
+            p2c1.start();
+            p2c2.start();
+            p5c1.start();
+            card1b.start();
+            card2b.start();
+            p5c2.start();
+            p6c1.start();
+            p6c2.start();
+            p4c1.start();
+            p4c2.start();
+            p3c1.start();
+            p3c2.start();
 
-        p3c2.start();
-
-        p4c1.start();
-
-        p4c2.start();
-
-        p5c1.start();
-
-        p5c2.start();
-
-        p6c1.start();
-
-        p6c2.start();
+        }
 
     }
 
@@ -225,6 +321,8 @@ public class RoundEnd {
                         theGameTable.getCard1label().getY());
             } else {
                 theGameTable.getCard1label().setVisible(false);
+                theGameTable.getCard1b().setIcon(icon1);
+
                 card1b.stop();
             }
 
@@ -248,6 +346,8 @@ public class RoundEnd {
                         theGameTable.getCard2label().getY());
             } else {
                 theGameTable.getCard2label().setVisible(false);
+                theGameTable.getCard2b().setIcon(icon1);
+
                 card2b.stop();
             }
 
@@ -270,6 +370,7 @@ public class RoundEnd {
             } else {
                 theGameTable.getP2c1().setVisible(false);
                 p2c1.stop();
+
             }
 
         }
