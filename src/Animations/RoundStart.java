@@ -54,9 +54,10 @@ public class RoundStart {
     Timer p6c2X;
     Timer p6c2Y;
     int numPlayers;
-    int initialDelay = 4500;
+    int initialDelay = 5000;
     Model c;
     Icon icon1 = new ImageIcon("src/images/playing-card-back.jpg");
+    Icon icon2 = new ImageIcon("src/images/playing-card-back-2.jpg");
 
     public RoundStart(GameTable theGameTable, Model c) {
         this.theGameTable = theGameTable;
@@ -95,6 +96,7 @@ public class RoundStart {
         p4c1X = new Timer(1, new P4c1X());
         p4c1X.setInitialDelay(initialDelay);
         p4c1Y = new Timer(1, new P4c1Y());
+        p4c1Y.setInitialDelay(initialDelay);
         p4c2X = new Timer(1, new P4c2X());
         p4c2X.setInitialDelay(initialDelay);
         p4c2Y = new Timer(1, new P4c2Y());
@@ -274,7 +276,7 @@ public class RoundStart {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            theGameTable.getP2c1().setIcon(icon1);
+            theGameTable.getP2c1().setIcon(icon2);
             theGameTable.getP2c1().setVisible(true);
             theGameTable.getP2c1().setLocation(theGameTable.getP2c1().getX() - 1,
                                                theGameTable.getP2c1().getY());
@@ -304,7 +306,7 @@ public class RoundStart {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            theGameTable.getP2c2().setIcon(icon1);
+            theGameTable.getP2c2().setIcon(icon2);
             theGameTable.getP2c2().setVisible(true);
             theGameTable.getP2c2().setLocation(theGameTable.getP2c2().getX() - 1,
                                                theGameTable.getP2c2().getY());
