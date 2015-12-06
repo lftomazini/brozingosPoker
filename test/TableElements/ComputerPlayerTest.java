@@ -164,10 +164,55 @@ public class ComputerPlayerTest {
     @Test
     public void testPlayNoBet() {
         System.out.println("playNoBet");
-        ComputerPlayer instance = null;
+        
+        instance.setMoney(320);
+        Card cd1 = new Card(Rank.FIVE, Suits.CLUBS);
+        Card cd2 = new Card(Rank.K, Suits.CLUBS);
+        instance.setCard1(cd1);
+        instance.setCard2(cd2);
         instance.playNoBet();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(240, instance.getMoney());
+        
+        instance.setMoney(320);
+        cd1 = new Card(Rank.NINE, Suits.HEARTS);
+        cd2 = new Card(Rank.NINE, Suits.CLUBS);
+        instance.setCard1(cd1);
+        instance.setCard2(cd2);
+        instance.playNoBet();
+        assertEquals(240, instance.getMoney());
+        
+        instance.setMoney(320);
+        cd1 = new Card(Rank.THREE, Suits.HEARTS);
+        cd2 = new Card(Rank.K, Suits.CLUBS);
+        instance.setCard1(cd1);
+        instance.setCard2(cd2);
+        instance.playNoBet();
+        assertEquals(240, instance.getMoney());
+        
+        instance.setMoney(320);
+        cd1 = new Card(Rank.THREE, Suits.HEARTS);
+        cd2 = new Card(Rank.FIVE, Suits.CLUBS);
+        instance.setCard1(cd1);
+        instance.setCard2(cd2);
+        instance.playNoBet();
+        assertEquals(320, instance.getMoney());
+        
+        instance.setMoney(150);
+        cd1 = new Card(Rank.J, Suits.HEARTS);
+        cd2 = new Card(Rank.SEVEN, Suits.CLUBS);
+        instance.setCard1(cd1);
+        instance.setCard2(cd2);
+        instance.playNoBet();
+        assertEquals(150, instance.getMoney());
+        
+        instance.setMoney(40);
+        cd1 = new Card(Rank.NINE, Suits.HEARTS);
+        cd2 = new Card(Rank.J, Suits.CLUBS);
+        instance.setCard1(cd1);
+        instance.setCard2(cd2);
+        instance.playNoBet();
+        assertEquals(40, instance.getMoney());
+        instance.playNoBet();
     }
 
     /**
