@@ -200,7 +200,7 @@ public class GameTable extends javax.swing.JFrame {
         setBlindsPan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setBlindsPan.setLayout(null);
 
-        jLabel2.setText("Pay Small Blind ($25)?:");
+        jLabel2.setText("Pay Big Blind ($20)?:");
         setBlindsPan.add(jLabel2);
         jLabel2.setBounds(40, 30, 170, 15);
 

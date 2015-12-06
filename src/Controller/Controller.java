@@ -21,12 +21,12 @@ import Animations.RoundStart;
 import Cards.Card;
 import Cards.Deck;
 import Model.Model;
-import View.GameTable;
-import View.StartScreen;
 import TableElements.CardDealer;
 import TableElements.CheckHands;
 import TableElements.GameClass;
 import TableElements.Player;
+import View.GameTable;
+import View.StartScreen;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -71,6 +71,7 @@ public class Controller implements ActionListener, ChangeListener {
     int playerSmallBlind = 2;
     int bigBlind = 20;
     int smallBlind = 10;
+    int paidSmallBlind = 0;
 
     int betValue = 0; //holds value of what the bet is up to
     String[] flipNames = {"The Flop", "The Turn", "The River", "The Showdown"};
@@ -152,53 +153,24 @@ public class Controller implements ActionListener, ChangeListener {
 
             adjustPlayerVisibility();
 
-            theModel.getPlayers().get(0).setSmallBlind(true);
             theModel.getPlayers().get(0).setBigBlind(true);
+            theModel.getPlayers().get(2).setSmallBlind(true);
 
         }
 
+        //If they pay the big blind
         if (e.getSource()
             == theGameTable.getDoneButton()) {
             theGameTable.getSetBlindsPan().setVisible(false);
 
-            //FIX THIS TO DO SMALL BLIND, THEN BIG BLIND, THEN SMALL BLIND
-            for (int i = 0; i < theModel.getPlayers().size(); i++) {
-                int playerTurn = (bigBlind + i) % theModel.getPlayers().size();
-                if (playerTurn == 0) {
-                    theModel.getPlayers().get(0).call(bigBlind);
-                    theModel.getPlayers().get(0).getChipsFromMoney();
-                    updateCoins();
-                    moneyPool += bigBlind;
-                    theGameTable.getGameInfoTA().append(
-                            "\nYou have paid the big blind.");
-                } else {
-                    //RANDOMIZE IF THEY WANT TO FOLD OR PAY BIG BLIND
-                    theModel.getPlayers().get(i).call(bigBlind);
-                    theModel.getPlayers().get(i).getChipsFromMoney();
-                    moneyPool += bigBlind;
-                    theGameTable.getGameInfoTA().append("\n"
-                                                        + theModel.getPlayers().get(
-                                    i).getName() + " has paid the big blind.");
-
-                }
-
-                this.theGameTable.getFlip().setText(flipNames[tableRound]);
-                this.theGameTable.getFlip().setVisible(true);
-
-            }
+            payBlinds();
         }
 
         if (e.getSource()
             == theGameTable.getDontPay()) {
             theGameTable.getSetBlindsPan().setVisible(false);
-            for (int i = 1; i < theModel.getNumPlayers(); i++) {
-                theModel.getPlayers().get(i).call(bigBlind);
-                theModel.getPlayers().get(i).getChipsFromMoney();
-                moneyPool += smallBlind;
-            }
-            theModel.getPlayers().get(0).fold();
-            this.theGameTable.getFlip().setText(flipNames[tableRound]);
-            this.theGameTable.getFlip().setVisible(true);
+            theModel.getPlayers().get(0).setHasFolded(true);
+            payBlinds();
         }
 
         /**
@@ -223,7 +195,7 @@ public class Controller implements ActionListener, ChangeListener {
                         //TO DO
 //                        theGameTable.getGameInfoTA().append("\n"
 //                                                            + theModel.getPlayers().get(
-//                                        i).getName() + " has paid the big blind.");
+//                                        i).getName() + " has folded/checked/bet.");
 
                     }
                 }
@@ -292,9 +264,13 @@ public class Controller implements ActionListener, ChangeListener {
             theModel.getPlayers().get(playerBigBlind).setBigBlind(false);
             tableRound = 0;
             moneyPool = 0;
+            paidSmallBlind = 0;
+            betValue = 0;
             cardsOnTable.clear();
-            changeBlinds(playerBigBlind);
-            changeBlinds(playerSmallBlind);
+            playerBigBlind = changeBlinds(playerBigBlind);
+            playerSmallBlind = changeBlinds(playerSmallBlind);
+            System.out.println("small blind " + playerSmallBlind);
+            System.out.println("big blind " + playerBigBlind);
             theModel.setDeck(new Deck());
             for (int i = 0; i < theModel.getPlayers().size(); i++) {
                 theModel.getPlayers().get(i).setCard1(null);
@@ -303,36 +279,14 @@ public class Controller implements ActionListener, ChangeListener {
             theModel.getTheCardDealer().giveCardstoPlayers();
             theModel.getPlayers().get(playerSmallBlind).setSmallBlind(true);
             theModel.getPlayers().get(playerBigBlind).setBigBlind(true);
+            if (playerSmallBlind == 0) {
+                theGameTable.getjLabel2().setText("Pay Small Blind ($10)?");
+            } else {
+                theGameTable.getjLabel2().setText("Pay Big Blind ($20)?");
+            }
 
             theGameTable.getWinnerPanel().setVisible(false);
             theGameTable.getSetBlindsPan().setVisible(true);
-
-            //ADD CODE TO RESET COINS
-            //FIX THIS TO DO SMALL BLIND, THEN BIG BLIND, THEN SMALL BLIND
-            for (int i = 0; i < theModel.getPlayers().size(); i++) {
-                int playerTurn = (bigBlind + i) % theModel.getPlayers().size();
-                if (playerTurn == 0) {
-                    theModel.getPlayers().get(0).call(smallBlind);
-                    theModel.getPlayers().get(0).getChipsFromMoney();
-                    updateCoins();
-                    moneyPool += smallBlind;
-                    theGameTable.getGameInfoTA().append(
-                            "\nYou have paid the small blind.");
-                } else {
-                    //RANDOMIZE IF THEY WANT TO FOLD OR PAY BIG BLIND
-                    theModel.getPlayers().get(i).call(bigBlind);
-                    theModel.getPlayers().get(i).getChipsFromMoney();
-                    moneyPool += bigBlind;
-                    theGameTable.getGameInfoTA().append("\n"
-                                                        + theModel.getPlayers().get(
-                                    i).getName() + " has paid the big blind.");
-
-                }
-
-                this.theGameTable.getFlip().setText(flipNames[tableRound]);
-                this.theGameTable.getFlip().setVisible(true);
-
-            }
 
         }
 
@@ -342,6 +296,66 @@ public class Controller implements ActionListener, ChangeListener {
 
         }
 
+    }
+
+    /**
+     * Goes through all players and determines whether or not they pay, or do
+     * not pay the blinds
+     */
+    private void payBlinds() {
+        if (paidSmallBlind == 1) {
+            updateCoins();
+            this.theGameTable.getFlip().setText(flipNames[tableRound]);
+            this.theGameTable.getFlip().setVisible(true);
+        } else {
+            for (int i = 0; i < theModel.getPlayers().size(); i++) {
+                int playerTurn = (smallBlind + i) % theModel.getPlayers().size();
+                //We will pay small blind, don't fold
+                if (theModel.getPlayers().get(playerTurn).isSmallBlind() & (theModel.getPlayers().get(
+                                                                            playerTurn).isHasFolded() == false)) {
+                    theModel.getPlayers().get(playerTurn).call(smallBlind);
+                    theModel.getPlayers().get(playerTurn).getChipsFromMoney();
+                    moneyPool += smallBlind;
+                    theGameTable.getGameInfoTA().append(
+                            "\n " + theModel.getPlayers().get(playerTurn).getName() + " has paid the small blind.");
+
+                } else if (theModel.getPlayers().get(playerTurn).isBigBlind() & (theModel.getPlayers().get(
+                                                                                 playerTurn).isHasFolded() == false)) {
+                    theModel.getPlayers().get(playerTurn).call(bigBlind);
+                    theModel.getPlayers().get(playerTurn).getChipsFromMoney();
+                    moneyPool += bigBlind;
+                    theGameTable.getGameInfoTA().append(
+                            "\n " + theModel.getPlayers().get(playerTurn).getName() + " has paid the big blind.");
+                } else if (theModel.getPlayers().get(playerTurn).isHasFolded() == true) {
+
+                    theGameTable.getGameInfoTA().append(
+                            "\n " + theModel.getPlayers().get(playerTurn).getName() + " has folded.");
+                } else {
+                    theModel.getPlayers().get(playerTurn).call(bigBlind);
+                    theModel.getPlayers().get(playerTurn).getChipsFromMoney();
+                    moneyPool += bigBlind;
+                    theGameTable.getGameInfoTA().append(
+                            "\n " + theModel.getPlayers().get(playerTurn).getName() + " has paid the big blind.");
+
+                }
+
+            }
+
+            if (theModel.getPlayers().get(0).isSmallBlind() & (paidSmallBlind == 0)) {
+                paidSmallBlind += 1;
+                theGameTable.getSetBlindsPan().setVisible(true);
+            } else {
+                updateCoins();
+                theModel.getPlayers().get(playerSmallBlind).call(smallBlind);
+                theModel.getPlayers().get(playerSmallBlind).getChipsFromMoney();
+                moneyPool += smallBlind;
+                theGameTable.getGameInfoTA().append(
+                        "\n " + theModel.getPlayers().get(playerSmallBlind).getName() + " has paid the small blind.");
+
+                this.theGameTable.getFlip().setText(flipNames[tableRound]);
+                this.theGameTable.getFlip().setVisible(true);
+            }
+        }
     }
 
     /**
@@ -431,12 +445,13 @@ public class Controller implements ActionListener, ChangeListener {
      *
      * @param blind - big or small
      */
-    private void changeBlinds(int blind) {
-        if (blind == (numPlayers)) {
+    private int changeBlinds(int blind) {
+        if (blind == (theModel.getPlayers().size() - 1)) {
             blind = 0;
         } else {
             blind += 1;
         }
+        return blind;
     }
 
     /**
