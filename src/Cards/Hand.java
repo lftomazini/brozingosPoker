@@ -13,7 +13,7 @@
  * Description:
  *
  * *****************************************/
-package csci205finalproject;
+package Cards;
 
 /**
  *

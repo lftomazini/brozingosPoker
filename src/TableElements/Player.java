@@ -15,8 +15,9 @@
  *
  * ****************************************
  */
-package csci205finalproject;
+package TableElements;
 
+import Cards.Hand;
 import Cards.Card;
 import java.util.ArrayList;
 import java.util.Comparator;

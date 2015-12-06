@@ -13,8 +13,9 @@
  * Description:
  *
  * *****************************************/
-package csci205finalproject;
+package TableElements;
 
+import Cards.Hand;
 import Cards.Card;
 import Cards.Rank;
 import Cards.Suits;

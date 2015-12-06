@@ -1,4 +1,4 @@
-package csci205finalproject;
+package TableElements;
 
 /* *****************************************
  * CSCI205 - Software Engineering and Design

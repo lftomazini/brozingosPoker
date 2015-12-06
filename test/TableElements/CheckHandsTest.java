@@ -13,8 +13,10 @@
  * Description:
  *
  * *****************************************/
-package csci205finalproject;
+package TableElements;
 
+import TableElements.CheckHands;
+import TableElements.Player;
 import Cards.Card;
 import Cards.Deck;
 import Cards.Rank;
@@ -36,16 +38,19 @@ public class CheckHandsTest {
     public CheckHandsTest() {
     }
 
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
+    private int[] chips;
+    private ArrayList<Player> playerArray;
+    private ArrayList<Card> table;
+    private CheckHands check;
+    
     @Before
     public void setUp() {
+        Deck deck = new Deck();
+        deck.createDeck();
+        chips = new int[5];
+        playerArray = new ArrayList<>();
+        table = new ArrayList<>();
+        check = new CheckHands();
     }
 
     @After
@@ -58,10 +63,6 @@ public class CheckHandsTest {
     @Test
     public void testCheckWinner() {
         System.out.println("checkWinner");
-
-        Deck deck = new Deck();
-        deck.createDeck();
-        int[] chips = new int[5];
 
         Card card1 = new Card(Rank.EIGHT, Suits.SPADES);
         Card card2 = new Card(Rank.ACE, Suits.DIAMONDS);
@@ -79,7 +80,6 @@ public class CheckHandsTest {
         Card card14 = new Card(Rank.THREE, Suits.HEARTS);
         Card card15 = new Card(Rank.THREE, Suits.SPADES);
 
-        ArrayList<Player> playerArray = new ArrayList<>();
         Player player_1 = new Player(chips, "Todd");
         Player player_2 = new Player(chips, "Jeff");
         Player player_3 = new Player(chips, "Sasha");
@@ -102,17 +102,11 @@ public class CheckHandsTest {
         playerArray.add(player_4);
         playerArray.add(player_5);
 
-        ArrayList<Card> table = new ArrayList<>();
-        table.add(card11);
-        table.add(card12);
-        table.add(card13);
-        table.add(card14);
-        table.add(card15);
-
+        addTable(card11,card12, card13, card14, card15);
+        
         ArrayList<Player> winner = new ArrayList<>();
         winner.add(player_1);
 
-        CheckHands check = new CheckHands();
         check.checkHands(playerArray, table);
         assertEquals(winner, check.checkWinner(playerArray, table));
     }
@@ -124,10 +118,6 @@ public class CheckHandsTest {
     public void testIsFlush() {
         System.out.println("isFlush");
 
-        Deck deck = new Deck();
-        deck.createDeck();
-        int[] chips = new int[5];
-
         Card card1 = new Card(Rank.K, Suits.HEARTS);
         Card card2 = new Card(Rank.THREE, Suits.HEARTS);
         Card card3 = new Card(Rank.J, Suits.HEARTS);
@@ -136,20 +126,13 @@ public class CheckHandsTest {
         Card card6 = new Card(Rank.TWO, Suits.DIAMONDS);
         Card card7 = new Card(Rank.J, Suits.CLUBS);
 
-        ArrayList<Player> playerArray = new ArrayList<>();
         Player player_1 = new Player(chips, "Raquel");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
 
-        ArrayList<Card> table = new ArrayList<>();
-        table.add(card3);
-        table.add(card4);
-        table.add(card5);
-        table.add(card6);
-        table.add(card7);
-
-        CheckHands check = new CheckHands();
+        addTable(card3,card4, card5, card6, card7);
+        
         check.checkHands(playerArray, table);
         boolean result = check.isFlush(player_1, table);
         assertEquals(true, result);
@@ -162,9 +145,6 @@ public class CheckHandsTest {
     public void testIsNotFlush() {
         System.out.println("isNotFlush");
 
-        Deck deck = new Deck();
-        deck.createDeck();
-        int[] chips = new int[5];
 
         Card card1 = new Card(Rank.K, Suits.HEARTS);
         Card card2 = new Card(Rank.THREE, Suits.HEARTS);
@@ -174,20 +154,13 @@ public class CheckHandsTest {
         Card card6 = new Card(Rank.TWO, Suits.DIAMONDS);
         Card card7 = new Card(Rank.J, Suits.CLUBS);
 
-        ArrayList<Player> playerArray = new ArrayList<>();
         Player player_1 = new Player(chips, "Tanya");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
 
-        ArrayList<Card> table = new ArrayList<>();
-        table.add(card3);
-        table.add(card4);
-        table.add(card5);
-        table.add(card6);
-        table.add(card7);
-
-        CheckHands check = new CheckHands();
+        addTable(card3,card4, card5, card6, card7);
+        
         check.checkHands(playerArray, table);
         boolean result = check.isFlush(player_1, table);
         assertEquals(false, result);
@@ -200,10 +173,6 @@ public class CheckHandsTest {
     public void testIsStraight() {
         System.out.println("isStraight");
 
-        Deck deck = new Deck();
-        deck.createDeck();
-        int[] chips = new int[5];
-
         Card card1 = new Card(Rank.K, Suits.HEARTS);
         Card card2 = new Card(Rank.Q, Suits.HEARTS);
         Card card3 = new Card(Rank.J, Suits.CLUBS);
@@ -212,21 +181,13 @@ public class CheckHandsTest {
         Card card6 = new Card(Rank.TWO, Suits.DIAMONDS);
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
-        ArrayList<Player> playerArray = new ArrayList<>();
         Player player_1 = new Player(chips, "Alexander");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
 
-        ArrayList<Card> table = new ArrayList<>();
-        table.add(card3);
-        table.add(card4);
-        table.add(card5);
-        table.add(card6);
-        table.add(card7);
-
-        CheckHands check = new CheckHands();
-//        check.checkHands(playerArray, table);
+        addTable(card3,card4, card5, card6, card7);
+        
         boolean result = check.isStraight(player_1, table);
         assertEquals(true, result);
     }
@@ -238,10 +199,6 @@ public class CheckHandsTest {
     public void testIsNotStraight() {
         System.out.println("isStraight");
 
-        Deck deck = new Deck();
-        deck.createDeck();
-        int[] chips = new int[5];
-
         Card card1 = new Card(Rank.K, Suits.HEARTS);
         Card card2 = new Card(Rank.J, Suits.HEARTS);
         Card card3 = new Card(Rank.J, Suits.CLUBS);
@@ -250,20 +207,13 @@ public class CheckHandsTest {
         Card card6 = new Card(Rank.TWO, Suits.DIAMONDS);
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
-        ArrayList<Player> playerArray = new ArrayList<>();
         Player player_1 = new Player(chips, "Aram");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
 
-        ArrayList<Card> table = new ArrayList<>();
-        table.add(card3);
-        table.add(card4);
-        table.add(card5);
-        table.add(card6);
-        table.add(card7);
-
-        CheckHands check = new CheckHands();
+        addTable(card3,card4, card5, card6, card7);
+        
         check.checkHands(playerArray, table);
         boolean result = check.isStraight(player_1, table);
         assertEquals(false, result);
@@ -276,10 +226,6 @@ public class CheckHandsTest {
     public void testIsFullHouse() {
         System.out.println("isFullHouse");
 
-        Deck deck = new Deck();
-        deck.createDeck();
-        int[] chips = new int[5];
-
         Card card1 = new Card(Rank.K, Suits.HEARTS);
         Card card2 = new Card(Rank.K, Suits.CLUBS);
         Card card3 = new Card(Rank.J, Suits.CLUBS);
@@ -288,20 +234,13 @@ public class CheckHandsTest {
         Card card6 = new Card(Rank.TWO, Suits.DIAMONDS);
         Card card7 = new Card(Rank.TWO, Suits.CLUBS);
 
-        ArrayList<Player> playerArray = new ArrayList<>();
         Player player_1 = new Player(chips, "Greg");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
 
-        ArrayList<Card> table = new ArrayList<>();
-        table.add(card3);
-        table.add(card4);
-        table.add(card5);
-        table.add(card6);
-        table.add(card7);
-
-        CheckHands check = new CheckHands();
+        addTable(card3,card4, card5, card6, card7);
+        
         check.checkHands(playerArray, table);
         boolean result = check.isFullHouse(player_1, table);
         assertEquals(true, result);
@@ -314,10 +253,6 @@ public class CheckHandsTest {
     public void testIsNotFullHouse() {
         System.out.println("isNotFullHouse");
 
-        Deck deck = new Deck();
-        deck.createDeck();
-        int[] chips = new int[5];
-
         Card card1 = new Card(Rank.K, Suits.HEARTS);
         Card card2 = new Card(Rank.Q, Suits.CLUBS);
         Card card3 = new Card(Rank.J, Suits.CLUBS);
@@ -326,20 +261,13 @@ public class CheckHandsTest {
         Card card6 = new Card(Rank.TWO, Suits.DIAMONDS);
         Card card7 = new Card(Rank.TWO, Suits.CLUBS);
 
-        ArrayList<Player> playerArray = new ArrayList<>();
         Player player_1 = new Player(chips, "Frances");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
 
-        ArrayList<Card> table = new ArrayList<>();
-        table.add(card3);
-        table.add(card4);
-        table.add(card5);
-        table.add(card6);
-        table.add(card7);
-
-        CheckHands check = new CheckHands();
+        addTable(card3,card4, card5, card6, card7);
+        
         check.checkHands(playerArray, table);
         boolean result = check.isFullHouse(player_1, table);
         assertEquals(false, result);
@@ -352,10 +280,6 @@ public class CheckHandsTest {
     public void testIs2Pairs() {
         System.out.println("is2Pairs");
 
-        Deck deck = new Deck();
-        deck.createDeck();
-        int[] chips = new int[5];
-
         Card card1 = new Card(Rank.K, Suits.HEARTS);
         Card card2 = new Card(Rank.K, Suits.CLUBS);
         Card card3 = new Card(Rank.J, Suits.CLUBS);
@@ -364,20 +288,13 @@ public class CheckHandsTest {
         Card card6 = new Card(Rank.TWO, Suits.DIAMONDS);
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
-        ArrayList<Player> playerArray = new ArrayList<>();
         Player player_1 = new Player(chips, "Layla");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
 
-        ArrayList<Card> table = new ArrayList<>();
-        table.add(card3);
-        table.add(card4);
-        table.add(card5);
-        table.add(card6);
-        table.add(card7);
-
-        CheckHands check = new CheckHands();
+        addTable(card3,card4, card5, card6, card7);
+        
         check.checkHands(playerArray, table);
         boolean result = check.is2Pairs(player_1, table);
         assertEquals(true, result);
@@ -390,10 +307,6 @@ public class CheckHandsTest {
     public void testIsNot2Pairs() {
         System.out.println("isNot2Pairs");
 
-        Deck deck = new Deck();
-        deck.createDeck();
-        int[] chips = new int[5];
-
         Card card1 = new Card(Rank.K, Suits.HEARTS);
         Card card2 = new Card(Rank.K, Suits.CLUBS);
         Card card3 = new Card(Rank.J, Suits.CLUBS);
@@ -402,20 +315,13 @@ public class CheckHandsTest {
         Card card6 = new Card(Rank.FOUR, Suits.DIAMONDS);
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
-        ArrayList<Player> playerArray = new ArrayList<>();
         Player player_1 = new Player(chips, "Kayla");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
 
-        ArrayList<Card> table = new ArrayList<>();
-        table.add(card3);
-        table.add(card4);
-        table.add(card5);
-        table.add(card6);
-        table.add(card7);
-
-        CheckHands check = new CheckHands();
+        addTable(card3,card4, card5, card6, card7);
+        
         check.checkHands(playerArray, table);
         boolean result = check.is2Pairs(player_1, table);
         assertEquals(false, result);
@@ -428,10 +334,6 @@ public class CheckHandsTest {
     public void testIs4OfAKind() {
         System.out.println("is4OfAKind");
 
-        Deck deck = new Deck();
-        deck.createDeck();
-        int[] chips = new int[5];
-
         Card card1 = new Card(Rank.K, Suits.HEARTS);
         Card card2 = new Card(Rank.K, Suits.CLUBS);
         Card card3 = new Card(Rank.J, Suits.CLUBS);
@@ -440,20 +342,13 @@ public class CheckHandsTest {
         Card card6 = new Card(Rank.K, Suits.DIAMONDS);
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
-        ArrayList<Player> playerArray = new ArrayList<>();
         Player player_1 = new Player(chips, "Archibald");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
 
-        ArrayList<Card> table = new ArrayList<>();
-        table.add(card3);
-        table.add(card4);
-        table.add(card5);
-        table.add(card6);
-        table.add(card7);
-
-        CheckHands check = new CheckHands();
+        addTable(card3,card4, card5, card6, card7);
+        
         check.checkHands(playerArray, table);
         boolean result = check.is4OfAKind(player_1, table);
         assertEquals(true, result);
@@ -466,10 +361,6 @@ public class CheckHandsTest {
     public void testIsNot4OfAKind() {
         System.out.println("isNot4OfAKind");
 
-        Deck deck = new Deck();
-        deck.createDeck();
-        int[] chips = new int[5];
-
         Card card1 = new Card(Rank.K, Suits.HEARTS);
         Card card2 = new Card(Rank.K, Suits.CLUBS);
         Card card3 = new Card(Rank.J, Suits.CLUBS);
@@ -478,20 +369,13 @@ public class CheckHandsTest {
         Card card6 = new Card(Rank.K, Suits.DIAMONDS);
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
-        ArrayList<Player> playerArray = new ArrayList<>();
         Player player_1 = new Player(chips, "Arshjit");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
 
-        ArrayList<Card> table = new ArrayList<>();
-        table.add(card3);
-        table.add(card4);
-        table.add(card5);
-        table.add(card6);
-        table.add(card7);
-
-        CheckHands check = new CheckHands();
+        addTable(card3,card4, card5, card6, card7);
+        
         check.checkHands(playerArray, table);
         boolean result = check.is4OfAKind(player_1, table);
         assertEquals(false, result);
@@ -504,10 +388,6 @@ public class CheckHandsTest {
     public void testIs3OfAKind() {
         System.out.println("is3OfAKind");
 
-        Deck deck = new Deck();
-        deck.createDeck();
-        int[] chips = new int[5];
-
         Card card1 = new Card(Rank.K, Suits.HEARTS);
         Card card2 = new Card(Rank.K, Suits.CLUBS);
         Card card3 = new Card(Rank.J, Suits.CLUBS);
@@ -516,20 +396,13 @@ public class CheckHandsTest {
         Card card6 = new Card(Rank.K, Suits.DIAMONDS);
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
-        ArrayList<Player> playerArray = new ArrayList<>();
         Player player_1 = new Player(chips, "Manuel");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
 
-        ArrayList<Card> table = new ArrayList<>();
-        table.add(card3);
-        table.add(card4);
-        table.add(card5);
-        table.add(card6);
-        table.add(card7);
-
-        CheckHands check = new CheckHands();
+        addTable(card3,card4, card5, card6, card7);
+        
         check.checkHands(playerArray, table);
         boolean result = check.is3OfAKind(player_1, table);
         assertEquals(true, result);
@@ -542,10 +415,6 @@ public class CheckHandsTest {
     public void testIsNot3OfAKind() {
         System.out.println("isNot3OfAKind");
 
-        Deck deck = new Deck();
-        deck.createDeck();
-        int[] chips = new int[5];
-
         Card card1 = new Card(Rank.K, Suits.HEARTS);
         Card card2 = new Card(Rank.J, Suits.CLUBS);
         Card card3 = new Card(Rank.K, Suits.SPADES);
@@ -554,20 +423,13 @@ public class CheckHandsTest {
         Card card6 = new Card(Rank.J, Suits.DIAMONDS);
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
-        ArrayList<Player> playerArray = new ArrayList<>();
         Player player_1 = new Player(chips, "Amanda");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
 
-        ArrayList<Card> table = new ArrayList<>();
-        table.add(card3);
-        table.add(card4);
-        table.add(card5);
-        table.add(card6);
-        table.add(card7);
-
-        CheckHands check = new CheckHands();
+        addTable(card3,card4, card5, card6, card7);
+        
         check.checkHands(playerArray, table);
         boolean result = check.is3OfAKind(player_1, table);
         assertEquals(false, result);
@@ -580,10 +442,6 @@ public class CheckHandsTest {
     public void testIs2OfAKind() {
         System.out.println("is2OfAKind");
 
-        Deck deck = new Deck();
-        deck.createDeck();
-        int[] chips = new int[5];
-
         Card card1 = new Card(Rank.K, Suits.HEARTS);
         Card card2 = new Card(Rank.J, Suits.CLUBS);
         Card card3 = new Card(Rank.ACE, Suits.SPADES);
@@ -592,20 +450,13 @@ public class CheckHandsTest {
         Card card6 = new Card(Rank.J, Suits.DIAMONDS);
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
-        ArrayList<Player> playerArray = new ArrayList<>();
         Player player_1 = new Player(chips, "Courtney");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
 
-        ArrayList<Card> table = new ArrayList<>();
-        table.add(card3);
-        table.add(card4);
-        table.add(card5);
-        table.add(card6);
-        table.add(card7);
-
-        CheckHands check = new CheckHands();
+        addTable(card3,card4, card5, card6, card7);
+        
         check.checkHands(playerArray, table);
         boolean result = check.is2OfAKind(player_1, table);
         assertEquals(true, result);
@@ -618,10 +469,6 @@ public class CheckHandsTest {
     public void testIsNot2OfAKind() {
         System.out.println("is2OfAKind");
 
-        Deck deck = new Deck();
-        deck.createDeck();
-        int[] chips = new int[5];
-
         Card card1 = new Card(Rank.K, Suits.HEARTS);
         Card card2 = new Card(Rank.J, Suits.CLUBS);
         Card card3 = new Card(Rank.FOUR, Suits.SPADES);
@@ -630,20 +477,13 @@ public class CheckHandsTest {
         Card card6 = new Card(Rank.ACE, Suits.DIAMONDS);
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
-        ArrayList<Player> playerArray = new ArrayList<>();
         Player player_1 = new Player(chips, "John");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
 
-        ArrayList<Card> table = new ArrayList<>();
-        table.add(card3);
-        table.add(card4);
-        table.add(card5);
-        table.add(card6);
-        table.add(card7);
-
-        CheckHands check = new CheckHands();
+        addTable(card3,card4, card5, card6, card7);
+        
         check.checkHands(playerArray, table);
         boolean result = check.is2OfAKind(player_1, table);
         assertEquals(false, result);
@@ -656,10 +496,6 @@ public class CheckHandsTest {
     public void testIsStraightFlush() {
         System.out.println("isStraightFlush");
 
-        Deck deck = new Deck();
-        deck.createDeck();
-        int[] chips = new int[5];
-
         Card card1 = new Card(Rank.FOUR, Suits.HEARTS);
         Card card2 = new Card(Rank.FIVE, Suits.HEARTS);
         Card card3 = new Card(Rank.SIX, Suits.HEARTS);
@@ -668,21 +504,13 @@ public class CheckHandsTest {
         Card card6 = new Card(Rank.K, Suits.CLUBS);
         Card card7 = new Card(Rank.Q, Suits.CLUBS);
 
-        ArrayList<Player> playerArray = new ArrayList<>();
         Player player_1 = new Player(chips, "Karl");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
 
-        ArrayList<Card> table = new ArrayList<>();
-        table.add(card3);
-        table.add(card4);
-        table.add(card5);
-        table.add(card6);
-        table.add(card7);
-
-        CheckHands check = new CheckHands();
-//        check.checkHands(playerArray, table);
+        addTable(card3,card4, card5, card6, card7);
+        
         boolean result = check.isStraightFlush(player_1, table);
         assertEquals(true, result);
     }
@@ -694,10 +522,6 @@ public class CheckHandsTest {
     public void testIsNotStraightFlush() {
         System.out.println("isNotStraightFlush");
 
-        Deck deck = new Deck();
-        deck.createDeck();
-        int[] chips = new int[5];
-
         Card card1 = new Card(Rank.K, Suits.HEARTS);
         Card card2 = new Card(Rank.J, Suits.HEARTS);
         Card card3 = new Card(Rank.Q, Suits.CLUBS);
@@ -706,20 +530,13 @@ public class CheckHandsTest {
         Card card6 = new Card(Rank.ACE, Suits.HEARTS);
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
-        ArrayList<Player> playerArray = new ArrayList<>();
         Player player_1 = new Player(chips, "Nigel");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
 
-        ArrayList<Card> table = new ArrayList<>();
-        table.add(card3);
-        table.add(card4);
-        table.add(card5);
-        table.add(card6);
-        table.add(card7);
-
-        CheckHands check = new CheckHands();
+        addTable(card3,card4, card5, card6, card7);
+        
         check.checkHands(playerArray, table);
         boolean result = check.isStraightFlush(player_1, table);
         assertEquals(false, result);
@@ -732,10 +549,6 @@ public class CheckHandsTest {
     public void testIsRoyalFlush() {
         System.out.println("isRoyalFlush");
 
-        Deck deck = new Deck();
-        deck.createDeck();
-        int[] chips = new int[5];
-
         Card card1 = new Card(Rank.K, Suits.HEARTS);
         Card card2 = new Card(Rank.J, Suits.HEARTS);
         Card card3 = new Card(Rank.Q, Suits.HEARTS);
@@ -744,21 +557,13 @@ public class CheckHandsTest {
         Card card6 = new Card(Rank.ACE, Suits.HEARTS);
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
-        ArrayList<Player> playerArray = new ArrayList<>();
         Player player_1 = new Player(chips, "Thomas");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
 
-        ArrayList<Card> table = new ArrayList<>();
-        table.add(card3);
-        table.add(card4);
-        table.add(card5);
-        table.add(card6);
-        table.add(card7);
-
-        CheckHands check = new CheckHands();
-//        check.checkHands(playerArray, table);
+        addTable(card3,card4, card5, card6, card7);
+        
         boolean result = check.isStraightFlush(player_1, table);
         assertEquals(true, result);
     }
@@ -770,10 +575,6 @@ public class CheckHandsTest {
     public void testIsNotRoyalFlush() {
         System.out.println("isNotRoyalFlush");
 
-        Deck deck = new Deck();
-        deck.createDeck();
-        int[] chips = new int[5];
-
         Card card1 = new Card(Rank.K, Suits.CLUBS);
         Card card2 = new Card(Rank.J, Suits.HEARTS);
         Card card3 = new Card(Rank.Q, Suits.HEARTS);
@@ -782,21 +583,13 @@ public class CheckHandsTest {
         Card card6 = new Card(Rank.ACE, Suits.HEARTS);
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
-        ArrayList<Player> playerArray = new ArrayList<>();
         Player player_1 = new Player(chips, "Greg");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
 
-        ArrayList<Card> table = new ArrayList<>();
-        table.add(card3);
-        table.add(card4);
-        table.add(card5);
-        table.add(card6);
-        table.add(card7);
-
-        CheckHands check = new CheckHands();
-//        check.checkHands(playerArray, table);
+        addTable(card3,card4, card5, card6, card7);
+        
         boolean result = check.isStraightFlush(player_1, table);
         assertEquals(false, result);
     }
@@ -808,10 +601,6 @@ public class CheckHandsTest {
     public void testGetHighCard() {
         System.out.println("getHighCard");
 
-        Deck deck = new Deck();
-        deck.createDeck();
-        int[] chips = new int[5];
-
         Card card1 = new Card(Rank.K, Suits.CLUBS);
         Card card2 = new Card(Rank.J, Suits.HEARTS);
         Card card3 = new Card(Rank.Q, Suits.HEARTS);
@@ -820,22 +609,22 @@ public class CheckHandsTest {
         Card card6 = new Card(Rank.ACE, Suits.HEARTS);
         Card card7 = new Card(Rank.THREE, Suits.CLUBS);
 
-        ArrayList<Player> playerArray = new ArrayList<>();
         Player player_1 = new Player(chips, "Harry Potter");
         player_1.setCard1(card1);
         player_1.setCard2(card2);
         playerArray.add(player_1);
 
-        ArrayList<Card> table = new ArrayList<>();
-        table.add(card3);
-        table.add(card4);
-        table.add(card5);
-        table.add(card6);
-        table.add(card7);
+        addTable(card3,card4, card5, card6, card7);
 
-        CheckHands check = new CheckHands();
-//        check.checkHands(playerArray, table);
         Card result = check.getHighCard(player_1, table);
         assertEquals(Rank.ACE, result.getRank());
+    }
+    
+    public void addTable(Card card1, Card card2, Card card3, Card card4, Card card5){
+        table.add(card4);
+        table.add(card3);
+        table.add(card2);
+        table.add(card1);
+        table.add(card5);
     }
 }

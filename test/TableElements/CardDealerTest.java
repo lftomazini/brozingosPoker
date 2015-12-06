@@ -13,8 +13,10 @@
  * Description:
  *
  * *****************************************/
-package csci205finalproject;
+package TableElements;
 
+import TableElements.CardDealer;
+import TableElements.Player;
 import Cards.Card;
 import Cards.Deck;
 import java.util.ArrayList;

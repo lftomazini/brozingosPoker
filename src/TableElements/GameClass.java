@@ -15,7 +15,7 @@
  *
  * ****************************************
  */
-package csci205finalproject;
+package TableElements;
 
 import java.util.ArrayList;
 

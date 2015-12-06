@@ -16,8 +16,8 @@
 package Controller;
 
 import Cards.Deck;
-import csci205finalproject.CardDealer;
-import csci205finalproject.Player;
+import TableElements.CardDealer;
+import TableElements.Player;
 import java.util.ArrayList;
 
 /**
