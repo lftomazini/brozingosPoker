@@ -66,6 +66,7 @@ public class RoundStart {
     }
 
     public void StartRound() {
+
         card1bX = new Timer(1, new Card1bX());
         card1bX.setInitialDelay(initialDelay);
         card1bY = new Timer(1, new Card1bY());
@@ -273,6 +274,7 @@ public class RoundStart {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            theGameTable.getP2c1().setIcon(icon1);
             theGameTable.getP2c1().setVisible(true);
             theGameTable.getP2c1().setLocation(theGameTable.getP2c1().getX() - 1,
                                                theGameTable.getP2c1().getY());
@@ -302,6 +304,7 @@ public class RoundStart {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            theGameTable.getP2c2().setIcon(icon1);
             theGameTable.getP2c2().setVisible(true);
             theGameTable.getP2c2().setLocation(theGameTable.getP2c2().getX() - 1,
                                                theGameTable.getP2c2().getY());
@@ -326,6 +329,7 @@ public class RoundStart {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            theGameTable.getP3c1().setIcon(icon1);
             theGameTable.getP3c1().setVisible(true);
             theGameTable.getP3c1().setLocation(theGameTable.getP3c1().getX() - 1,
                                                theGameTable.getP3c1().getY());
@@ -355,6 +359,7 @@ public class RoundStart {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            theGameTable.getP3c2().setIcon(icon1);
             theGameTable.getP3c2().setVisible(true);
             theGameTable.getP3c2().setLocation(theGameTable.getP3c2().getX() - 1,
                                                theGameTable.getP3c2().getY());
@@ -384,6 +389,7 @@ public class RoundStart {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            theGameTable.getP4c1().setIcon(icon1);
             theGameTable.getP4c1().setVisible(true);
             theGameTable.getP4c1().setLocation(theGameTable.getP4c1().getX() - 1,
                                                theGameTable.getP4c1().getY());
@@ -413,6 +419,7 @@ public class RoundStart {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            theGameTable.getP4c2().setIcon(icon1);
             theGameTable.getP4c2().setVisible(true);
             theGameTable.getP4c2().setLocation(theGameTable.getP4c2().getX() - 1,
                                                theGameTable.getP4c2().getY());
@@ -442,6 +449,7 @@ public class RoundStart {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            theGameTable.getP5c1().setIcon(icon1);
             theGameTable.getP5c1().setVisible(true);
 
             theGameTable.getP5c1().setLocation(theGameTable.getP5c1().getX() - 1,
@@ -472,6 +480,7 @@ public class RoundStart {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            theGameTable.getP5c2().setIcon(icon1);
             theGameTable.getP5c2().setVisible(true);
             theGameTable.getP5c2().setLocation(theGameTable.getP5c2().getX() - 1,
                                                theGameTable.getP5c2().getY());
@@ -502,6 +511,7 @@ public class RoundStart {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            theGameTable.getP6c1().setIcon(icon1);
             theGameTable.getP6c1().setVisible(true);
             theGameTable.getP6c1().setLocation(theGameTable.getP6c1().getX() - 1,
                                                theGameTable.getP6c1().getY());
@@ -531,6 +541,7 @@ public class RoundStart {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            theGameTable.getP6c2().setIcon(icon1);
             theGameTable.getP6c2().setVisible(true);
 
             theGameTable.getP6c2().setLocation(theGameTable.getP6c2().getX() + 1,
