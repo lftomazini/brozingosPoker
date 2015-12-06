@@ -84,6 +84,7 @@ public class gameFlow {
                         //pays small blind if player is small blind
                         if (playerArray.get(j).isSmallBlind() && i == 0) {
                             playerArray.get(j).makeBet(game.getSmallBlind());
+                            ending++;
                             playerArray.get(j).setSmallBlind(false);
                             System.out.println("Payed small");
 

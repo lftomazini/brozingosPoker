@@ -62,8 +62,8 @@ public class Controller implements ActionListener, ChangeListener {
     int numPlayers;
     int[] chips1 = {10, 6, 4, 2, 2};
     int tableRound = 0;
-    int playerBigBlind = 1;
-    int playerSmallBlind = 0;
+    int playerBigBlind = 0;
+    int playerSmallBlind = 2;
     int bigBlind = 20;
     int smallBlind = 10;
     ButtonsMovement Move;
@@ -127,7 +127,7 @@ public class Controller implements ActionListener, ChangeListener {
             Move = new ButtonsMovement(theGameTable, theModel);
             ArrayList<Player> players = new ArrayList<Player>();
             players.add(new Player(chips1, startScreen.getNameField().getText()));
-            for (int i = 0; i < numPlayers; i++) {
+            for (int i = 0; i < numPlayers - 1; i++) {
                 players.add(new Player(chips1, computerNames[i]));
             }
 
@@ -149,20 +149,32 @@ public class Controller implements ActionListener, ChangeListener {
         if (e.getSource()
             == theGameTable.getDoneButton()) {
             theGameTable.getSetBlindsPan().setVisible(false);
-            for (int i = 1; i < theModel.getNumPlayers(); i++) {
-                theModel.getPlayers().get(i).call(bigBlind);
-                theModel.getPlayers().get(i).getChipsFromMoney();
-                moneyPool += bigBlind;
+
+            //FIX THIS TO DO SMALL BLIND, THEN BIG BLIND, THEN SMALL BLIND
+            for (int i = 0; i < theModel.getPlayers().size(); i++) {
+                int playerTurn = (bigBlind + i) % theModel.getPlayers().size();
+                if (playerTurn == 0) {
+                    theModel.getPlayers().get(0).call(bigBlind);
+                    theModel.getPlayers().get(0).getChipsFromMoney();
+                    updateCoins();
+                    moneyPool += bigBlind;
+                    theGameTable.getGameInfoTA().append(
+                            "\nYou have paid the big blind.");
+                } else {
+                    //RANDOMIZE IF THEY WANT TO FOLD OR PAY BIG BLIND
+                    theModel.getPlayers().get(i).call(bigBlind);
+                    theModel.getPlayers().get(i).getChipsFromMoney();
+                    moneyPool += bigBlind;
+                    theGameTable.getGameInfoTA().append("\n"
+                                                        + theModel.getPlayers().get(
+                                    i).getName() + " has paid the big blind.");
+
+                }
+
+                this.theGameTable.getFlip().setText(flipNames[tableRound]);
+                this.theGameTable.getFlip().setVisible(true);
+
             }
-
-            //ASK USER IF THEY WANT TO FOLD OR PAY
-            theModel.getPlayers().get(0).call(smallBlind);
-            theModel.getPlayers().get(0).getChipsFromMoney();
-            updateCoins();
-            moneyPool += smallBlind;
-            this.theGameTable.getFlip().setText(flipNames[tableRound]);
-            this.theGameTable.getFlip().setVisible(true);
-
         }
 
         if (e.getSource()
@@ -187,15 +199,25 @@ public class Controller implements ActionListener, ChangeListener {
             flip();
             theGameTable.getFlip().setVisible(false);
             this.theGameTable.getFlip().setText(flipNames[tableRound]);
+            if (tableRound < 3) {
+                for (int i = 0; i < theModel.getPlayers().size(); i++) {
+                    int playerTurn = (bigBlind + i) % theModel.getPlayers().size();
+                    if (playerTurn == 0) {
+                        if ((theModel.getPlayers().get(0).isHasFolded() == false) & (tableRound < 3)) {
+                            adjustBetSlider(0);
+                            theGameTable.getFoldCheckBet().setVisible(true);
+                        }
 
-            //don't let them flip again yet!!! Go through round first
-            if ((theModel.getPlayers().get(0).isHasFolded() == false) & (tableRound < 3)) {
-                adjustBetSlider(0);
-                theGameTable.getFoldCheckBet().setVisible(true);
-            } else if (tableRound < 3) {
-                //A function that moves through computer players
-                runPlayers();
+                    } else {
+                        //TO DO
+//                        theGameTable.getGameInfoTA().append("\n"
+//                                                            + theModel.getPlayers().get(
+//                                        i).getName() + " has paid the big blind.");
+
+                    }
+                }
                 theGameTable.getFlip().setVisible(true);
+
             } else if (tableRound == 3) {
                 try {
                     showdown();
@@ -217,10 +239,11 @@ public class Controller implements ActionListener, ChangeListener {
             if (theGameTable.getFoldRB().isSelected() == true) {
                 int i = 0;
                 fold(i);
-                finishRound();
+                theGameTable.getGameInfoTA().append("\nYou have folded");
+
             } //Player checks
             else if (theGameTable.getCheckRB().isSelected() == true) {
-                finishRound();
+                theGameTable.getGameInfoTA().append("\nYou have checked");
             } //Player bets!
             else if (theGameTable.getBetRB().isSelected() == true) {
                 betValue = theGameTable.getBetSl().getValue();
@@ -229,8 +252,11 @@ public class Controller implements ActionListener, ChangeListener {
                 theModel.getPlayers().get(0).getChipsFromMoney();
                 moneyPool += betValue;
                 updateCoins();
-                finishRound();
+                theGameTable.getGameInfoTA().append(
+                        "\nyou have bet $" + Integer.toString(betValue));
             }
+            theGameTable.getFoldCheckBet().setVisible(false);
+            theGameTable.getFlip().setVisible(true);
         }
 
         //flip card 1 over
@@ -266,6 +292,33 @@ public class Controller implements ActionListener, ChangeListener {
 
             theGameTable.getWinnerPanel().setVisible(false);
             theGameTable.getSetBlindsPan().setVisible(true);
+
+            //ADD CODE TO RESET COINS
+            //FIX THIS TO DO SMALL BLIND, THEN BIG BLIND, THEN SMALL BLIND
+            for (int i = 0; i < theModel.getPlayers().size(); i++) {
+                int playerTurn = (bigBlind + i) % theModel.getPlayers().size();
+                if (playerTurn == 0) {
+                    theModel.getPlayers().get(0).call(smallBlind);
+                    theModel.getPlayers().get(0).getChipsFromMoney();
+                    updateCoins();
+                    moneyPool += smallBlind;
+                    theGameTable.getGameInfoTA().append(
+                            "\nYou have paid the small blind.");
+                } else {
+                    //RANDOMIZE IF THEY WANT TO FOLD OR PAY BIG BLIND
+                    theModel.getPlayers().get(i).call(bigBlind);
+                    theModel.getPlayers().get(i).getChipsFromMoney();
+                    moneyPool += bigBlind;
+                    theGameTable.getGameInfoTA().append("\n"
+                                                        + theModel.getPlayers().get(
+                                    i).getName() + " has paid the big blind.");
+
+                }
+
+                this.theGameTable.getFlip().setText(flipNames[tableRound]);
+                this.theGameTable.getFlip().setVisible(true);
+
+            }
 
         }
 
@@ -373,15 +426,6 @@ public class Controller implements ActionListener, ChangeListener {
     }
 
     /**
-     * finishes up the card round of betting, checking, or folding
-     */
-    private void finishRound() {
-        runPlayers();
-        theGameTable.getFoldCheckBet().setVisible(false);
-        theGameTable.getFlip().setVisible(true);
-    }
-
-    /**
      * completes the functionality of the showdown
      */
     private void showdown() throws InterruptedException {
@@ -441,17 +485,6 @@ public class Controller implements ActionListener, ChangeListener {
         theGameTable.getBlackChip1().setText(String.valueOf(
                 theModel.getPlayers().get(
                         0).getChips()[4]));
-    }
-
-    /**
-     * Finishes the round, moving through each computer player
-     */
-    private void runPlayers() {
-        for (int i = 1; i < theModel.getNumPlayers(); i++) {
-            if (theModel.getPlayers().get(0).isHasFolded() == true) {
-                //TO DO: randomize: check, bet, fold
-            }
-        }
     }
 
     /**
