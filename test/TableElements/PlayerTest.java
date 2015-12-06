@@ -38,11 +38,6 @@ public class PlayerTest {
     @Before
     public void setUp() {
         int[] chips = {5, 2, 1, 3 ,1};
-//        chips[0] = 5;
-//        chips[1] = 1;
-//        chips[2] = 4;
-//        chips[3] = 2;
-//        chips[4] = 1;
         player = new Player(chips,"player");
     }
     
