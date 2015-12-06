@@ -185,11 +185,10 @@ public class GameTable extends javax.swing.JFrame {
 
         betSl.setMajorTickSpacing(10);
         betSl.setMinorTickSpacing(5);
-        betSl.setPaintTicks(true);
         betSl.setSnapToTicks(true);
         betSl.setToolTipText("");
         foldCheckBet.add(betSl);
-        betSl.setBounds(100, 70, 110, 70);
+        betSl.setBounds(100, 80, 110, 70);
 
         betValue.setText("Bet Value");
         foldCheckBet.add(betValue);
