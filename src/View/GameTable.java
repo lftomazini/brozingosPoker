@@ -63,10 +63,6 @@ public class GameTable extends javax.swing.JFrame {
         checkRB = new javax.swing.JRadioButton();
         betRB = new javax.swing.JRadioButton();
         betTF = new javax.swing.JTextField();
-        setBlindsPan = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        doneButton = new javax.swing.JButton();
-        dontPay = new javax.swing.JButton();
         flop = new javax.swing.JLabel();
         turn = new javax.swing.JLabel();
         river = new javax.swing.JLabel();
@@ -105,6 +101,13 @@ public class GameTable extends javax.swing.JFrame {
         player6 = new javax.swing.JLabel();
         flop2 = new javax.swing.JLabel();
         flop1 = new javax.swing.JLabel();
+        card2label = new javax.swing.JLabel();
+        card1label = new javax.swing.JLabel();
+        GIVECARDS = new javax.swing.JButton();
+        setBlindsPan = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        doneButton = new javax.swing.JButton();
+        dontPay = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -188,29 +191,6 @@ public class GameTable extends javax.swing.JFrame {
         jPanel1.add(foldCheckBet);
         foldCheckBet.setBounds(360, 580, 220, 200);
 
-        setBlindsPan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        setBlindsPan.setLayout(null);
-
-        jLabel2.setText("Pay Small Blind ($25)?:");
-        setBlindsPan.add(jLabel2);
-        jLabel2.setBounds(30, 30, 170, 15);
-
-        doneButton.setText("Yes!");
-        doneButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doneButtonActionPerformed(evt);
-            }
-        });
-        setBlindsPan.add(doneButton);
-        doneButton.setBounds(60, 60, 80, 40);
-
-        dontPay.setText("Fold");
-        setBlindsPan.add(dontPay);
-        dontPay.setBounds(60, 110, 80, 40);
-
-        jPanel1.add(setBlindsPan);
-        setBlindsPan.setBounds(570, 480, 210, 200);
-
         flop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(flop);
         flop.setBounds(910, 290, 70, 100);
@@ -231,7 +211,7 @@ public class GameTable extends javax.swing.JFrame {
         card1b.setBorderPainted(false);
         card1b.setContentAreaFilled(false);
         jPanel1.add(card1b);
-        card1b.setBounds(570, 460, 83, 112);
+        card1b.setBounds(560, 460, 83, 112);
 
         card2b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         card2b.setBorderPainted(false);
@@ -257,11 +237,11 @@ public class GameTable extends javax.swing.JFrame {
 
         p4c1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(p4c1);
-        p4c1.setBounds(280, 140, 71, 100);
+        p4c1.setBounds(280, 130, 71, 100);
 
         p4c2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(p4c2);
-        p4c2.setBounds(370, 140, 71, 100);
+        p4c2.setBounds(370, 130, 71, 100);
 
         p5c1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(p5c1);
@@ -396,6 +376,41 @@ public class GameTable extends javax.swing.JFrame {
         jPanel1.add(flop1);
         flop1.setBounds(910, 290, 70, 100);
 
+        card2label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
+        jPanel1.add(card2label);
+        card2label.setBounds(660, 470, 70, 100);
+
+        card1label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
+        jPanel1.add(card1label);
+        card1label.setBounds(570, 470, 70, 100);
+
+        GIVECARDS.setText("jButton1");
+        jPanel1.add(GIVECARDS);
+        GIVECARDS.setBounds(900, 450, 66, 27);
+
+        setBlindsPan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        setBlindsPan.setLayout(null);
+
+        jLabel2.setText("Pay Small Blind ($25)?:");
+        setBlindsPan.add(jLabel2);
+        jLabel2.setBounds(30, 30, 170, 15);
+
+        doneButton.setText("Yes!");
+        doneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doneButtonActionPerformed(evt);
+            }
+        });
+        setBlindsPan.add(doneButton);
+        doneButton.setBounds(60, 60, 80, 40);
+
+        dontPay.setText("Fold");
+        setBlindsPan.add(dontPay);
+        dontPay.setBounds(60, 110, 80, 40);
+
+        jPanel1.add(setBlindsPan);
+        setBlindsPan.setBounds(540, 490, 210, 200);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -482,6 +497,7 @@ public class GameTable extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buttons;
+    private javax.swing.JButton GIVECARDS;
     private javax.swing.JRadioButton betRB;
     private javax.swing.JTextField betTF;
     private javax.swing.JButton bigBlind;
@@ -490,7 +506,9 @@ public class GameTable extends javax.swing.JFrame {
     private javax.swing.JLabel blueChip;
     private javax.swing.JLabel blueChip1;
     private javax.swing.JButton card1b;
+    private javax.swing.JLabel card1label;
     private javax.swing.JButton card2b;
+    private javax.swing.JLabel card2label;
     private javax.swing.JRadioButton checkRB;
     private javax.swing.JLabel deck;
     private javax.swing.JButton doneButton;
@@ -766,6 +784,18 @@ public class GameTable extends javax.swing.JFrame {
 
     public JLabel getPlayer6() {
         return player6;
+    }
+
+    public JLabel getCard2label() {
+        return card2label;
+    }
+
+    public JLabel getCard1label() {
+        return card1label;
+    }
+
+    public JButton getGivecards() {
+        return GIVECARDS;
     }
 
 }

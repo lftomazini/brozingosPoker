@@ -15,8 +15,9 @@
  * *****************************************/
 package Controller;
 
-import Animations.ButtonsMovement;
+import Animations.FlipCards;
 import Animations.RoundEnd;
+import Animations.RoundStart;
 import Cards.Card;
 import Cards.Deck;
 import Model.Model;
@@ -53,6 +54,10 @@ public class Controller implements ActionListener {
     Timer timer4;
     Timer timer5;
 
+    RoundEnd MoveEnd;
+    FlipCards FlipCards;
+    RoundStart RoundStart;
+
     boolean onCard1 = false;
     boolean onCard2 = false;
     int numPlayers;
@@ -62,8 +67,7 @@ public class Controller implements ActionListener {
     int playerSmallBlind = 0;
     int bigBlind = 20;
     int smallBlind = 10;
-    ButtonsMovement Move;
-    RoundEnd MoveEnd;
+
     int betValue = 0; //holds value of what the bet is up to
     String[] flipNames = {"The Flop", "The Turn", "The River", "The Showdown"};
     String[] computerNames = {"Stephanie", "Luis", "Leo", "Anmol", "Professor Peck", "Professor King"};
@@ -80,12 +84,15 @@ public class Controller implements ActionListener {
         this.theGameTable.getFlip().addActionListener(this);
         this.theGameTable.getCard1b().addActionListener(this);
         this.theGameTable.getCard2b().addActionListener(this);
+        this.theGameTable.getGivecards().addActionListener(this);
         this.theGameTable.getFlop().setVisible(false);
         this.theGameTable.getFlop1().setVisible(false);
         this.theGameTable.getFlop2().setVisible(false);
         this.theGameTable.getTurn().setVisible(false);
         this.theGameTable.getRiver().setVisible(false);
         this.theGameTable.getFlip().setVisible(false);
+        this.theGameTable.getCard1label().setVisible(false);
+        this.theGameTable.getCard2label().setVisible(false);
         this.theGameTable.getWinnerPanel().setVisible(false);
         this.theGameTable.getFoldCheckBet().setVisible(false);
         this.theGameTable.getButtons().addActionListener(this);
@@ -107,6 +114,10 @@ public class Controller implements ActionListener {
             );
             MoveEnd.endRound();
         }
+        if (e.getSource() == theGameTable.getGivecards()) {
+            RoundStart = new RoundStart(theGameTable);
+            RoundStart.StartRound();
+        }
 
         if (e.getSource() == startScreen.getStart()) {
             startScreen.setVisible(false);
@@ -118,7 +129,6 @@ public class Controller implements ActionListener {
             numPlayers = startScreen.getNumPlayers().getSelectedIndex();
             checkNumPlayers();
             theModel.setNumPlayers(numPlayers);
-            Move = new ButtonsMovement(theGameTable, theModel);
             ArrayList<Player> players = new ArrayList<Player>();
             players.add(new Player(chips1, startScreen.getNameField().getText()));
             for (int i = 0; i < numPlayers; i++) {
@@ -409,6 +419,11 @@ public class Controller implements ActionListener {
             numPlayers = 6;
         }
     }
+    Card card1;
+    Card card2;
+    Card card3;
+    Card card4;
+    Card card5;
 
     /**
      * Controls the flip, whenever the dealer flips cards over on the table
@@ -416,74 +431,27 @@ public class Controller implements ActionListener {
     void flip() {
         //the flop
         if (tableRound == 0) {
-            theGameTable.getFlop().setVisible(true);
-            Card card1 = this.theModel.getTheCardDealer().placeCardsOnTable();
-            String cardName = card1.getName();
-            Icon icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            System.out.println(cardName);
-            theGameTable.getFlop().setIcon(icon);
-            timer1 = new Timer(1, new Flop());
-            timer1.setInitialDelay(0);
-            timer1.setRepeats(true);
-            timer1.start();
-
-            Card card2 = this.theModel.getTheCardDealer().placeCardsOnTable();
-
-            String cardName2 = card2.getName();
-            Icon icon2 = new ImageIcon(
-                    "src/cardsimage/" + cardName2 + ".png");
-            System.out.println(cardName2);
-            theGameTable.getFlop1().setIcon(icon2);
-            timer2 = new Timer(1, new Flop1());
-            timer2.setInitialDelay(1000);
-            timer2.setRepeats(true);
-            timer2.start();
-
-            Card card3 = this.theModel.getTheCardDealer().placeCardsOnTable();
-
-            String cardName3 = card3.getName();
-            Icon icon3 = new ImageIcon(
-                    "src/cardsimage/" + cardName3 + ".png");
-            theGameTable.getFlop2().setIcon(icon3);
-            System.out.println(cardName3);
-            timer3 = new Timer(1, new Flop2());
-            timer3.setInitialDelay(2000);
-            timer3.setRepeats(true);
-            timer3.start();
-
+            card1 = this.theModel.getTheCardDealer().placeCardsOnTable();
+            card2 = this.theModel.getTheCardDealer().placeCardsOnTable();
+            card3 = this.theModel.getTheCardDealer().placeCardsOnTable();
+            card4 = this.theModel.getTheCardDealer().placeCardsOnTable();
+            card5 = this.theModel.getTheCardDealer().placeCardsOnTable();
             cardsOnTable.add(card1);
             cardsOnTable.add(card2);
             cardsOnTable.add(card3);
+            FlipCards = new FlipCards(theGameTable, card1, card2, card3, card4,
+                                      card5);
+            FlipCards.flop();
             tableRound++;
+
         } //the turn
         else if (tableRound == 1) {
-            Card card4 = this.theModel.getTheCardDealer().placeCardsOnTable();
-            theGameTable.getTurn().setVisible(true);
-            String cardName4 = card4.getName();
-            Icon icon4 = new ImageIcon(
-                    "src/cardsimage/" + cardName4 + ".png");
-            theGameTable.getTurn().setIcon(icon4);
-            timer4 = new Timer(1, new Turn());
-            timer4.setInitialDelay(0);
-            timer4.setRepeats(true);
-            timer4.start();
-
+            FlipCards.turn();
             cardsOnTable.add(card4);
             tableRound++;
         } //the river
         else if (tableRound == 2) {
-            Card card5 = this.theModel.getTheCardDealer().placeCardsOnTable();
-            theGameTable.getRiver().setVisible(true);
-            String cardName5 = card5.getName();
-            Icon icon5 = new ImageIcon(
-                    "src/cardsimage/" + cardName5 + ".png");
-            theGameTable.getRiver().setIcon(icon5);
-            timer5 = new Timer(1, new River());
-            timer5.setInitialDelay(0);
-            timer5.setRepeats(true);
-            timer5.start();
-
+            FlipCards.river();
             cardsOnTable.add(card5);
             tableRound++;
         }
@@ -498,7 +466,6 @@ public class Controller implements ActionListener {
             String cardName = this.theModel.getPlayers().get(0).getCard1().getName();
             Icon icon = new ImageIcon(
                     "src/cardsimage/" + cardName + ".png");
-            System.out.println(cardName);
             theGameTable.getCard1b().setIcon(icon);
             onCard1 = true;
         } else {
@@ -517,7 +484,6 @@ public class Controller implements ActionListener {
             String cardName = this.theModel.getPlayers().get(0).getCard2().getName();
             Icon icon = new ImageIcon(
                     "src/cardsimage/" + cardName + ".png");
-            System.out.println(cardName);
             theGameTable.getCard2b().setIcon(icon);
             onCard2 = true;
         } else {
