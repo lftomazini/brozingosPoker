@@ -32,95 +32,27 @@ public class CardDealerTest {
     public CardDealerTest() {
     }
     
+    private ArrayList<Player> players = new ArrayList<>();
+    private CardDealer instance;
+    
     @Before
     public void setUp() {
+        int[] chips = {1,2,3,4,5};
+        Player player1 = new Player(chips, "p1");
+        Player player2 = new Player(chips, "p2");
+        Player player3 = new Player(chips, "p3");
+        Player player4 = new Player(chips, "p4");
+        players.add(player1);
+        players.add(player2);
+        players.add(player3);
+        players.add(player4);
+        Deck deck = new Deck();
+        deck.createDeck();
+        instance = new CardDealer(deck, players);
     }
     
     @After
     public void tearDown() {
-    }
-
-    /**
-     * Test of setCardsOnTable method, of class CardDealer.
-     */
-    @Test
-    public void testSetCardsOnTable() {
-        System.out.println("setCardsOnTable");
-        ArrayList<Card> cardsOnTable = null;
-        CardDealer instance = null;
-        instance.setCardsOnTable(cardsOnTable);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getPlayers method, of class CardDealer.
-     */
-    @Test
-    public void testGetPlayers() {
-        System.out.println("getPlayers");
-        CardDealer instance = null;
-        ArrayList<Player> expResult = null;
-        ArrayList<Player> result = instance.getPlayers();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getRounds method, of class CardDealer.
-     */
-    @Test
-    public void testGetRounds() {
-        System.out.println("getRounds");
-        CardDealer instance = null;
-        int expResult = 0;
-        int result = instance.getRounds();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getDeck method, of class CardDealer.
-     */
-    @Test
-    public void testGetDeck() {
-        System.out.println("getDeck");
-        CardDealer instance = null;
-        Deck expResult = null;
-        Deck result = instance.getDeck();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getCardsChosen method, of class CardDealer.
-     */
-    @Test
-    public void testGetCardsChosen() {
-        System.out.println("getCardsChosen");
-        CardDealer instance = null;
-        ArrayList<Card> expResult = null;
-        ArrayList<Card> result = instance.getCardsChosen();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getCardsOnTable method, of class CardDealer.
-     */
-    @Test
-    public void testGetCardsOnTable() {
-        System.out.println("getCardsOnTable");
-        CardDealer instance = null;
-        ArrayList<Card> expResult = null;
-        ArrayList<Card> result = instance.getCardsOnTable();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -129,12 +61,20 @@ public class CardDealerTest {
     @Test
     public void testGetRandom() {
         System.out.println("getRandom");
-        CardDealer instance = null;
-        int expResult = 0;
-        int result = instance.getRandom();
+        int[] arr = new int[52];
+        for (int i = 0; i < 52; i++) {
+            arr[i] = instance.getRandom();
+        }
+        int result = 1;
+        for (int j = 0; j < 52; j++) {
+            for (int k = 0; k < 52; k++) {
+                if (arr[j] == arr[k] && j!=k) {
+                    result = 0;
+                }
+            }
+        }
+        int expResult = 1;
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -143,10 +83,15 @@ public class CardDealerTest {
     @Test
     public void testGiveCardstoPlayers() {
         System.out.println("giveCardstoPlayers");
-        CardDealer instance = null;
         instance.giveCardstoPlayers();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertFalse(instance.getPlayers().get(0).getCard1() == null);
+        assertFalse(instance.getPlayers().get(0).getCard2() == null);
+        assertFalse(instance.getPlayers().get(1).getCard1() == null);
+        assertFalse(instance.getPlayers().get(1).getCard2() == null);
+        assertFalse(instance.getPlayers().get(2).getCard1() == null);
+        assertFalse(instance.getPlayers().get(2).getCard2() == null);
+        assertFalse(instance.getPlayers().get(3).getCard1() == null);
+        assertFalse(instance.getPlayers().get(3).getCard2() == null);
     }
 
     /**
@@ -155,12 +100,13 @@ public class CardDealerTest {
     @Test
     public void testPlaceCardsOnTable() {
         System.out.println("placeCardsOnTable");
-        CardDealer instance = null;
-        Card expResult = null;
-        Card result = instance.placeCardsOnTable();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Card cd1 = instance.placeCardsOnTable();
+        Card cd2 = instance.placeCardsOnTable();
+        
+        
+        assertEquals(instance.getCardsChosen().size(), 2);
+        assertFalse(cd1 == null);
+        assertFalse(cd2 == null);
     }
 
     /**
@@ -169,10 +115,18 @@ public class CardDealerTest {
     @Test
     public void testNewRound() {
         System.out.println("newRound");
-        CardDealer instance = null;
+        instance.placeCardsOnTable();
+        instance.giveCardstoPlayers();
+        assertFalse(instance.getCardsOnTable().get(0) == null);
+        assertFalse(instance.getCardsChosen().get(0) == null);
+        assertEquals(instance.getRounds(), 0);
+        
         instance.newRound();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        assertEquals(instance.getCardsChosen().size(), 0);
+        assertEquals(instance.getCardsOnTable().size(), 0);
+        assertEquals(instance.getRounds(), 1);
+        
     }
     
 }

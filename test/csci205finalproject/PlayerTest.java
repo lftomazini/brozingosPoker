@@ -122,7 +122,6 @@ public class PlayerTest {
         
         
         player.fold();
-        assertEquals(player.getCard1(), null);
-        assertEquals(player.getCard2(), null);
+        assertEquals(player.isHasFolded(), true);
     }
 }

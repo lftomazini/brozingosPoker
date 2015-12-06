@@ -147,10 +147,7 @@ public class Player {
      * Sets both the cards to be null
      */
     public void fold() {
-        //this.setCard1(null);
-        //this.setCard2(null);
         hasFolded = true;
-
     }
 
     /**
