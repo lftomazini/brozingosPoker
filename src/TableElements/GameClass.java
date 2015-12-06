@@ -36,8 +36,7 @@ public class GameClass {
         this.smallBlind = smallBlind;
         this.bigBlind = bigBlind;
         this.bet = bigBlind;
-        playerList.get(0).setSmallBlind(true);
-        playerList.get(1).setBigBlind(true);
+
     }
 
     public void setBet(int bet) {
