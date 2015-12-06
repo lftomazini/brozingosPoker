@@ -105,6 +105,7 @@ public class Controller implements ActionListener, ChangeListener {
         this.theGameTable.getCard2label().setVisible(false);
         this.theGameTable.getWinnerPanel().setVisible(false);
         this.theGameTable.getFoldCheckBet().setVisible(false);
+        this.theGameTable.getDontPay().setVisible(false);
         this.theGameTable.getButtons().addActionListener(this);
         this.theGameTable.getBetRB().addActionListener(this);
         this.theGameTable.getFoldRB().addActionListener(this);
@@ -286,6 +287,7 @@ public class Controller implements ActionListener, ChangeListener {
             for (int i = 0; i < theModel.getPlayers().size(); i++) {
                 theModel.getPlayers().get(i).setCard1(null);
                 theModel.getPlayers().get(i).setCard2(null);
+                theModel.getPlayers().get(i).setHasFolded(false);
             }
             theModel.getTheCardDealer().giveCardstoPlayers();
             theModel.getPlayers().get(playerSmallBlind).setSmallBlind(true);
@@ -329,8 +331,8 @@ public class Controller implements ActionListener, ChangeListener {
             for (int i = 0; i < theModel.getPlayers().size(); i++) {
                 int playerTurn = (smallBlind + i) % theModel.getPlayers().size();
                 //We will pay small blind, don't fold
-                if (theModel.getPlayers().get(playerTurn).isSmallBlind() & (theModel.getPlayers().get(
-                                                                            playerTurn).isHasFolded() == false)) {
+                if ((theModel.getPlayers().get(playerTurn).isSmallBlind() == true) & (theModel.getPlayers().get(
+                                                                                      playerTurn).isHasFolded() == false)) {
                     theModel.getPlayers().get(playerTurn).call(smallBlind);
                     theModel.getPlayers().get(playerTurn).getChipsFromMoney();
                     moneyPool += smallBlind;
@@ -353,6 +355,7 @@ public class Controller implements ActionListener, ChangeListener {
 
             if ((theModel.getPlayers().get(0).isSmallBlind() == true) & (paidSmallBlind == 0)) {
                 paidSmallBlind += 1;
+                theGameTable.getDontPay().setVisible(true);
                 theGameTable.getSetBlindsPan().setVisible(true);
             } else if ((playerSmallBlind != 0) & (theModel.getPlayers().get(
                                                   playerSmallBlind).isHasFolded() == false)) {
@@ -458,7 +461,7 @@ public class Controller implements ActionListener, ChangeListener {
      * @param blind - big or small
      */
     private int changeBlinds(int blind) {
-        if (blind == (theModel.getPlayers().size())) {
+        if (blind == (theModel.getPlayers().size() - 1)) {
             blind = 0;
         } else {
             blind += 1;

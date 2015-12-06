@@ -214,6 +214,11 @@ public class GameTable extends javax.swing.JFrame {
         doneButton.setBounds(60, 60, 80, 40);
 
         dontPay.setText("Fold");
+        dontPay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dontPayActionPerformed(evt);
+            }
+        });
         setBlindsPan.add(dontPay);
         dontPay.setBounds(60, 110, 80, 40);
 
@@ -461,6 +466,10 @@ public class GameTable extends javax.swing.JFrame {
     private void foldRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foldRBActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_foldRBActionPerformed
+
+    private void dontPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dontPayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dontPayActionPerformed
 
     /**
      * @param args the command line arguments
