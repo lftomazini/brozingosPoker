@@ -200,7 +200,7 @@ public class GameTable extends javax.swing.JFrame {
         setBlindsPan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setBlindsPan.setLayout(null);
 
-        jLabel2.setText("Pay Small Blind ($25)?:");
+        jLabel2.setText("Pay Big Blind ($20)?:");
         setBlindsPan.add(jLabel2);
         jLabel2.setBounds(40, 30, 170, 15);
 
@@ -214,6 +214,11 @@ public class GameTable extends javax.swing.JFrame {
         doneButton.setBounds(60, 60, 80, 40);
 
         dontPay.setText("Fold");
+        dontPay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dontPayActionPerformed(evt);
+            }
+        });
         setBlindsPan.add(dontPay);
         dontPay.setBounds(60, 110, 80, 40);
 
@@ -366,13 +371,13 @@ public class GameTable extends javax.swing.JFrame {
         player2.setText("Player 2");
         player2.setOpaque(true);
         jPanel1.add(player2);
-        player2.setBounds(20, 230, 90, 30);
+        player2.setBounds(280, 660, 90, 30);
 
         player3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         player3.setText("Player 3");
         player3.setOpaque(true);
         jPanel1.add(player3);
-        player3.setBounds(300, 680, 90, 30);
+        player3.setBounds(20, 230, 90, 30);
 
         player4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         player4.setText("Player 4");
@@ -461,6 +466,10 @@ public class GameTable extends javax.swing.JFrame {
     private void foldRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foldRBActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_foldRBActionPerformed
+
+    private void dontPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dontPayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dontPayActionPerformed
 
     /**
      * @param args the command line arguments
