@@ -51,7 +51,7 @@ public class ComputerPlayerTest {
     public void testPlayBet() {
         System.out.println("playBet");
         int betAmount = 220;
-        instance.setMoney(310);
+        instance.setMoney(280);
         Card cd1 = new Card(Rank.FIVE, Suits.CLUBS);
         Card cd2 = new Card(Rank.K, Suits.CLUBS);
         instance.setCard1(cd1);
@@ -59,6 +59,7 @@ public class ComputerPlayerTest {
         instance.playBet(betAmount);
         assertEquals(true, instance.isHasFolded());
         
+        instance.setMoney(300);
         cd1 = new Card(Rank.FIVE, Suits.CLUBS);
         cd2 = new Card(Rank.K, Suits.CLUBS);
         instance.setCard1(cd1);
@@ -66,6 +67,7 @@ public class ComputerPlayerTest {
         instance.playBet(betAmount);
         assertEquals(20, instance.getMoney());
         
+        instance.setMoney(300);
         cd1 = new Card(Rank.NINE, Suits.HEARTS);
         cd2 = new Card(Rank.NINE, Suits.CLUBS);
         instance.setCard1(cd1);
@@ -73,6 +75,7 @@ public class ComputerPlayerTest {
         instance.playBet(betAmount);
         assertEquals(20, instance.getMoney());
         
+        instance.setMoney(300);
         cd1 = new Card(Rank.THREE, Suits.HEARTS);
         cd2 = new Card(Rank.K, Suits.CLUBS);
         instance.setCard1(cd1);
@@ -80,6 +83,7 @@ public class ComputerPlayerTest {
         instance.playBet(betAmount);
         assertEquals(20, instance.getMoney());
         
+        instance.setMoney(300);
         cd1 = new Card(Rank.THREE, Suits.HEARTS);
         cd2 = new Card(Rank.FIVE, Suits.CLUBS);
         instance.setCard1(cd1);
@@ -87,6 +91,7 @@ public class ComputerPlayerTest {
         instance.playBet(betAmount);
         assertEquals(300, instance.getMoney());
         
+        instance.setMoney(300);
         cd1 = new Card(Rank.J, Suits.HEARTS);
         cd2 = new Card(Rank.SEVEN, Suits.CLUBS);
         instance.setCard1(cd1);
@@ -94,11 +99,63 @@ public class ComputerPlayerTest {
         instance.playBet(betAmount);
         assertEquals(80, instance.getMoney());
         
-        betAmount = 150;
-        instance.setMoney(250);
+        instance.setMoney(150);
+        betAmount = 100;
+        cd1 = new Card(Rank.FIVE, Suits.CLUBS);
+        cd2 = new Card(Rank.K, Suits.CLUBS);
+        instance.setCard1(cd1);
+        instance.setCard2(cd2);
+        instance.playBet(betAmount);
+        assertEquals(50, instance.getMoney());
         
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.setMoney(150);
+        cd1 = new Card(Rank.NINE, Suits.HEARTS);
+        cd2 = new Card(Rank.NINE, Suits.CLUBS);
+        instance.setCard1(cd1);
+        instance.setCard2(cd2);
+        instance.playBet(betAmount);
+        assertEquals(50, instance.getMoney());
+        
+        instance.setMoney(150);
+        cd1 = new Card(Rank.THREE, Suits.HEARTS);
+        cd2 = new Card(Rank.K, Suits.CLUBS);
+        instance.setCard1(cd1);
+        instance.setCard2(cd2);
+        instance.playBet(betAmount);
+        assertEquals(50, instance.getMoney());
+        
+        instance.setMoney(150);
+        cd1 = new Card(Rank.J, Suits.HEARTS);
+        cd2 = new Card(Rank.SEVEN, Suits.CLUBS);
+        instance.setCard1(cd1);
+        instance.setCard2(cd2);
+        instance.playBet(betAmount);
+        assertEquals(150, instance.getMoney());
+        
+        instance.setMoney(40);
+        betAmount = 20;
+        cd1 = new Card(Rank.NINE, Suits.HEARTS);
+        cd2 = new Card(Rank.NINE, Suits.CLUBS);
+        instance.setCard1(cd1);
+        instance.setCard2(cd2);
+        instance.playBet(betAmount);
+        assertEquals(20, instance.getMoney());
+        
+        instance.setMoney(40);
+        cd1 = new Card(Rank.J, Suits.HEARTS);
+        cd2 = new Card(Rank.K, Suits.CLUBS);
+        instance.setCard1(cd1);
+        instance.setCard2(cd2);
+        instance.playBet(betAmount);
+        assertEquals(20, instance.getMoney());
+        
+        instance.setMoney(40);
+        cd1 = new Card(Rank.NINE, Suits.HEARTS);
+        cd2 = new Card(Rank.J, Suits.CLUBS);
+        instance.setCard1(cd1);
+        instance.setCard2(cd2);
+        instance.playBet(betAmount);
+        assertEquals(40, instance.getMoney());
     }
 
     /**
@@ -209,7 +266,7 @@ public class ComputerPlayerTest {
     }
 
     /**
-     * Test of highCardNotJ method, of class ComputerPlayer.
+     * Test of highCardIsNotJ method, of class ComputerPlayer.
      */
     @Test
     public void testHighCardNotJ() {
@@ -221,14 +278,14 @@ public class ComputerPlayerTest {
         instance.setCard2(cd2);
 
         boolean expResult = false;
-        boolean result = instance.highCardNotJ();
+        boolean result = instance.highCardIsNotJ();
         assertEquals(expResult, result);
 
         cd1 = new Card(Rank.TWO, Suits.HEARTS);
         cd2 = new Card(Rank.NINE, Suits.DIAMONDS);
         instance.setCard1(cd1);
         instance.setCard2(cd2);
-        assertEquals(true, instance.highCardNotJ());
+        assertEquals(true, instance.highCardIsNotJ());
     }
 
     /**

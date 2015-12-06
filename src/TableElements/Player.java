@@ -30,6 +30,7 @@ public class Player {
     private boolean bigBlind;
     private boolean smallBlind;
     private boolean hasFolded;
+    private boolean isPlayer;
     private int money;
     private Hand hand;
     private String name;
@@ -53,8 +54,17 @@ public class Player {
         this.hand = null;
         this.money = this.getTotalChipsValue();
         this.name = name;
+        this.isPlayer = true;
     }
 
+    public boolean isIsPlayer() {
+        return isPlayer;
+    }
+
+    public void setIsPlayer(boolean isPlayer) {
+        this.isPlayer = isPlayer;
+    }
+    
     public String getName() {
         return name;
     }

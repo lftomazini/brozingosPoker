@@ -30,6 +30,7 @@ public class ComputerPlayer extends Player{
      */
     public ComputerPlayer(int[] chips1, String name) {
         super(chips1, name);
+        this.setIsPlayer(false);
     }
     
     /**
@@ -44,13 +45,13 @@ public class ComputerPlayer extends Player{
             if (this.enoughMoney()) {
                 if (this.hasPair() || this.sameSuit() || this.highCardK()) {
                     this.call(betAmount + (int)this.getMoney()/5);
-                } else if (this.lowCardJ()) {
+                } else if (this.highCardIsNotJ()) {
                     this.fold();
                 } else {
                     this.call(betAmount);
                 }
             } else if(this.littleMoney()) {
-                if (this.hasPair() || this.lowCardJ()) {
+                if (this.hasPair() || !this.lowCardJ()) {
                     this.call(betAmount);
                 } else {
                     this.fold();
@@ -73,7 +74,7 @@ public class ComputerPlayer extends Player{
         if (this.enoughMoney()) {
                 if (this.hasPair() || this.sameSuit() || this.highCardK()) {
                     this.makeBet((int) this.getMoney()/4);
-                } else if (this.lowCardJ()) {
+                } else if (this.highCardIsNotJ()) {
                     this.fold();
                 }
         } else if(this.littleMoney()) {
@@ -81,7 +82,7 @@ public class ComputerPlayer extends Player{
                 this.fold();
             }
         } else {
-            if (!this.hasPair() && !this.sameSuit() && this.highCardNotJ()){
+            if (!this.hasPair() && !this.sameSuit() && this.highCardIsNotJ()){
                 this.fold();
             }
         }
@@ -136,12 +137,20 @@ public class ComputerPlayer extends Player{
      * Tells if high card of the player is not higher than 10
      * @return: boolean (true or false)
      */
-    public boolean highCardNotJ(){
-        if (this.getCard1().getRank() != Rank.ACE && this.getCard2().getRank() != Rank.ACE) {
-            if (this.getCard1().getRank() != Rank.K && this.getCard2().getRank() != Rank.K) {
-                if (this.getCard1().getRank() != Rank.Q && this.getCard2().getRank() != Rank.Q) {
-                    if (this.getCard1().getRank() != Rank.J && this.getCard2().getRank() != Rank.J) {
-                        return true;
+    public boolean highCardIsNotJ(){
+        if (this.getCard1().getRank() != Rank.ACE) { 
+            if (this.getCard1().getRank() != Rank.K) { 
+                if (this.getCard1().getRank() != Rank.Q) {
+                    if (this.getCard1().getRank() != Rank.J) { 
+                        if(this.getCard2().getRank() != Rank.ACE) {
+                            if(this.getCard2().getRank() != Rank.K) {
+                                if (this.getCard2().getRank() != Rank.Q) {
+                                    if(this.getCard2().getRank() != Rank.J) {
+                                        return true;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
