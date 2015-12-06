@@ -148,7 +148,7 @@ public class Player {
      * Sets both the cards to be null
      */
     public void fold() {
-        hasFolded = true;
+        this.hasFolded = true;
     }
 
     /**
@@ -226,7 +226,7 @@ public class Player {
     }
 
     public boolean isHasFolded() {
-        return hasFolded;
+        return this.hasFolded;
     }
 
     /**
