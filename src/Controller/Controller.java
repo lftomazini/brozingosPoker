@@ -118,6 +118,7 @@ public class Controller implements ActionListener, ChangeListener {
         if (e.getSource() == theGameTable.getButtons()) {
             MoveEnd = new RoundEnd(theGameTable, theModel
             );
+
             MoveEnd.endRound();
         }
         if (e.getSource() == theGameTable.getGivecards()) {
@@ -284,6 +285,9 @@ public class Controller implements ActionListener, ChangeListener {
         //Reset everything on the game table!
         if (e.getSource()
             == theGameTable.getPlayAgainB()) {
+            MoveEnd = new RoundEnd(theGameTable, theModel
+            );
+            MoveEnd.endRound();
             theModel.getPlayers().get(playerSmallBlind).setSmallBlind(false);
             theModel.getPlayers().get(playerBigBlind).setBigBlind(false);
             tableRound = 0;

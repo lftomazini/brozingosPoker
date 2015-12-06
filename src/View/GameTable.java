@@ -96,7 +96,6 @@ public class GameTable extends javax.swing.JFrame {
         greenChip1 = new javax.swing.JLabel();
         blueChip1 = new javax.swing.JLabel();
         flip = new javax.swing.JButton();
-        bigBlind = new javax.swing.JButton();
         smallBlind = new javax.swing.JButton();
         Buttons = new javax.swing.JButton();
         player1 = new javax.swing.JLabel();
@@ -112,6 +111,7 @@ public class GameTable extends javax.swing.JFrame {
         givecards = new javax.swing.JButton();
         card1label = new javax.swing.JLabel();
         card2label = new javax.swing.JLabel();
+        bigBlind = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -203,7 +203,7 @@ public class GameTable extends javax.swing.JFrame {
 
         jLabel2.setText("Pay Small Blind ($25)?:");
         setBlindsPan.add(jLabel2);
-        jLabel2.setBounds(30, 30, 170, 15);
+        jLabel2.setBounds(40, 30, 170, 15);
 
         doneButton.setText("Yes!");
         doneButton.addActionListener(new java.awt.event.ActionListener() {
@@ -219,7 +219,7 @@ public class GameTable extends javax.swing.JFrame {
         dontPay.setBounds(60, 110, 80, 40);
 
         jPanel1.add(setBlindsPan);
-        setBlindsPan.setBounds(330, 250, 210, 200);
+        setBlindsPan.setBounds(330, 240, 210, 200);
 
         flop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(flop);
@@ -348,15 +348,10 @@ public class GameTable extends javax.swing.JFrame {
         jPanel1.add(flip);
         flip.setBounds(780, 550, 100, 30);
 
-        bigBlind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bigblinddone.png"))); // NOI18N
-        bigBlind.setContentAreaFilled(false);
-        jPanel1.add(bigBlind);
-        bigBlind.setBounds(620, 390, 70, 70);
-
         smallBlind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Small-Blind-Button-SY-Q58DONE-.png"))); // NOI18N
         smallBlind.setContentAreaFilled(false);
         jPanel1.add(smallBlind);
-        smallBlind.setBounds(820, 230, 70, 60);
+        smallBlind.setBounds(810, 230, 70, 60);
 
         Buttons.setText("buttons?");
         jPanel1.add(Buttons);
@@ -426,6 +421,11 @@ public class GameTable extends javax.swing.JFrame {
         card2label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(card2label);
         card2label.setBounds(660, 470, 70, 100);
+
+        bigBlind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bigblinddone.png"))); // NOI18N
+        bigBlind.setContentAreaFilled(false);
+        jPanel1.add(bigBlind);
+        bigBlind.setBounds(680, 400, 70, 70);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
