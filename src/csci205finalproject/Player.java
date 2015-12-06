@@ -39,25 +39,6 @@ public class Player {
 
     /**
      * Constructs a player object
-     */
-    public Player() {
-        this.bigBlind = false;
-        this.smallBlind = false;
-        this.card1 = null;
-        this.card2 = null;
-        this.hasFolded = false;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Constructs a player object
      *
      * @param chips1: An array of chips
      */
@@ -70,6 +51,14 @@ public class Player {
         this.hasFolded = false;
         this.hand = null;
         this.money = this.getTotalChipsValue();
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -92,25 +81,30 @@ public class Player {
      * Distributes the money into chips of different value
      */
     public void getChipsFromMoney() {
-        int value = this.money;
+        int value = this.getMoney();
 
-        int numHundred = value % (int) (Chips.BLACK.getValue());
+        int remainderHundred = value % (int) (Chips.BLACK.getValue());
+        int numHundred = (value - remainderHundred) / (int) (Chips.BLACK.getValue());
         value = value - (int) (Chips.BLACK.getValue() * numHundred);
         this.chips[4] = numHundred;
 
-        int numTwentyFive = value % (int) (Chips.GREEN.getValue());
+        int remainderTwentyFive = value % (int) (Chips.GREEN.getValue());
+        int numTwentyFive = (value - remainderTwentyFive) / (int) (Chips.GREEN.getValue());
         value = value - (int) (Chips.GREEN.getValue() * numTwentyFive);
         this.chips[3] = numTwentyFive;
 
-        int numTen = value % (int) (Chips.BLUE.getValue());
+        int remainderTen = value % (int) (Chips.BLUE.getValue());
+        int numTen = (value - remainderTen) / (int) (Chips.BLUE.getValue());
         value = value - (int) (Chips.BLUE.getValue() * numTen);
         this.chips[2] = numTen;
 
-        int numFive = value % (int) (Chips.RED.getValue());
+        int remainderFive = value % (int) (Chips.RED.getValue());
+        int numFive = (value - remainderFive) / (int) (Chips.RED.getValue());
         value = value - (int) (Chips.RED.getValue() * numFive);
         this.chips[1] = numFive;
 
-        int numOne = value % (int) (Chips.WHITE.getValue());
+        int remainderOne = value % (int) (Chips.WHITE.getValue());
+        int numOne = (value - remainderOne) / (int) (Chips.WHITE.getValue());
         value = value - (int) (Chips.WHITE.getValue() * numOne);
         this.chips[0] = numOne;
     }
@@ -153,10 +147,7 @@ public class Player {
      * Sets both the cards to be null
      */
     public void fold() {
-        //this.setCard1(null);
-        //this.setCard2(null);
         hasFolded = true;
-
     }
 
     /**

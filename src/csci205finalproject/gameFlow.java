@@ -67,9 +67,10 @@ public class gameFlow {
             ending = playerArray.size();
             j = 0;
             //for each player
-            while (j != ending) {
+            while (0 != ending) {
+//            for (j = 0; j < playerArray.size(); j++) {
                 System.out.println("Player " + (j + 1));
-                System.out.println("Will end in " + ending);
+//                System.out.println("Will end in " + ending);
 
                 //let the player to something if still on the game
                 if (!playerArray.get(j).isHasFolded()) {
@@ -77,13 +78,13 @@ public class gameFlow {
                     //pays big blind if player is big blind
                     if (playerArray.get(j).isBigBlind() && i == 0) {
                         playerArray.get(j).makeBet(game.getBigBlind());
-                        ending = 1;
                         System.out.println("Payed big");
                     } else {
 
                         //pays small blind if player is small blind
                         if (playerArray.get(j).isSmallBlind() && i == 0) {
                             playerArray.get(j).makeBet(game.getSmallBlind());
+                            ending++;
                             playerArray.get(j).setSmallBlind(false);
                             System.out.println("Payed small");
 
@@ -111,17 +112,20 @@ public class gameFlow {
                                     playerArray.get(j).makeBet(amount);
                                     game.setBet(amount);
                                     //TODO remove money from player
-                                    ending = j;
+
+//                                    ending = (ending + playerArray.size() - 3) % playerArray.size();
+                                    ending = (ending + playerArray.size() > playerArray.size()) ? playerArray.size() : (ending + playerArray.size());
                                     break;
                             }
                         }
                     }
                 }
-                if (!(ending == playerArray.size() && j + 1 == ending)) {
-                    j = (j == playerArray.size() - 1) ? 0 : j + 1;
-                } else {
-                    j++;
-                }
+//                if (!(ending == playerArray.size() && j + 1 == ending)) {
+                j = (j == playerArray.size() - 1) ? 0 : j + 1;
+                ending--;
+//                } else {
+//                    j++;
+//                }
             }
 
             //do an action depending if it is flop turn river
@@ -176,10 +180,15 @@ public class gameFlow {
 
         //tells the winner
         CheckHands check = new CheckHands();
+
         check.checkHands(playerArray, table);
-        System.out.println("-----------");
+
+        System.out.println(
+                "-----------");
         ArrayList<Player> toPrint = check.checkWinner(playerArray, table);
-        for (int i = 0; i < toPrint.size(); i++) {
+        for (int i = 0;
+             i < toPrint.size();
+             i++) {
             System.out.println(
                     toPrint.get(i).getName());
         }
