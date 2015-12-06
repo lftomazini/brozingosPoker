@@ -23,6 +23,7 @@ import Cards.Deck;
 import Model.Model;
 import TableElements.CardDealer;
 import TableElements.CheckHands;
+import TableElements.ComputerPlayer;
 import TableElements.GameClass;
 import TableElements.Player;
 import View.GameTable;
@@ -148,7 +149,11 @@ public class Controller implements ActionListener, ChangeListener {
             ArrayList<Player> players = new ArrayList<Player>();
             players.add(new Player(chips1, startScreen.getNameField().getText()));
             for (int i = 0; i < numPlayers - 1; i++) {
-                players.add(new Player(chips1, computerNames[i]));
+                players.add(new ComputerPlayer(chips1, computerNames[i]));
+            }
+
+            for (int i = 0; i < numPlayers; i++) {
+                System.out.println(players.get(i).getName());
             }
 
             theModel.setPlayers(players);
@@ -195,6 +200,15 @@ public class Controller implements ActionListener, ChangeListener {
             this.theGameTable.getFlip().setText(flipNames[tableRound]);
             if (tableRound < 3) {
                 for (int i = 0; i < theModel.getPlayers().size(); i++) {
+                    int betLoc = smallBlind + 1;
+                    int currentLoc = smallBlind + 1;
+                    while (currentLoc <= betLoc) {
+                        if (currentLoc != 0) {
+                            int[] betChoices = {betValue, theModel.getPlayers().get(
+                                                currentLoc).getMoney()};
+                            //theModel.getPlayers().get(currentLoc).makeBet(betInt)
+                        }
+                    }
                     int playerTurn = (bigBlind + i) % theModel.getPlayers().size();
                     if (playerTurn == 0) {
                         if ((theModel.getPlayers().get(0).isHasFolded() == false) & (tableRound < 3)) {
@@ -413,10 +427,10 @@ public class Controller implements ActionListener, ChangeListener {
         } else if (numPlayers == 5) {
             theGameTable.getP2c1().setVisible(false);
             theGameTable.getP2c2().setVisible(false);
-            theGameTable.getPlayer2().setVisible(false);
+            theGameTable.getPlayer3().setVisible(false);
             theGameTable.getPlayer1().setText(theModel.getPlayers().get(
                     0).getName());
-            theGameTable.getPlayer3().setText(theModel.getPlayers().get(
+            theGameTable.getPlayer2().setText(theModel.getPlayers().get(
                     1).getName());
             theGameTable.getPlayer4().setText(theModel.getPlayers().get(
                     2).getName());
@@ -429,15 +443,15 @@ public class Controller implements ActionListener, ChangeListener {
             theGameTable.getPlayer1().setText(theModel.getPlayers().get(
                     0).getName());
             theGameTable.getPlayer2().setText(theModel.getPlayers().get(
-                    2).getName());
-            theGameTable.getPlayer3().setText(theModel.getPlayers().get(
                     1).getName());
-            theGameTable.getPlayer4().setText(theModel.getPlayers().get(
+            theGameTable.getPlayer3().setText(theModel.getPlayers().get(
                     2).getName());
-            theGameTable.getPlayer5().setText(theModel.getPlayers().get(
+            theGameTable.getPlayer4().setText(theModel.getPlayers().get(
                     3).getName());
-            theGameTable.getPlayer6().setText(theModel.getPlayers().get(
+            theGameTable.getPlayer5().setText(theModel.getPlayers().get(
                     4).getName());
+            theGameTable.getPlayer6().setText(theModel.getPlayers().get(
+                    5).getName());
 
         }
     }

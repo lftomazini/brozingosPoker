@@ -371,13 +371,13 @@ public class GameTable extends javax.swing.JFrame {
         player2.setText("Player 2");
         player2.setOpaque(true);
         jPanel1.add(player2);
-        player2.setBounds(20, 230, 90, 30);
+        player2.setBounds(280, 660, 90, 30);
 
         player3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         player3.setText("Player 3");
         player3.setOpaque(true);
         jPanel1.add(player3);
-        player3.setBounds(300, 680, 90, 30);
+        player3.setBounds(20, 230, 90, 30);
 
         player4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         player4.setText("Player 4");
