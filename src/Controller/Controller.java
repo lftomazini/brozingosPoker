@@ -26,6 +26,7 @@ import TableElements.CheckHands;
 import TableElements.GameClass;
 import TableElements.Player;
 import View.GameTable;
+import View.PokerHands;
 import View.StartScreen;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -49,6 +50,8 @@ public class Controller implements ActionListener, ChangeListener {
     StartScreen startScreen;
     Model theModel;
     GameTable theGameTable;
+
+    PokerHands thePokerHands;
     JLabel flop;
     JLabel flop1;
     JLabel flop2;
@@ -86,6 +89,7 @@ public class Controller implements ActionListener, ChangeListener {
         this.startScreen = startScreen;
         this.theModel = theModel;
         this.theGameTable = new GameTable();
+        this.thePokerHands = new PokerHands();
         this.startScreen.getStart().addActionListener(this);
         this.theGameTable.getFlip().addActionListener(this);
         this.theGameTable.getCard1b().addActionListener(this);
@@ -123,7 +127,7 @@ public class Controller implements ActionListener, ChangeListener {
             MoveEnd.endRound();
         }
         if (e.getSource() == theGameTable.getGivecards()) {
-            RoundStart = new RoundStart(theGameTable);
+            RoundStart = new RoundStart(theGameTable, theModel);
             RoundStart.StartRound();
         }
 
@@ -134,6 +138,9 @@ public class Controller implements ActionListener, ChangeListener {
 
             theGameTable.setLocationRelativeTo(null);
             theGameTable.setVisible(true);
+            thePokerHands.setLocationRelativeTo(null);
+            thePokerHands.setVisible(true);
+
             numPlayers = startScreen.getNumPlayers().getSelectedIndex();
             checkNumPlayers();
             theModel.setNumPlayers(numPlayers);
@@ -156,6 +163,9 @@ public class Controller implements ActionListener, ChangeListener {
             theModel.getPlayers().get(0).setBigBlind(true);
             theModel.getPlayers().get(2).setSmallBlind(true);
 
+            MoveEnd = new RoundEnd(theGameTable, theModel
+            );
+            RoundStart = new RoundStart(theGameTable, theModel);
         }
 
         //If they pay the big blind
@@ -222,6 +232,7 @@ public class Controller implements ActionListener, ChangeListener {
             if (theGameTable.getFoldRB().isSelected() == true) {
                 int i = 0;
                 fold(i);
+
                 theGameTable.getGameInfoTA().append("\nYou have folded");
 
             } //Player checks
@@ -257,9 +268,9 @@ public class Controller implements ActionListener, ChangeListener {
         //Reset everything on the game table!
         if (e.getSource()
             == theGameTable.getPlayAgainB()) {
-            MoveEnd = new RoundEnd(theGameTable, theModel
-            );
+
             MoveEnd.endRound();
+            RoundStart.StartRound();
             theModel.getPlayers().get(playerSmallBlind).setSmallBlind(false);
             theModel.getPlayers().get(playerBigBlind).setBigBlind(false);
             tableRound = 0;
@@ -523,6 +534,7 @@ public class Controller implements ActionListener, ChangeListener {
      */
     private void fold(int i) {
         theModel.getPlayers().get(i).fold();
+        MoveEnd.playerFold(theModel.getPlayers(), i);
     }
 
     /**
