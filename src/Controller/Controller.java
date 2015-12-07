@@ -354,6 +354,142 @@ public class Controller implements ActionListener, ChangeListener {
 
     }
 
+    private void showRobotCards() {
+        if (numPlayers == 3) {
+            String cardName = this.theModel.getPlayers().get(1).getCard1().getName();
+            Icon icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP5c1().setIcon(icon);
+            cardName = this.theModel.getPlayers().get(1).getCard2().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP5c2().setIcon(icon);
+
+            cardName = this.theModel.getPlayers().get(2).getCard1().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP6c1().setIcon(icon);
+            cardName = this.theModel.getPlayers().get(2).getCard2().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP6c2().setIcon(icon);
+        }
+
+        if (numPlayers == 4) {
+            String cardName = this.theModel.getPlayers().get(1).getCard1().getName();
+            Icon icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP4c1().setIcon(icon);
+            cardName = this.theModel.getPlayers().get(1).getCard2().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP4c2().setIcon(icon);
+
+            cardName = this.theModel.getPlayers().get(2).getCard1().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP5c1().setIcon(icon);
+            cardName = this.theModel.getPlayers().get(2).getCard2().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP5c2().setIcon(icon);
+
+            cardName = this.theModel.getPlayers().get(3).getCard1().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP6c1().setIcon(icon);
+            cardName = this.theModel.getPlayers().get(3).getCard2().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP6c2().setIcon(icon);
+        }
+
+        if (numPlayers == 5) {
+            String cardName = this.theModel.getPlayers().get(1).getCard1().getName();
+            Icon icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP2c1().setIcon(icon);
+            cardName = this.theModel.getPlayers().get(1).getCard2().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP2c2().setIcon(icon);
+
+            cardName = this.theModel.getPlayers().get(2).getCard1().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP4c1().setIcon(icon);
+            cardName = this.theModel.getPlayers().get(2).getCard2().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP4c2().setIcon(icon);
+
+            cardName = this.theModel.getPlayers().get(3).getCard1().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP5c1().setIcon(icon);
+            cardName = this.theModel.getPlayers().get(3).getCard2().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP5c2().setIcon(icon);
+
+            cardName = this.theModel.getPlayers().get(4).getCard1().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP6c1().setIcon(icon);
+            cardName = this.theModel.getPlayers().get(4).getCard2().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP6c2().setIcon(icon);
+        }
+
+        if (numPlayers == 6) {
+            String cardName = this.theModel.getPlayers().get(1).getCard1().getName();
+            Icon icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP2c1().setIcon(icon);
+            cardName = this.theModel.getPlayers().get(1).getCard2().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP2c2().setIcon(icon);
+
+            cardName = this.theModel.getPlayers().get(2).getCard1().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP3c1().setIcon(icon);
+            cardName = this.theModel.getPlayers().get(2).getCard2().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP3c2().setIcon(icon);
+
+            cardName = this.theModel.getPlayers().get(3).getCard1().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP4c1().setIcon(icon);
+            cardName = this.theModel.getPlayers().get(3).getCard2().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP4c2().setIcon(icon);
+
+            cardName = this.theModel.getPlayers().get(4).getCard1().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP5c1().setIcon(icon);
+            cardName = this.theModel.getPlayers().get(4).getCard2().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP5c2().setIcon(icon);
+
+            cardName = this.theModel.getPlayers().get(5).getCard1().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP6c1().setIcon(icon);
+            cardName = this.theModel.getPlayers().get(5).getCard2().getName();
+            icon = new ImageIcon(
+                    "src/cardsimage/" + cardName + ".png");
+            theGameTable.getP6c2().setIcon(icon);
+        }
+    }
+
     /**
      * Goes through all players and determines whether or not they pay, or do
      * not pay the blinds
@@ -550,7 +686,7 @@ public class Controller implements ActionListener, ChangeListener {
 
             theGameTable.getWinnerPanel().setVisible(true);
         }
-
+        showRobotCards();
     }
 
     /**
