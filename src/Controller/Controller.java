@@ -71,7 +71,7 @@ public class Controller implements ActionListener, ChangeListener {
     int[] chips1 = {10, 6, 4, 2, 2};
     int tableRound = 0;
     int playerBigBlind = 0;
-    int playerSmallBlind = 2;
+    int playerSmallBlind;
     int bigBlind = 20;
     int smallBlind = 10;
     int paidSmallBlind = 0;
@@ -116,6 +116,8 @@ public class Controller implements ActionListener, ChangeListener {
         this.theGameTable.getPlayAgainB().addActionListener(this);
         this.theGameTable.getExitB().addActionListener(this);
         this.theGameTable.getBetSl().addChangeListener((ChangeListener) this);
+        theGameTable.getGivecards().setVisible(false);
+        theGameTable.getButtons().setVisible(false);
 
     }
 
@@ -168,6 +170,7 @@ public class Controller implements ActionListener, ChangeListener {
             theModel.getPlayers().get(0).setBigBlind(true);
             theModel.getPlayers().get(theModel.getPlayers().size() - 1).setSmallBlind(
                     true);
+            playerSmallBlind = theModel.getNumPlayers() - 1;
 
             MoveEnd = new RoundEnd(theGameTable, theModel
             );
@@ -408,11 +411,11 @@ public class Controller implements ActionListener, ChangeListener {
             String cardName = this.theModel.getPlayers().get(1).getCard1().getName();
             Icon icon = new ImageIcon(
                     "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP2c1().setIcon(icon);
+            theGameTable.getP3c1().setIcon(icon);
             cardName = this.theModel.getPlayers().get(1).getCard2().getName();
             icon = new ImageIcon(
                     "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP2c2().setIcon(icon);
+            theGameTable.getP3c2().setIcon(icon);
 
             cardName = this.theModel.getPlayers().get(2).getCard1().getName();
             icon = new ImageIcon(
@@ -443,23 +446,28 @@ public class Controller implements ActionListener, ChangeListener {
         }
 
         if (numPlayers == 6) {
+            System.out.println("inside showcards");
+            for (int i = 0; i < numPlayers; i++) {
+
+                System.out.println(theModel.getPlayers().get(i).getName());
+            }
             String cardName = this.theModel.getPlayers().get(1).getCard1().getName();
             Icon icon = new ImageIcon(
                     "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP2c1().setIcon(icon);
+            theGameTable.getP3c1().setIcon(icon);
             cardName = this.theModel.getPlayers().get(1).getCard2().getName();
             icon = new ImageIcon(
                     "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP2c2().setIcon(icon);
+            theGameTable.getP3c2().setIcon(icon);
 
             cardName = this.theModel.getPlayers().get(2).getCard1().getName();
             icon = new ImageIcon(
                     "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP3c1().setIcon(icon);
+            theGameTable.getP2c1().setIcon(icon);
             cardName = this.theModel.getPlayers().get(2).getCard2().getName();
             icon = new ImageIcon(
                     "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP3c2().setIcon(icon);
+            theGameTable.getP2c2().setIcon(icon);
 
             cardName = this.theModel.getPlayers().get(3).getCard1().getName();
             icon = new ImageIcon(
@@ -653,10 +661,28 @@ public class Controller implements ActionListener, ChangeListener {
      */
     private void showdown() throws InterruptedException {
         CheckHands showdown = new CheckHands();
-        showdown.checkHands(theModel.getPlayers(), cardsOnTable);
+        System.out.println("before checkhands");
+        for (int i = 0; i < numPlayers; i++) {
+
+            System.out.println(theModel.getPlayers().get(i).getName());
+        }
+        ArrayList<Player> play = theModel.getPlayers();
+        showdown.checkHands(play, cardsOnTable);
+        System.out.println("after checkhands");
+
+        for (int i = 0; i < numPlayers; i++) {
+            System.out.println(theModel.getPlayers().get(i).getName());
+        }
         ArrayList<Player> winner = new ArrayList();
-        winner = showdown.checkWinner(theModel.getPlayers(),
-                                      cardsOnTable);
+        winner = showdown.checkWinner(play,
+                                      cardsOnTable
+        );
+        System.out.println("after checkwinner");
+
+        for (int i = 0; i < numPlayers; i++) {
+            System.out.println(theModel.getPlayers().get(i).getName());
+        }
+
         int winnerIndex = 0;
         for (int i = 1; i < theModel.getNumPlayers(); i++) {
             if (winner.get(0).getName() == theModel.getPlayers().get(i).getName()) {
@@ -686,7 +712,8 @@ public class Controller implements ActionListener, ChangeListener {
 
             theGameTable.getWinnerPanel().setVisible(true);
         }
-        showRobotCards();
+//        showRobotCards();
+
     }
 
     /**

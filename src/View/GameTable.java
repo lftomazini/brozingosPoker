@@ -255,11 +255,11 @@ public class GameTable extends javax.swing.JFrame {
 
         p2c1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back-2.jpg"))); // NOI18N
         jPanel1.add(p2c1);
-        p2c1.setBounds(130, 240, 100, 71);
+        p2c1.setBounds(130, 180, 120, 110);
 
         p2c2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back-2.jpg"))); // NOI18N
         jPanel1.add(p2c2);
-        p2c2.setBounds(130, 320, 100, 71);
+        p2c2.setBounds(130, 270, 130, 110);
 
         p3c1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(p3c1);

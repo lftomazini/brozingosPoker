@@ -15,8 +15,8 @@
  * *****************************************/
 package TableElements;
 
-import Cards.Hand;
 import Cards.Card;
+import Cards.Hand;
 import Cards.Rank;
 import Cards.Suits;
 import java.util.ArrayList;
@@ -69,12 +69,12 @@ public class CheckHands {
 
     public ArrayList<Player> checkWinner(ArrayList<Player> playerArray,
                                          ArrayList<Card> cards) {
-
-        Collections.sort(playerArray, Player.byHand);
+        ArrayList<Player> MyPlayers = playerArray;
+        Collections.sort(MyPlayers, Player.byHand);
         ArrayList<Player> notFolded = new ArrayList<>();
-        for (int i = 0; i < playerArray.size(); i++) {
-            if (!playerArray.get(i).isHasFolded()) {
-                notFolded.add(playerArray.get(i));
+        for (int i = 0; i < MyPlayers.size(); i++) {
+            if (!MyPlayers.get(i).isHasFolded()) {
+                notFolded.add(MyPlayers.get(i));
             }
         }
 
