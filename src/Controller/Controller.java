@@ -166,7 +166,8 @@ public class Controller implements ActionListener, ChangeListener {
             adjustPlayerVisibility();
 
             theModel.getPlayers().get(0).setBigBlind(true);
-            theModel.getPlayers().get(2).setSmallBlind(true);
+            theModel.getPlayers().get(theModel.getPlayers().size() - 1).setSmallBlind(
+                    true);
 
             MoveEnd = new RoundEnd(theGameTable, theModel
             );
@@ -195,7 +196,6 @@ public class Controller implements ActionListener, ChangeListener {
             == theGameTable.getFlip()) {
 
             flip();
-            theGameTable.getFlip().setVisible(false);
             this.theGameTable.getFlip().setText(flipNames[tableRound]);
 
             if (tableRound < 3) {

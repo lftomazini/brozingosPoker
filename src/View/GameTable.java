@@ -223,7 +223,7 @@ public class GameTable extends javax.swing.JFrame {
         dontPay.setBounds(60, 110, 80, 40);
 
         jPanel1.add(setBlindsPan);
-        setBlindsPan.setBounds(330, 240, 210, 200);
+        setBlindsPan.setBounds(300, 250, 210, 200);
 
         flop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playing-card-back.jpg"))); // NOI18N
         jPanel1.add(flop);
