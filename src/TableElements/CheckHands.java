@@ -79,6 +79,10 @@ public class CheckHands {
         }
 
         ArrayList<Player> possibleWinners = new ArrayList<>();
+        if (notFolded.size() == 1) {
+            possibleWinners.add(notFolded.get(0));
+            return possibleWinners;
+        }
         if (!Hand.equals(notFolded.get(0).getHand(),
                          notFolded.get(1).getHand())) {
             possibleWinners.add(notFolded.get(0));
