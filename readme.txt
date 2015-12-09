@@ -15,3 +15,5 @@ Project: We create a version of Texas Hold’em Poker with the focus in the GUI 
 The players can fold (leave the game), increase bet (increase the amount of money they are betting), check (continue on the game without betting) and call (pay the same amount of money that the last player paid). Their decision should be based on the probability that they have one of the hands above listed, amount bet and the amount of money that they still have.
 
 The player with the highest hand wins the game and gets all the money bet.
+
+To run the game open the project in netBeans and run the Main.java file located in the route source.

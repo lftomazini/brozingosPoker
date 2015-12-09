@@ -13,10 +13,10 @@
  * Description:
  *
  * *****************************************/
-package View;
 
 import Controller.Controller;
 import Model.Model;
+import View.StartScreen;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -70,7 +70,7 @@ public class Main {
                                                            theModel);
                 } catch (IOException ex) {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE,
-                                                               null, ex);
+                                                                  null, ex);
                 }
 
                 startScreen.setLocationRelativeTo(null);
