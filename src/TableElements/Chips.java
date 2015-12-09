@@ -23,7 +23,7 @@ public enum Chips {
     RED(5.00),
     BLUE(10.00),
     GREEN(25.00),
-    BLACK(100.00);
+    BLACK(50.00);
 
     private double value;
 

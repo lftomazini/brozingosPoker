@@ -50,13 +50,13 @@ public class RoundEnd {
     Timer p6c2;
     int numPlayers;
 
-    Model c;
+    Model theModel;
     Icon icon1 = new ImageIcon("src/images/playing-card-back.jpg");
 
-    public RoundEnd(GameTable theGameTable, Model c) {
+    public RoundEnd(GameTable theGameTable, Model theModel) {
         this.theGameTable = theGameTable;
-        Move = new ButtonsMovement(theGameTable, c);
-        this.numPlayers = c.getNumPlayers();
+        Move = new ButtonsMovement(theGameTable, theModel);
+        this.numPlayers = theModel.getNumPlayers();
         flop = new Timer(1, new Flop());
         flop1 = new Timer(1, new Flop1());
 
@@ -88,9 +88,15 @@ public class RoundEnd {
                 card2b.start();
 
             } else if (i == 1) {
-
+                p5c1.setInitialDelay(0);
+                p5c1.start();
+                p5c2.setInitialDelay(0);
+                p5c2.start();
             } else if (i == 2) {
-
+                p6c1.setInitialDelay(0);
+                p6c1.start();
+                p6c2.setInitialDelay(0);
+                p6c2.start();
             }
         } else if (players.size() == 4) {
             if (i == 0) {
@@ -100,11 +106,22 @@ public class RoundEnd {
                 card2b.start();
 
             } else if (i == 1) {
+                p4c1.setInitialDelay(0);
+                p4c1.start();
+                p4c2.setInitialDelay(0);
+                p4c2.start();
 
             } else if (i == 2) {
+                p5c1.setInitialDelay(0);
+                p5c1.start();
+                p5c2.setInitialDelay(0);
+                p5c2.start();
 
             } else if (i == 3) {
-
+                p6c1.setInitialDelay(0);
+                p6c1.start();
+                p6c2.setInitialDelay(0);
+                p6c2.start();
             }
 
         } else if (players.size() == 5) {
@@ -115,12 +132,28 @@ public class RoundEnd {
                 card2b.start();
 
             } else if (i == 1) {
+                p3c1.setInitialDelay(0);
+                p3c1.start();
+                p3c2.setInitialDelay(0);
+                p3c2.start();
 
             } else if (i == 2) {
+                p4c1.setInitialDelay(0);
+                p4c1.start();
+                p4c2.setInitialDelay(0);
+                p4c2.start();
 
             } else if (i == 3) {
+                p5c1.setInitialDelay(0);
+                p5c1.start();
+                p5c2.setInitialDelay(0);
+                p5c2.start();
 
             } else if (i == 4) {
+                p6c1.setInitialDelay(0);
+                p6c1.start();
+                p6c2.setInitialDelay(0);
+                p6c2.start();
 
             }
 
@@ -132,14 +165,34 @@ public class RoundEnd {
                 card2b.start();
 
             } else if (i == 1) {
+                p3c1.setInitialDelay(0);
+                p3c1.start();
+                p3c2.setInitialDelay(0);
+                p3c2.start();
 
             } else if (i == 2) {
+                p2c1.setInitialDelay(0);
+                p2c1.start();
+                p2c2.setInitialDelay(0);
+                p2c2.start();
 
             } else if (i == 3) {
+                p4c1.setInitialDelay(0);
+                p4c1.start();
+                p4c2.setInitialDelay(0);
+                p4c2.start();
 
             } else if (i == 4) {
+                p5c1.setInitialDelay(0);
+                p5c1.start();
+                p5c2.setInitialDelay(0);
+                p5c2.start();
 
             } else if (i == 5) {
+                p6c1.setInitialDelay(0);
+                p6c1.start();
+                p6c2.setInitialDelay(0);
+                p6c2.start();
 
             }
 
@@ -554,4 +607,5 @@ public class RoundEnd {
         }
 
     }
+
 }

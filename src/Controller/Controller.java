@@ -30,6 +30,8 @@ import View.PokerHands;
 import View.StartScreen;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -66,6 +68,12 @@ public class Controller implements ActionListener, ChangeListener {
     FlipCards FlipCards;
     RoundStart RoundStart;
 
+    Card card1;
+    Card card2;
+    Card card3;
+    Card card4;
+    Card card5;
+
     boolean onCard1 = false;
     boolean onCard2 = false;
     int numPlayers;
@@ -96,6 +104,11 @@ public class Controller implements ActionListener, ChangeListener {
         this.theModel = theModel;
         this.theGameTable = new GameTable();
         this.thePokerHands = new PokerHands();
+        this.startScreen.getNameField().addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                startScreen.getNameField().setText("");
+            }
+        });
         this.startScreen.getStart().addActionListener(this);
         this.theGameTable.getFlip().addActionListener(this);
         this.theGameTable.getCard1b().addActionListener(this);
@@ -129,15 +142,11 @@ public class Controller implements ActionListener, ChangeListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == theGameTable.getButtons()) {
-            MoveEnd = new RoundEnd(theGameTable, theModel
-            );
 
-            MoveEnd.endRound();
+        if (e.getSource() == theGameTable.getButtons()) {
+
         }
         if (e.getSource() == theGameTable.getGivecards()) {
-            RoundStart = new RoundStart(theGameTable, theModel);
-            RoundStart.StartRound();
         }
 
         if (e.getSource() == startScreen.getStart()) {
@@ -356,6 +365,7 @@ public class Controller implements ActionListener, ChangeListener {
                                             currentLoc).getName() + " has checked.");
                         }
                         theModel.getPlayers().get(currentLoc).setHasFolded(true);
+                        MoveEnd.playerFold(theModel.getPlayers(), currentLoc);
                         theGameTable.getGameInfoTA().append("\n"
                                                             + theModel.getPlayers().get(
                                         currentLoc).getName() + " has folded.");
@@ -404,147 +414,6 @@ public class Controller implements ActionListener, ChangeListener {
             currentLoc = playerSmallBlind;
             betLoc = playerSmallBlind;
             theGameTable.getFlip().setVisible(true);
-        }
-    }
-
-    private void showRobotCards() {
-        if (numPlayers == 3) {
-            String cardName = this.theModel.getPlayers().get(1).getCard1().getName();
-            Icon icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP5c1().setIcon(icon);
-            cardName = this.theModel.getPlayers().get(1).getCard2().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP5c2().setIcon(icon);
-
-            cardName = this.theModel.getPlayers().get(2).getCard1().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP6c1().setIcon(icon);
-            cardName = this.theModel.getPlayers().get(2).getCard2().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP6c2().setIcon(icon);
-        }
-
-        if (numPlayers == 4) {
-            String cardName = this.theModel.getPlayers().get(1).getCard1().getName();
-            Icon icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP4c1().setIcon(icon);
-            cardName = this.theModel.getPlayers().get(1).getCard2().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP4c2().setIcon(icon);
-
-            cardName = this.theModel.getPlayers().get(2).getCard1().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP5c1().setIcon(icon);
-            cardName = this.theModel.getPlayers().get(2).getCard2().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP5c2().setIcon(icon);
-
-            cardName = this.theModel.getPlayers().get(3).getCard1().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP6c1().setIcon(icon);
-            cardName = this.theModel.getPlayers().get(3).getCard2().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP6c2().setIcon(icon);
-        }
-
-        if (numPlayers == 5) {
-            String cardName = this.theModel.getPlayers().get(1).getCard1().getName();
-            Icon icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP3c1().setIcon(icon);
-            cardName = this.theModel.getPlayers().get(1).getCard2().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP3c2().setIcon(icon);
-
-            cardName = this.theModel.getPlayers().get(2).getCard1().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP4c1().setIcon(icon);
-            cardName = this.theModel.getPlayers().get(2).getCard2().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP4c2().setIcon(icon);
-
-            cardName = this.theModel.getPlayers().get(3).getCard1().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP5c1().setIcon(icon);
-            cardName = this.theModel.getPlayers().get(3).getCard2().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP5c2().setIcon(icon);
-
-            cardName = this.theModel.getPlayers().get(4).getCard1().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP6c1().setIcon(icon);
-            cardName = this.theModel.getPlayers().get(4).getCard2().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP6c2().setIcon(icon);
-        }
-
-        if (numPlayers == 6) {
-            System.out.println("inside showcards");
-            for (int i = 0; i < numPlayers; i++) {
-
-                System.out.println(theModel.getPlayers().get(i).getName());
-            }
-            String cardName = this.theModel.getPlayers().get(1).getCard1().getName();
-            Icon icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP3c1().setIcon(icon);
-            cardName = this.theModel.getPlayers().get(1).getCard2().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP3c2().setIcon(icon);
-
-            cardName = this.theModel.getPlayers().get(2).getCard1().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP2c1().setIcon(icon);
-            cardName = this.theModel.getPlayers().get(2).getCard2().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP2c2().setIcon(icon);
-
-            cardName = this.theModel.getPlayers().get(3).getCard1().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP4c1().setIcon(icon);
-            cardName = this.theModel.getPlayers().get(3).getCard2().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP4c2().setIcon(icon);
-
-            cardName = this.theModel.getPlayers().get(4).getCard1().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP5c1().setIcon(icon);
-            cardName = this.theModel.getPlayers().get(4).getCard2().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP5c2().setIcon(icon);
-
-            cardName = this.theModel.getPlayers().get(5).getCard1().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP6c1().setIcon(icon);
-            cardName = this.theModel.getPlayers().get(5).getCard2().getName();
-            icon = new ImageIcon(
-                    "src/cardsimage/" + cardName + ".png");
-            theGameTable.getP6c2().setIcon(icon);
         }
     }
 
@@ -716,7 +585,10 @@ public class Controller implements ActionListener, ChangeListener {
 
             System.out.println(theModel.getPlayers().get(i).getName());
         }
-        ArrayList<Player> play = theModel.getPlayers();
+        ArrayList<Player> play = new ArrayList<>();
+        for (Player p : theModel.getPlayers()) {
+            play.add(p.clone());
+        }
         showdown.checkHands(play, cardsOnTable);
         System.out.println("after checkhands");
 
@@ -762,7 +634,7 @@ public class Controller implements ActionListener, ChangeListener {
 
             theGameTable.getWinnerPanel().setVisible(true);
         }
-//        showRobotCards();
+        RoundStart.showRobotCards();
 
     }
 
@@ -811,11 +683,6 @@ public class Controller implements ActionListener, ChangeListener {
             numPlayers = 6;
         }
     }
-    Card card1;
-    Card card2;
-    Card card3;
-    Card card4;
-    Card card5;
 
     /**
      * Controls the flip, whenever the dealer flips cards over on the table

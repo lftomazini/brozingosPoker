@@ -492,4 +492,21 @@ public class Player {
         }
         return false;
     }
+
+    @Override
+    public Player clone() {
+        Player p = new Player(this.chips, this.name);
+        p.bigBlind = this.bigBlind;
+        p.smallBlind = this.smallBlind;
+        p.card1 = this.card1;
+        p.card2 = this.card2;
+        p.chips = this.chips;
+        p.hasFolded = this.hasFolded;
+        p.hand = this.hand;
+        p.money = this.money;
+        p.name = this.name;
+        p.isPlayer = this.isPlayer;
+        return p;
+
+    }
 }

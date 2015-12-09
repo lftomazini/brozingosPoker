@@ -85,11 +85,6 @@ public class GameTable extends javax.swing.JFrame {
         p5c2 = new javax.swing.JLabel();
         p6c1 = new javax.swing.JLabel();
         p6c2 = new javax.swing.JLabel();
-        whiteChip = new javax.swing.JLabel();
-        blackChip = new javax.swing.JLabel();
-        redChip = new javax.swing.JLabel();
-        blueChip = new javax.swing.JLabel();
-        greenChip = new javax.swing.JLabel();
         whiteChip1 = new javax.swing.JLabel();
         blackChip1 = new javax.swing.JLabel();
         redChip1 = new javax.swing.JLabel();
@@ -112,6 +107,11 @@ public class GameTable extends javax.swing.JFrame {
         card1label = new javax.swing.JLabel();
         card2label = new javax.swing.JLabel();
         bigBlind = new javax.swing.JButton();
+        blackChipImage = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -293,60 +293,35 @@ public class GameTable extends javax.swing.JFrame {
         jPanel1.add(p6c2);
         p6c2.setBounds(950, 130, 70, 100);
 
-        whiteChip.setText("White Chip ($1)");
-        whiteChip.setOpaque(true);
-        jPanel1.add(whiteChip);
-        whiteChip.setBounds(920, 710, 130, 30);
-
-        blackChip.setText("Black Chip ($100)");
-        blackChip.setOpaque(true);
-        jPanel1.add(blackChip);
-        blackChip.setBounds(920, 550, 130, 30);
-
-        redChip.setText("Red Chip ($5)");
-        redChip.setOpaque(true);
-        jPanel1.add(redChip);
-        redChip.setBounds(920, 670, 130, 30);
-
-        blueChip.setText("Blue Chip ($10)");
-        blueChip.setOpaque(true);
-        jPanel1.add(blueChip);
-        blueChip.setBounds(920, 630, 130, 30);
-
-        greenChip.setText("Green Chip ($25)");
-        greenChip.setOpaque(true);
-        jPanel1.add(greenChip);
-        greenChip.setBounds(920, 590, 130, 30);
-
         whiteChip1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         whiteChip1.setText("10");
         whiteChip1.setOpaque(true);
         jPanel1.add(whiteChip1);
-        whiteChip1.setBounds(1060, 710, 80, 30);
+        whiteChip1.setBounds(1120, 760, 80, 30);
 
         blackChip1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         blackChip1.setText("6 ");
         blackChip1.setOpaque(true);
         jPanel1.add(blackChip1);
-        blackChip1.setBounds(1060, 550, 80, 30);
+        blackChip1.setBounds(1120, 550, 80, 30);
 
         redChip1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         redChip1.setText("4");
         redChip1.setOpaque(true);
         jPanel1.add(redChip1);
-        redChip1.setBounds(1060, 670, 80, 30);
+        redChip1.setBounds(1120, 710, 80, 30);
 
         greenChip1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         greenChip1.setText("2");
         greenChip1.setOpaque(true);
         jPanel1.add(greenChip1);
-        greenChip1.setBounds(1060, 590, 80, 30);
+        greenChip1.setBounds(1120, 610, 80, 30);
 
         blueChip1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         blueChip1.setText("2");
         blueChip1.setOpaque(true);
         jPanel1.add(blueChip1);
-        blueChip1.setBounds(1060, 630, 80, 30);
+        blueChip1.setBounds(1120, 660, 80, 30);
 
         flip.setText("Flip Card");
         jPanel1.add(flip);
@@ -412,7 +387,7 @@ public class GameTable extends javax.swing.JFrame {
         jScrollPane1.setViewportView(gameInfoTA);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(910, 430, 262, 77);
+        jScrollPane1.setBounds(920, 390, 310, 140);
 
         givecards.setText("jButton1");
         jPanel1.add(givecards);
@@ -430,6 +405,26 @@ public class GameTable extends javax.swing.JFrame {
         bigBlind.setContentAreaFilled(false);
         jPanel1.add(bigBlind);
         bigBlind.setBounds(680, 400, 70, 70);
+
+        blackChipImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/blackChip.png"))); // NOI18N
+        jPanel1.add(blackChipImage);
+        blackChipImage.setBounds(1060, 540, 50, 50);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/greenChip.png"))); // NOI18N
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(1060, 590, 50, 50);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/blueChip.png"))); // NOI18N
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(1060, 640, 50, 50);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/redChip.png"))); // NOI18N
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(1060, 690, 50, 50);
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/whiteChip.png"))); // NOI18N
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(1060, 740, 50, 50);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -521,9 +516,8 @@ public class GameTable extends javax.swing.JFrame {
     private javax.swing.JSlider betSl;
     private javax.swing.JLabel betValue;
     private javax.swing.JButton bigBlind;
-    private javax.swing.JLabel blackChip;
     private javax.swing.JLabel blackChip1;
-    private javax.swing.JLabel blueChip;
+    private javax.swing.JLabel blackChipImage;
     private javax.swing.JLabel blueChip1;
     private javax.swing.JButton card1b;
     private javax.swing.JLabel card1label;
@@ -544,11 +538,14 @@ public class GameTable extends javax.swing.JFrame {
     private javax.swing.JRadioButton foldRB;
     private javax.swing.JTextArea gameInfoTA;
     private javax.swing.JButton givecards;
-    private javax.swing.JLabel greenChip;
     private javax.swing.JLabel greenChip1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel p2c1;
@@ -568,14 +565,12 @@ public class GameTable extends javax.swing.JFrame {
     private javax.swing.JLabel player4;
     private javax.swing.JLabel player5;
     private javax.swing.JLabel player6;
-    private javax.swing.JLabel redChip;
     private javax.swing.JLabel redChip1;
     private javax.swing.JLabel river;
     private javax.swing.JPanel setBlindsPan;
     private javax.swing.JButton smallBlind;
     private javax.swing.JLabel stateWinnerL;
     private javax.swing.JLabel turn;
-    private javax.swing.JLabel whiteChip;
     private javax.swing.JLabel whiteChip1;
     private javax.swing.JPanel winnerPanel;
     private javax.swing.JLabel yourMoneyL;
@@ -669,16 +664,8 @@ public class GameTable extends javax.swing.JFrame {
         return setBlindsPan;
     }
 
-    public JLabel getBlackChip() {
-        return blackChip;
-    }
-
     public JLabel getBlackChip1() {
         return blackChip1;
-    }
-
-    public JLabel getBlueChip() {
-        return blueChip;
     }
 
     public JLabel getBlueChip1() {
@@ -689,10 +676,6 @@ public class GameTable extends javax.swing.JFrame {
         return doneButton;
     }
 
-    public JLabel getGreenChip() {
-        return greenChip;
-    }
-
     public JLabel getGreenChip1() {
         return greenChip1;
     }
@@ -701,16 +684,8 @@ public class GameTable extends javax.swing.JFrame {
         return jLabel2;
     }
 
-    public JLabel getRedChip() {
-        return redChip;
-    }
-
     public JLabel getRedChip1() {
         return redChip1;
-    }
-
-    public JLabel getWhiteChip() {
-        return whiteChip;
     }
 
     public JLabel getWhiteChip1() {
