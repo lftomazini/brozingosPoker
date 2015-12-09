@@ -348,7 +348,7 @@ public class Player {
      */
     public int playBet(int betAmount) {
         int betValue = 0;
-        if (betAmount > 200 && this.getMoney() < 300) {
+        if (betAmount > 100 && this.getMoney() < 100) {
             this.fold();
         } else {
             if (this.enoughMoney()) {
@@ -408,7 +408,7 @@ public class Player {
      * @return: boolean (true or false)
      */
     public boolean enoughMoney() {
-        return this.getMoney() > 200;
+        return this.getMoney() > 100;
     }
 
     /**
